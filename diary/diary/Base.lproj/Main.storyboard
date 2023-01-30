@@ -69,15 +69,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjP-35-S3b">
-                                                    <rect key="frame" x="12" y="12" width="156" height="145.33333333333334"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="2023년 1월 25일 (목)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxa-V9-CC8">
                                                     <rect key="frame" x="12" y="169.33333333333334" width="156" height="18.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjP-35-S3b">
+                                                    <rect key="frame" x="12" y="12" width="156" height="145.33333333333334"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -93,6 +93,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="180" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="HjP-35-S3b" id="Gdp-So-tFb"/>
+                                            <outlet property="titleLabel" destination="Uxa-V9-CC8" id="kPP-Yn-ddx"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -113,12 +117,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionVIew" destination="Lwb-es-c3V" id="wtA-8Z-x8Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204" y="-499"/>
         </scene>
-        <!--Write Diary View Controller-->
+        <!--일기 작성-->
         <scene sceneID="owd-yT-Wm5">
             <objects>
                 <viewController id="dal-K6-1iq" customClass="WriteDiaryViewController" customModule="diary" customModuleProvider="target" sceneMemberID="viewController">
@@ -188,9 +195,19 @@
                             <constraint firstItem="iKW-OA-QW4" firstAttribute="trailing" secondItem="pHM-Pn-WgT" secondAttribute="trailing" constant="24" id="vBh-FP-LFM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="htq-VY-nn4">
-                        <barButtonItem key="rightBarButtonItem" title="등록" id="p2c-C8-dQy"/>
+                    <navigationItem key="navigationItem" title="일기 작성" id="htq-VY-nn4">
+                        <barButtonItem key="rightBarButtonItem" title="등록" id="p2c-C8-dQy">
+                            <connections>
+                                <action selector="tapConfirmButton:" destination="dal-K6-1iq" id="Sf4-l5-WPk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmButton" destination="p2c-C8-dQy" id="mpP-VK-h0q"/>
+                        <outlet property="contentsTextView" destination="oIU-pY-m2j" id="eFK-Wp-V6d"/>
+                        <outlet property="dateTextField" destination="pHM-Pn-WgT" id="ryZ-Ic-wfr"/>
+                        <outlet property="titleTextField" destination="vjJ-ZC-S2n" id="Ovr-Yk-v8U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oc7-3x-K9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
