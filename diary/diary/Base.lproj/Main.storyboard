@@ -62,7 +62,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="diaryCell" id="5Bv-cv-KGX" customClass="DiaryCell" customModule="diary" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiaryCell" id="5Bv-cv-KGX" customClass="DiaryCell" customModule="diary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qfS-cl-7H8">
@@ -75,7 +75,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjP-35-S3b">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjP-35-S3b">
                                                     <rect key="frame" x="12" y="12" width="156" height="145.33333333333334"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -300,8 +300,8 @@
         <!--Diary Detail View Controller-->
         <scene sceneID="EfM-Jk-ctU">
             <objects>
-                <viewController id="4Rz-f1-nvI" customClass="DiaryDetailViewController" customModule="diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UbE-uS-Qtj">
+                <viewController storyboardIdentifier="DiaryDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Rz-f1-nvI" customClass="DiaryDetailViewController" customModule="diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="DiaryDetailViewController" id="UbE-uS-Qtj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -328,16 +328,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i8S-Le-DIW">
-                                <rect key="frame" x="24" y="192" width="345" height="150"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="D3T-V7-j60"/>
-                                </constraints>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="y91-KB-ALu">
                                 <rect key="frame" x="24" y="366" width="345" height="52.666666666666686"/>
                                 <subviews>
@@ -355,13 +345,27 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="HJd-Cl-zgA">
-                                <rect key="frame" x="126.00000000000001" y="442.66666666666669" width="141.33333333333337" height="34.333333333333314"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Iqk-QD-2dk">
+                                <rect key="frame" x="24" y="180" width="345" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Ls0-5o-AYo"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="HJd-Cl-zgA">
+                                <rect key="frame" x="126" y="444" width="141.33333333333337" height="34.333333333333314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9p-XS-pdn">
                                         <rect key="frame" x="0.0" y="0.0" width="53.666666666666664" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정"/>
+                                        <connections>
+                                            <action selector="editButton:" destination="4Rz-f1-nvI" eventType="touchUpInside" id="6gi-du-dkW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZB-Q2-FEe">
                                         <rect key="frame" x="87.666666666666657" y="0.0" width="53.666666666666657" height="34.333333333333336"/>
@@ -369,6 +373,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="삭제">
                                             <color key="baseForegroundColor" systemColor="systemPinkColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="deleteButton:" destination="4Rz-f1-nvI" eventType="touchUpInside" id="MlI-h6-FM4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -376,22 +383,27 @@
                         <viewLayoutGuide key="safeArea" id="aXi-ga-KRj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Iqk-QD-2dk" firstAttribute="top" secondItem="vda-8w-E3M" secondAttribute="bottom" constant="12" id="1ki-As-yBi"/>
                             <constraint firstItem="aXi-ga-KRj" firstAttribute="trailing" secondItem="gAO-DI-xO2" secondAttribute="trailing" constant="24" id="2i1-a4-KSz"/>
-                            <constraint firstItem="y91-KB-ALu" firstAttribute="top" secondItem="i8S-Le-DIW" secondAttribute="bottom" constant="24" id="AyT-gp-tpd"/>
                             <constraint firstItem="aXi-ga-KRj" firstAttribute="trailing" secondItem="vda-8w-E3M" secondAttribute="trailing" constant="24" id="D1g-qA-aNu"/>
                             <constraint firstItem="vda-8w-E3M" firstAttribute="leading" secondItem="aXi-ga-KRj" secondAttribute="leading" constant="24" id="J5R-WR-7bA"/>
                             <constraint firstItem="y91-KB-ALu" firstAttribute="leading" secondItem="aXi-ga-KRj" secondAttribute="leading" constant="24" id="JBx-mD-WD3"/>
                             <constraint firstItem="HJd-Cl-zgA" firstAttribute="top" secondItem="y91-KB-ALu" secondAttribute="bottom" constant="24" id="OTD-Lf-k2V"/>
+                            <constraint firstItem="aXi-ga-KRj" firstAttribute="trailing" secondItem="Iqk-QD-2dk" secondAttribute="trailing" constant="24" id="Oaa-kb-LeJ"/>
+                            <constraint firstItem="Iqk-QD-2dk" firstAttribute="leading" secondItem="aXi-ga-KRj" secondAttribute="leading" constant="24" id="P57-qd-qyH"/>
                             <constraint firstItem="vda-8w-E3M" firstAttribute="top" secondItem="gAO-DI-xO2" secondAttribute="bottom" constant="24" id="TrP-QS-f3c"/>
                             <constraint firstItem="gAO-DI-xO2" firstAttribute="leading" secondItem="aXi-ga-KRj" secondAttribute="leading" constant="24" id="Zov-cx-hZ8"/>
-                            <constraint firstItem="aXi-ga-KRj" firstAttribute="trailing" secondItem="i8S-Le-DIW" secondAttribute="trailing" constant="24" id="adg-GS-hZA"/>
                             <constraint firstItem="HJd-Cl-zgA" firstAttribute="centerX" secondItem="y91-KB-ALu" secondAttribute="centerX" id="bAY-Mz-Q9Y"/>
                             <constraint firstItem="aXi-ga-KRj" firstAttribute="trailing" secondItem="y91-KB-ALu" secondAttribute="trailing" constant="24" id="ias-Fj-Kju"/>
+                            <constraint firstItem="y91-KB-ALu" firstAttribute="top" secondItem="Iqk-QD-2dk" secondAttribute="bottom" constant="36" id="ntv-p9-pfN"/>
                             <constraint firstItem="gAO-DI-xO2" firstAttribute="top" secondItem="aXi-ga-KRj" secondAttribute="top" constant="12" id="p7t-am-QpN"/>
-                            <constraint firstItem="i8S-Le-DIW" firstAttribute="top" secondItem="vda-8w-E3M" secondAttribute="bottom" constant="24" id="xfd-VD-u4W"/>
-                            <constraint firstItem="i8S-Le-DIW" firstAttribute="leading" secondItem="aXi-ga-KRj" secondAttribute="leading" constant="24" id="zci-mD-rSw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="Iqk-QD-2dk" id="OpK-KK-lFX"/>
+                        <outlet property="dateLabel" destination="b2p-Fx-gPP" id="hpa-8r-0ey"/>
+                        <outlet property="titleLabel" destination="KAH-Xh-LCp" id="R6o-zb-YjN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qo-QH-z1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

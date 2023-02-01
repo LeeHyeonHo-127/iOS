@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WriteDiaryViewDelegate: AnyObject{
+    func didSelectResister(diary:Diary)
+}
+
 class WriteDiaryViewController: UIViewController {
 
     @IBOutlet var titleTextField: UITextField!
@@ -17,6 +21,7 @@ class WriteDiaryViewController: UIViewController {
     
     var datePicker = UIDatePicker()
     var Diarydate:Date?
+    weak var delegate: WriteDiaryViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,12 @@ class WriteDiaryViewController: UIViewController {
     
 
     @IBAction func tapConfirmButton(_ sender: Any) {
+        guard let title = self.titleTextField.text else {return}
+        guard let contents = self.contentsTextView.text else {return}
+        guard let date = self.Diarydate else {return}
+        let diary = Diary(title: title, contents: contents, date: date, isStar: false)
+        self.delegate?.didSelectResister(diary: diary)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //contentTextView 사각형 그리기
