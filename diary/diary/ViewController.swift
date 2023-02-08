@@ -15,14 +15,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         loadDiary()
-        NotificationCenter.default.addObserver(
+        NotificationCenter.default.addObserver( //수정된 일기 값 받아오기
             self,
             selector: #selector(editDiaryNotification(_: )),
             name: NSNotification.Name(rawValue: "editDiary"),
             object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(deleteDiaryNotification(_: )),
+            name: Notification.Name(rawValue: "deleteDiary"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(starDiaryNotification(_: )),
+            name: NSNotification.Name(rawValue: "starDiary"),
+            object: nil)
     }
     
-   //perpare 함수
+   //prepare 함수
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if let writeDiaryViewController = segue.destination as? WriteDiaryViewController {
             writeDiaryViewController.delegate = self
@@ -49,6 +59,7 @@ class ViewController: UIViewController {
     func saveDiary(){
         let userDefaults = UserDefaults.standard
         let diaries = self.diaries.map{[
+            "uuidString" : $0.uuidString,
             "title" : $0.title,
             "contents" : $0.contents,
             "date" : $0.date,
@@ -62,11 +73,12 @@ class ViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         guard let diaries = userDefaults.object(forKey: "diaries") as? [[String: Any?]] else{return}
         self.diaries = diaries.compactMap{
+            guard let uuidString = $0["uuidString"] as? String else {return nil}
             guard let title = $0["title"] as? String else {return nil}
             guard let contents = $0["contents"] as? String else {return nil}
             guard let date = $0["date"] as? Date else {return nil}
             guard let isStar = $0["isStar"] as? Bool else {return nil}
-            let diary = Diary(title: title, contents: contents, date: date, isStar: isStar)
+            let diary = Diary(uuidString: uuidString, title: title, contents: contents, date: date, isStar: isStar)
             return diary
         }
         self.diaries = self.diaries.sorted(by: {
@@ -76,12 +88,35 @@ class ViewController: UIViewController {
     
     //일기가 수정됐을떄, 수정된 값으로 화면을 재수성하는 함수
     @objc func editDiaryNotification(_ notification: Notification){
-        guard let diary = notification.object as? Diary else {return}
-        guard let row = notification.userInfo?["indexPath.row"] as? Int else {return}
-        self.diaries[row] = diary
+        guard let editData = notification.object as? [String: Any] else {return}
+        guard let diary = editData["diary"] as? Diary else {return}
+        guard let uuidString = editData["uuidString"] as? String else {return}
+        guard let index = self.diaries.firstIndex(where: {$0.uuidString == uuidString}) else {return}
+        self.diaries[index] = diary
         self.diaries = self.diaries.sorted(by: {
             $0.date.compare($1.date) == .orderedDescending
         })
+        self.collectionVIew.reloadData()
+        self.configureCollectionView()
+    }
+    
+    //isStar값을 받아 diaries의 isStar값을 변경하는 함수
+    @objc func starDiaryNotification(_ notification: Notification){
+        guard let starDiary = notification.object as? [String: Any] else {return}
+        guard let isStar = starDiary["isStar"] as? Bool else {return}
+        guard let uuidString = starDiary["uuidString"] as? String else {return}
+        guard let index = self.diaries.firstIndex(where: {$0.uuidString == uuidString}) else {return}
+        self.diaries[index].isStar = isStar
+    }
+    
+    //삭제된 데이터를 받아 삭제하는 함수
+    @objc func deleteDiaryNotification(_ notification: Notification){
+        guard let deleteData = notification.object as? [String : Any] else {return}
+        guard let uuidString = deleteData["uuidString"] as? String else {return}
+        guard let indexPath = deleteData["indexPath"] as? IndexPath else {return}
+        guard let index = self.diaries.firstIndex(where: {$0.uuidString == uuidString}) else {return}
+        self.diaries.remove(at: index)
+        self.collectionVIew.deleteItems(at: [indexPath])
         self.collectionVIew.reloadData()
     }
     
@@ -108,8 +143,10 @@ extension ViewController: UICollectionViewDelegate{
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
         let diary = self.diaries[indexPath.row]
         viewController.diary = diary
+        viewController.uuidString = self.diaries[indexPath.row].uuidString
         viewController.indexPath = indexPath
-        viewController.delegate = self
+//        viewController.delegate = self
+        saveDiary()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -121,20 +158,24 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
-extension ViewController: DiaryDetailDelegate{
-    //diary 삭제 함수
-    func DiaryDelete(indexPath: IndexPath) {
-        self.diaries.remove(at: indexPath.row)
-        self.collectionVIew.deleteItems(at: [indexPath])
-        self.collectionVIew.reloadData()
-    }
-}
+//extension ViewController: DiaryDetailDelegate{
+//    //diary 삭제 함수
+//    func DiaryDelete(indexPath: IndexPath) {
+//        self.diaries.remove(at: indexPath.row)
+//        self.collectionVIew.deleteItems(at: [indexPath])
+//        self.collectionVIew.reloadData()
+//    }
+//
+//    func didSelectStar(indexPath: IndexPath) {
+//        self.diaries[indexPath.row].isStar = !self.diaries[indexPath.row].isStar
+//    }
+//}
 
 extension ViewController: WriteDiaryViewDelegate{
     //diary 등록 함수
-    func didSelectResister(diary: Diary) {
+    func didSelectReigster(diary: Diary) {
         self.diaries.append(diary)
-        self.diaries = self.diaries.sorted(by: {
+        self.diaries = self.diaries.sorted(by: { 
             $0.date.compare($1.date) == .orderedDescending
         })
         self.collectionVIew.reloadData()

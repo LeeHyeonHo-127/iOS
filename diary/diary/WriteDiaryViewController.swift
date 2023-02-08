@@ -8,14 +8,14 @@
 import UIKit
 
 protocol WriteDiaryViewDelegate: AnyObject{
-    func didSelectResister(diary:Diary)
+    func didSelectReigster(diary:Diary)
 }
 
 class WriteDiaryViewController: UIViewController {
     
-    enum DiaryEditMode{
+    enum DiaryEditorMode{
         case new
-        case edit(IndexPath, Diary)
+        case edit(String, Diary)
     }
 
     @IBOutlet var titleTextField: UITextField!
@@ -25,9 +25,9 @@ class WriteDiaryViewController: UIViewController {
     
     
     var datePicker = UIDatePicker()
-    var Diarydate:Date?
+    var diaryDate:Date?
     weak var delegate: WriteDiaryViewDelegate?
-    var diaryEditMode: DiaryEditMode = .new
+    var diaryEditorMode: DiaryEditorMode = .new
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,24 +43,38 @@ class WriteDiaryViewController: UIViewController {
     }
     
     //등록 버튼
-    @IBAction func tapConfirmButton(_ sender: Any) {
-        guard let title = self.titleTextField.text else {return}
-        guard let contents = self.contentsTextView.text else {return}
-        guard let date = self.Diarydate else {return}
-        let diary = Diary(title: title, contents: contents, date: date, isStar: false)
-        
-        switch self.diaryEditMode{
-        case .new:
-            self.delegate?.didSelectResister(diary: diary)
-            self.navigationController?.popViewController(animated: true)
-        case let .edit(indexPath,_):
-            NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: "editDiary"),
-                object: diary,
-                userInfo: ["indexPath.row" : indexPath.row]
-            )
-            self.navigationController?.popViewController(animated: true)
-        }
+    @IBAction func tapConfirmButton(_ sender: UIBarButtonItem) {
+      guard let title = self.titleTextField.text else { return }
+      guard let contents = self.contentsTextView.text else { return }
+      guard let date = self.diaryDate else { return }
+
+      switch self.diaryEditorMode {
+      case .new:
+          let diary = Diary(
+            uuidString: UUID().uuidString,
+            title: title,
+            contents: contents,
+            date: date,
+            isStar: false)
+        self.delegate?.didSelectReigster(diary: diary)
+
+      case let .edit(uuidString ,diary):
+          let diary = Diary(
+            uuidString: uuidString,
+            title: title,
+            contents: contents,
+            date: date,
+            isStar: diary.isStar)
+        NotificationCenter.default.post(
+          name: NSNotification.Name("editDiary"),
+          object: [
+            "diary": diary,
+            "uuidString": uuidString
+          ],
+          userInfo: nil
+        )
+      }
+      self.navigationController?.popViewController(animated: true)
     }
     
     //contentTextView 사각형 그리기
@@ -101,10 +115,11 @@ class WriteDiaryViewController: UIViewController {
     
     //수정 화면일 시 화면을 구성하는 함수
     private func configureEditMode(){
-        switch self.diaryEditMode{
+        switch self.diaryEditorMode{
         case let .edit(_, diary):
             self.titleTextField.text = diary.title
-            self.dateTextField.text = dateToString(date: diary.date)
+            self.dateTextField.text = self.dateToString(date: diary.date)
+            self.diaryDate = diary.date
             self.contentsTextView.text = diary.contents
             self.confirmButton.title = "수정"
         default: break
@@ -116,8 +131,8 @@ class WriteDiaryViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일(EEEEE)"
         formatter.locale = Locale(identifier: "ko_KR")
-        self.Diarydate = datePicker.date
-        self.dateTextField.text = formatter.string(from: Diarydate!)
+        self.diaryDate = datePicker.date
+        self.dateTextField.text = formatter.string(from: diaryDate!)
         self.dateTextField.sendActions(for: .editingChanged)
     }
     
