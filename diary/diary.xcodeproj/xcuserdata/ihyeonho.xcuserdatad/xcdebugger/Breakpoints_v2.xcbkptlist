@@ -3,4 +3,100 @@
    uuid = "9FD7320F-46DB-4742-9E8E-6735A5F7786E"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6CC3BFC-8AF3-4889-B64E-E71868636B9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "DiaryCell"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC6E6227-643D-4547-B364-6168A0DB02B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "DiaryCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "FC6E6227-643D-4547-B364-6168A0DB02B3 - 3c28bbb74dfffc2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "diary.DiaryCell.titleLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "diary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/diary/DiaryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "FC6E6227-643D-4547-B364-6168A0DB02B3 - 8b8e814865e14031"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "diary.DiaryCell.titleLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "diary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/diary/DiaryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "FC6E6227-643D-4547-B364-6168A0DB02B3 - 2c5653f9593d4520"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "diary.DiaryCell.titleLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "diary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/diary/DiaryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "FC6E6227-643D-4547-B364-6168A0DB02B3 - 5c6d6dd23ace4efa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "diary.DiaryCell.titleLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "diary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/diary/DiaryCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
