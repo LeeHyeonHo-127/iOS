@@ -153,7 +153,6 @@ extension ViewController: UICollectionViewDelegate{
         diaryDetailViewController.diary = diary
         diaryDetailViewController.indexPath = indexPath
     
-        
         self.navigationController?.pushViewController(diaryDetailViewController, animated: true)
     }
 }

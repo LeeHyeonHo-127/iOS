@@ -99,7 +99,7 @@ class ViewController: UIViewController {
                 self.currentOperation = operation
                 
                 //정수일 떄 소수점 생략
-                if let result = Double(self.result), result.truncatingRemainder(dividingBy: 1) == 0 { //truncatingRemainder() 는 Double,Float의 나머지를 구하는 함수ㅇ
+                if let result = Double(self.result), result.truncatingRemainder(dividingBy: 1) == 0 { //truncatingRemainder() 는 Double,Float의 나머지를 구하는 함수
                     self.result = "\(Int(result))"
                 }
                 

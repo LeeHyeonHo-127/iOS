@@ -13,6 +13,7 @@
 		C12B08A629DDF23200AC6F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B08A429DDF23200AC6F6C /* Main.storyboard */; };
 		C12B08A829DDF23300AC6F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12B08A729DDF23300AC6F6C /* Assets.xcassets */; };
 		C12B08AB29DDF23300AC6F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B08A929DDF23300AC6F6C /* LaunchScreen.storyboard */; };
+		C1ECBCD829E738D900A04880 /* AddAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ECBCD729E738D900A04880 /* AddAssignmentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C12B08A729DDF23300AC6F6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C12B08AA29DDF23300AC6F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C12B08AC29DDF23300AC6F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1ECBCD729E738D900A04880 /* AddAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssignmentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				C12B08A729DDF23300AC6F6C /* Assets.xcassets */,
 				C12B08A929DDF23300AC6F6C /* LaunchScreen.storyboard */,
 				C12B08AC29DDF23300AC6F6C /* Info.plist */,
+				C1ECBCD729E738D900A04880 /* AddAssignmentViewController.swift */,
 			);
 			path = ATracker;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				C12B08A329DDF23200AC6F6C /* ViewController.swift in Sources */,
 				C12B089F29DDF23200AC6F6C /* AppDelegate.swift in Sources */,
 				C12B08A129DDF23200AC6F6C /* SceneDelegate.swift in Sources */,
+				C1ECBCD829E738D900A04880 /* AddAssignmentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

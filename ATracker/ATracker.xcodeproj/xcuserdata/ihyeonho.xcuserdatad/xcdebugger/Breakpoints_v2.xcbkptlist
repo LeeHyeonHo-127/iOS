@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "806D687A-D62F-4AF9-B6A9-6A16A6ECAA0C"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATracker/AddAssignmentViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "AddAssignmentViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A - 56dc7f26581073ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATracker.AddAssignmentViewController.currentAssignment.getter : Swift.String"
+                  moduleName = "ATracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/ATracker/ATracker/AddAssignmentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A - 81ab87a503a8399"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATracker.AddAssignmentViewController.currentAssignment.setter : Swift.String"
+                  moduleName = "ATracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/ATracker/ATracker/AddAssignmentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A - a1e12a9050a397ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATracker.AddAssignmentViewController.currentAssignment.modify : Swift.String"
+                  moduleName = "ATracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/ATracker/ATracker/AddAssignmentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A - 9f33e0914673e09"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATracker.AddAssignmentViewController.currentAssignment.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "ATracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/ATracker/ATracker/AddAssignmentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A - b4a6903ad0d15029"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATracker.AddAssignmentViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; ATracker.AddAssignmentViewController"
+                  moduleName = "ATracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/ATracker/ATracker/AddAssignmentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "E13DC4A8-1D02-48E7-A418-59226CBDBA3A - 2c89a92a798668ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATracker.AddAssignmentViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ATracker.AddAssignmentViewController&gt;"
+                  moduleName = "ATracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Clone/ATracker/ATracker/AddAssignmentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

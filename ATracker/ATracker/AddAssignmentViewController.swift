@@ -7,23 +7,27 @@
 
 import UIKit
 
+protocol AddAssignmentViewDelegate: AnyObject{
+    func selectedAssignment(assignment:String)
+}
+
 class AddAssignmentViewController: UIViewController {
+
+    @IBOutlet var assignmentTextField: UITextField!
+    var currentAssignment: String = "바뀌기전"
+    var delegate:AddAssignmentViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapAddButton(_ sender: Any) {
+        guard let assignmentText = self.assignmentTextField.text else {return}
+        self.currentAssignment = assignmentText
+        print(currentAssignment)
+        delegate?.selectedAssignment(assignment: currentAssignment)
+        dismiss(animated: true)
     }
-    */
-
+    
+    
 }

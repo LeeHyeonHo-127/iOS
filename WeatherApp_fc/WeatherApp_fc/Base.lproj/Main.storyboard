@@ -43,6 +43,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="날씨 가져오기">
                                     <fontDescription key="titleFontDescription" type="italicSystem" pointSize="15"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tapFetchWeatherButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TXD-bw-7nL"/>
+                                </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A8w-iB-otj">
                                 <rect key="frame" x="24" y="214.99999999999997" width="345" height="108.66666666666666"/>
@@ -98,6 +101,7 @@
                         <outlet property="maxTemperatureLabel" destination="kpZ-ll-LhF" id="dg8-vh-gSx"/>
                         <outlet property="minTemperatureLabel" destination="EMc-RG-7MC" id="1v8-Uc-4eh"/>
                         <outlet property="weatherDescriptionLabel" destination="1PC-pe-A8A" id="6Hp-Om-RgO"/>
+                        <outlet property="weatherFeatureStackView" destination="A8w-iB-otj" id="EBr-lK-5Vt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
