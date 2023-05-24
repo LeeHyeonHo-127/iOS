@@ -9,21 +9,29 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    
+    var collectionViewController: UICollectionViewController?
+    
+    
+    @IBOutlet var collectionView: UICollectionView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let homeViewController = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        // collectionView에 HomeViewController 할당
+        collectionViewController = homeViewController
+                
+        // HomeViewController를 자식 뷰 컨트롤러로 추가
+        addChild(homeViewController)
+        homeViewController.view.frame = collectionView.bounds
+        collectionView.addSubview(homeViewController.view)
+        homeViewController.didMove(toParent: self)
 
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

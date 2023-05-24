@@ -1,9 +1,4 @@
-//
-//  ViewController.swift
-//  stock Insight
-//
-//  Created by 이현호 on 2023/05/01.
-//
+
 
 import UIKit
 
@@ -11,14 +6,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if isLoggIn(){
+            guard let viewController = storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
-    
-    @IBAction func touchLoginButton(_ sender: Any) {
+
+    @IBAction func loginButtonTapped(_ sender: Any) {
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {return}
         print("hi")
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
+    func isLoggIn() ->Bool{
+        return UserDefaults.standard.bool(forKey: "IsLoggedIn")
+        
+    }
 }
+
+
+
 

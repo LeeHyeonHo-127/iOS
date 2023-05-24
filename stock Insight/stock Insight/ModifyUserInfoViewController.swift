@@ -1,58 +1,54 @@
 import UIKit
-import Foundation
 
-class SignUpViewController: UIViewController {
-
-    @IBOutlet var signUpButton: UIButton!
-    @IBOutlet var emailTextField: UITextField!
+class ModifyUserInfoViewController: UIViewController {
+    
+    
+    @IBOutlet var modifyUserInfoButton: UIButton!
+    
     @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var rePasswordTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
     @IBOutlet var userNameTextField: UITextField!
+    @IBOutlet var rePasswordTextField: UITextField!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         rePasswordTextField.delegate = self
         userNameTextField.delegate = self
-        self.signUpButton.isEnabled = false
+        self.modifyUserInfoButton.isEnabled = false
         self.passwordTextField.isSecureTextEntry = true
     }
     
-    @IBAction func signUpButtonTapped(_ sender: Any) {
+    
+    @IBAction func modifyUserInfoButtonTapped(_ sender: Any) {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let rePassword = rePasswordTextField.text ?? ""
         let userName = userNameTextField.text ?? ""
         
         if password == rePassword{
-            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
+            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
             self.navigationController?.pushViewController(viewController, animated: true)
-            self.signUp(email: email, password: password, userName: userName)
+            self.modifyUserInfo(email: email, password: password, userName: userName)
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
         }
     }
     
-    func signUp(email: String, password: String, userName: String){
-        let urlString = "http://172.20.10.14:8080/member/save"
-        guard let url = URL(string: urlString) else{
+    func modifyUserInfo(email: String, password: String, userName: String){
+        let urlString = "http://192.168.200.102:8080"
+        guard let url = URL(string: urlString) else {
             return
         }
         
-        //파라미터 설정
-//        let parameter: [String: Any] = [
-//            "userID" : email,
-//            "password" : password,
-//            "username" : userName
-//        ]
         
+        
+        // 요청에 필요한 파라미터 설정
         let parameter: [String: Any] = [
-            "id" : email,
-            "email" : 1,
-            "password" : "s",
-            "name" : userName,
-            "age" : 2,
-            "mobile" : 010-222-222
+            "userID" : email,
+            "password" : password,
+            "username" : userName
         ]
         
         //URLRequest 설정
@@ -70,14 +66,14 @@ class SignUpViewController: UIViewController {
             if let error = error{
                 let code = (error as NSError).code
                 switch code{
-                case 17007: //이미 가입한 계정일 때
+                case 17007:
                     DispatchQueue.main.async {
-                        self.showAlert(title: "이미 가입한 계정입니다")
+                        self.showAlert(title: "")
                     }
                     return
                 default:
                     DispatchQueue.main.async {
-                        self.showAlert(title: "회원가입 에러", message: "\(error.localizedDescription)")
+                        self.showAlert(title: "회원정보 수정 에러", message: "\(error.localizedDescription)")
                     }
                     return
                 }
@@ -86,26 +82,28 @@ class SignUpViewController: UIViewController {
             DispatchQueue.main.async {
                 if let httpResponse = response as? HTTPURLResponse{
                     if httpResponse.statusCode == 200{
-                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
+                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
                         self.navigationController?.pushViewController(viewController, animated: true)
                     }else{
-                        self.showAlert(title: "회원가입 실패 \(httpResponse.statusCode)")
+                        self.showAlert(title: "회원정보 수정 실패")
                     }
                 }
             }
         }
         task.resume()
+        
+        
     }
-    
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
            alertController.addAction(okAction)
            present(alertController, animated: true, completion: nil)
        }
-}
+    
 
-extension SignUpViewController: UITextFieldDelegate{
+}
+extension ModifyUserInfoViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //return 키가 눌렸을 때 동작
         view.endEditing(true)
         return false
@@ -117,6 +115,6 @@ extension SignUpViewController: UITextFieldDelegate{
         let isRepasswordEmpty = rePasswordTextField.text == ""
         let isUserNameEmpty = userNameTextField.text == ""
         
-        signUpButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty
+        modifyUserInfoButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty
     }
 }

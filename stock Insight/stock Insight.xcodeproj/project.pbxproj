@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */; };
+		C1071CCA2A1E093B005E4D8F /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C1071CC92A1E093B005E4D8F /* SnapKit-Dynamic */; };
+		C1071CCC2A1E0AE4005E4D8F /* Content.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1071CCB2A1E0AE4005E4D8F /* Content.plist */; };
+		C1071CCE2A1E0AFA005E4D8F /* HomeViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CCD2A1E0AFA005E4D8F /* HomeViewConroller.swift */; };
+		C1071CD02A1E0B14005E4D8F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CCF2A1E0B14005E4D8F /* Content.swift */; };
+		C1071CD22A1E0B25005E4D8F /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CD12A1E0B25005E4D8F /* ContentCollectionViewCell.swift */; };
+		C1071CD42A1E0B36005E4D8F /* ContentCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CD32A1E0B36005E4D8F /* ContentCollectionViewHeader.swift */; };
+		C1071CD62A1E0B4C005E4D8F /* ContentCollectionViewRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CD52A1E0B4C005E4D8F /* ContentCollectionViewRankCell.swift */; };
+		C1071CD82A1E0B60005E4D8F /* ContentCollectionViewMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CD72A1E0B60005E4D8F /* ContentCollectionViewMainCell.swift */; };
 		C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */; };
 		C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */; };
 		C13DEDD52A11FB5D00AA8EAF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD42A11FB5D00AA8EAF /* MainViewController.swift */; };
@@ -23,6 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyUserInfoViewController.swift; sourceTree = "<group>"; };
+		C1071CCB2A1E0AE4005E4D8F /* Content.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Content.plist; sourceTree = "<group>"; };
+		C1071CCD2A1E0AFA005E4D8F /* HomeViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewConroller.swift; sourceTree = "<group>"; };
+		C1071CCF2A1E0B14005E4D8F /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		C1071CD12A1E0B25005E4D8F /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1071CD32A1E0B36005E4D8F /* ContentCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewHeader.swift; sourceTree = "<group>"; };
+		C1071CD52A1E0B4C005E4D8F /* ContentCollectionViewRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewRankCell.swift; sourceTree = "<group>"; };
+		C1071CD72A1E0B60005E4D8F /* ContentCollectionViewMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewMainCell.swift; sourceTree = "<group>"; };
 		C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListViewController.swift; sourceTree = "<group>"; };
 		C13DEDD42A11FB5D00AA8EAF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1071CCA2A1E093B005E4D8F /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,17 +91,25 @@
 				C1BE314C29FF72F200FF1FE4 /* AppDelegate.swift */,
 				C1BE314E29FF72F200FF1FE4 /* SceneDelegate.swift */,
 				C1BE315029FF72F200FF1FE4 /* ViewController.swift */,
+				C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */,
+				C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */,
+				C13DEDD62A11FBE300AA8EAF /* MyPageViewController.swift */,
+				C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */,
+				C13DEDDA2A11FC6100AA8EAF /* SignUpViewController.swift */,
+				C13DEDD82A11FC0700AA8EAF /* StockDetailViewController.swift */,
+				C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */,
 				C1BE315229FF72F200FF1FE4 /* Main.storyboard */,
 				C1BE315529FF72F300FF1FE4 /* Assets.xcassets */,
 				C1BE315729FF72F300FF1FE4 /* LaunchScreen.storyboard */,
 				C1BE315A29FF72F300FF1FE4 /* Info.plist */,
-				C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */,
-				C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */,
+				C1071CCB2A1E0AE4005E4D8F /* Content.plist */,
+				C1071CCD2A1E0AFA005E4D8F /* HomeViewConroller.swift */,
 				C13DEDD42A11FB5D00AA8EAF /* MainViewController.swift */,
-				C13DEDD62A11FBE300AA8EAF /* MyPageViewController.swift */,
-				C13DEDD82A11FC0700AA8EAF /* StockDetailViewController.swift */,
-				C13DEDDA2A11FC6100AA8EAF /* SignUpViewController.swift */,
-				C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */,
+				C1071CCF2A1E0B14005E4D8F /* Content.swift */,
+				C1071CD12A1E0B25005E4D8F /* ContentCollectionViewCell.swift */,
+				C1071CD32A1E0B36005E4D8F /* ContentCollectionViewHeader.swift */,
+				C1071CD52A1E0B4C005E4D8F /* ContentCollectionViewRankCell.swift */,
+				C1071CD72A1E0B60005E4D8F /* ContentCollectionViewMainCell.swift */,
 			);
 			path = "stock Insight";
 			sourceTree = "<group>";
@@ -104,6 +130,9 @@
 			dependencies = (
 			);
 			name = "stock Insight";
+			packageProductDependencies = (
+				C1071CC92A1E093B005E4D8F /* SnapKit-Dynamic */,
+			);
 			productName = "stock Insight";
 			productReference = C1BE314929FF72F200FF1FE4 /* stock Insight.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +161,9 @@
 				Base,
 			);
 			mainGroup = C1BE314029FF72F200FF1FE4;
+			packageReferences = (
+				C1071CC82A1E093B005E4D8F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C1BE314A29FF72F200FF1FE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -148,6 +180,7 @@
 			files = (
 				C1BE315929FF72F300FF1FE4 /* LaunchScreen.storyboard in Resources */,
 				C1BE315629FF72F300FF1FE4 /* Assets.xcassets in Resources */,
+				C1071CCC2A1E0AE4005E4D8F /* Content.plist in Resources */,
 				C1BE315429FF72F200FF1FE4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,12 +194,19 @@
 			files = (
 				C13DEDD92A11FC0700AA8EAF /* StockDetailViewController.swift in Sources */,
 				C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */,
+				C1071CD22A1E0B25005E4D8F /* ContentCollectionViewCell.swift in Sources */,
 				C1BE315129FF72F200FF1FE4 /* ViewController.swift in Sources */,
 				C13DEDD72A11FBE300AA8EAF /* MyPageViewController.swift in Sources */,
+				C1071CD82A1E0B60005E4D8F /* ContentCollectionViewMainCell.swift in Sources */,
 				C1BE314D29FF72F200FF1FE4 /* AppDelegate.swift in Sources */,
 				C13DEDD52A11FB5D00AA8EAF /* MainViewController.swift in Sources */,
+				C1071CCE2A1E0AFA005E4D8F /* HomeViewConroller.swift in Sources */,
+				C1071CD02A1E0B14005E4D8F /* Content.swift in Sources */,
 				C13DEDDB2A11FC6100AA8EAF /* SignUpViewController.swift in Sources */,
+				C1071CD42A1E0B36005E4D8F /* ContentCollectionViewHeader.swift in Sources */,
 				C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */,
+				C1071CD62A1E0B4C005E4D8F /* ContentCollectionViewRankCell.swift in Sources */,
+				C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */,
 				C13DEDDD2A11FC9300AA8EAF /* FindAddressViewController.swift in Sources */,
 				C1BE314F29FF72F200FF1FE4 /* SceneDelegate.swift in Sources */,
 			);
@@ -386,6 +426,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1071CC82A1E093B005E4D8F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1071CC92A1E093B005E4D8F /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1071CC82A1E093B005E4D8F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C1BE314129FF72F200FF1FE4 /* Project object */;
 }
