@@ -141,7 +141,7 @@
 		<key>sectionType</key>
 		<string>basic</string>
 		<key>sectionName</key>
-		<string>현재 주가</string>
+		<string>주요 지수</string>
 		<key>contentItem</key>
 		<array>
 			<dict>

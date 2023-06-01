@@ -10,10 +10,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.passwordTextField.isSecureTextEntry = true
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UIViewController else {return}
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)
         
         let email = emailTextField.text ?? ""
