@@ -3,96 +3,88 @@ import UIKit
 class ModifyUserInfoViewController: UIViewController {
     
     
-    @IBOutlet var modifyUserInfoButton: UIButton!
     
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var userNameTextField: UITextField!
-    @IBOutlet var rePasswordTextField: UITextField!
+    @IBOutlet var modifyUserInfoButton: UIButton!
+    @IBOutlet var userIdTextField: UITextField!
+    @IBOutlet var oldPwTextField: UITextField!
+    @IBOutlet var newPwTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        rePasswordTextField.delegate = self
-        userNameTextField.delegate = self
+        userIdTextField.delegate = self
+        oldPwTextField.delegate = self
+        newPwTextField.delegate = self
         self.modifyUserInfoButton.isEnabled = false
-        self.passwordTextField.isSecureTextEntry = true
+        self.oldPwTextField.isSecureTextEntry = true
+        self.newPwTextField.isSecureTextEntry = true
+
     }
-    
     
     @IBAction func modifyUserInfoButtonTapped(_ sender: Any) {
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        let rePassword = rePasswordTextField.text ?? ""
-        let userName = userNameTextField.text ?? ""
-        
-        if password == rePassword{
-            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
-            self.navigationController?.pushViewController(viewController, animated: true)
-            self.modifyUserInfo(email: email, password: password, userName: userName)
-        }else{
-            self.showAlert(title: "비밀번호가 일치하지 않습니다.")
-        }
+        let user_id = userIdTextField.text ?? ""
+        let old_pw = oldPwTextField.text ?? ""
+        let new_pw = newPwTextField.text ?? ""
+        self.dismiss(animated: true, completion: nil)
+        self.modifyPassword(user_id:user_id, old_pw: old_pw, new_pw: new_pw )
     }
     
-    func modifyUserInfo(email: String, password: String, userName: String){
-        let urlString = "http://192.168.200.102:8080"
+    
+    //비밀번호 수정///
+    func modifyPassword(user_id:String, old_pw:String, new_pw:String){
+        let urlString = "https://watch.ngrok.app/logineditProc"
         guard let url = URL(string: urlString) else {
+            DispatchQueue.main.async {
+                self.showAlert(title: "url 객체 변환 실패")
+            }
+            return
+        }
+        let parameter: [String: Any] = [
+            "user_id": user_id,
+            "old_pw": old_pw,
+            "new_pw": new_pw
+        ]
+        // URLRequest 생성
+        var request = URLRequest(url: url)
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameter) else {
+            DispatchQueue.main.async {
+                self.showAlert(title: "파라미터를 변환하는데 실패했습니다.")
+            }
             return
         }
         
-        
-        
-        // 요청에 필요한 파라미터 설정
-        let parameter: [String: Any] = [
-            "userID" : email,
-            "password" : password,
-            "username" : userName
-        ]
-        
-        //URLRequest 설정
-        var request = URLRequest(url:url)
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameter) else {
-                    showAlert(title: "파라미터를 변환하는데 실패했습니다.")
-                    return
-                }
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = httpBody
         
-        let task = URLSession.shared.dataTask(with: request){ [weak self](data,response, error) in
+        let task = URLSession.shared.dataTask(with: request) { [weak self](data, response, error) in
             guard let self = self else {return}
+            
             if let error = error{
                 let code = (error as NSError).code
                 switch code{
-                case 17007:
+                case 17007: //아이디 및 비밀버호가 다를 때
                     DispatchQueue.main.async {
-                        self.showAlert(title: "")
+                        self.showAlert(title: "아이디/비밀번호를 확인해 주세요")
                     }
                     return
                 default:
                     DispatchQueue.main.async {
-                        self.showAlert(title: "회원정보 수정 에러", message: "\(error.localizedDescription)")
+                        self.showAlert(title: "비밀번소 수정 에러", message: "\(error.localizedDescription)")
                     }
                     return
                 }
             }
-            
-            DispatchQueue.main.async {
-                if let httpResponse = response as? HTTPURLResponse{
-                    if httpResponse.statusCode == 200{
-                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    }else{
-                        self.showAlert(title: "회원정보 수정 실패")
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200{
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "비밀번호 수정 완료")
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
+                
             }
         }
         task.resume()
-        
-        
     }
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -100,8 +92,6 @@ class ModifyUserInfoViewController: UIViewController {
            alertController.addAction(okAction)
            present(alertController, animated: true, completion: nil)
        }
-    
-
 }
 extension ModifyUserInfoViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //return 키가 눌렸을 때 동작
@@ -110,11 +100,10 @@ extension ModifyUserInfoViewController: UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {//사용자가 텍스트 필드의 편집을 완료하고 텍스트 필드가 편집 모드에서 벗어났을 때 호출
-        let isEmailEmpty = emailTextField.text == ""
-        let isPasswordEmpty = passwordTextField.text == ""
-        let isRepasswordEmpty = rePasswordTextField.text == ""
-        let isUserNameEmpty = userNameTextField.text == ""
+        let userIdEmpty = userIdTextField.text == ""
+        let oldPwEmpty = oldPwTextField.text == ""
+        let newPwEmpty = newPwTextField.text == ""
         
-        modifyUserInfoButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty
+        modifyUserInfoButton.isEnabled = !userIdEmpty && !oldPwEmpty && !newPwEmpty
     }
 }

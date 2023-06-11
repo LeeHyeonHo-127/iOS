@@ -11,47 +11,53 @@ class LoginViewController: UIViewController {
         self.passwordTextField.isSecureTextEntry = true
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-
+//        self.navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UIViewController else {return}
-        //self.navigationController?.navigationBar.isHidden = true
+        let email = emailTextField.text ?? "1"
+        let password = passwordTextField.text ?? "1"
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
+        self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)
-        
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        self.showAlert(title: "11")
-        self.login(email: email, password: password)
-        
+//        self.login(email: email, password: password)
     }
     
     func login(email: String, password: String) {
-        let urlString = "http://192.168.200.102:8080/save"
+        let urlString = "https://watch.ngrok.app/loginProc"
         guard let url = URL(string: urlString) else {
-            self.showAlert(title: "url 객체 변환 실패")
+            DispatchQueue.main.async {
+                self.showAlert(title: "url 객체 변환 실패")
+            }
             return
         }
-        self.showAlert(title: "url 객체 변환 성공")
-       
+//        self.showAlert(title: "url 객체 변환 성공")
         
         // 요청에 필요한 파라미터 설정
-        let parameter: [String: Any] = [
-            "userId": email,
-            "password": password
-        ]
+//        let parameter: [String: Any] = [
+//            "memberEmail": email,
+//            "memberPassword": password
+//        ]
+        //node.js parameter
         
+        let parameter: [String: Any] = [
+            "user_id": email,
+            "pw": password
+        ]
+
         // URLRequest 생성
         var request = URLRequest(url: url)
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameter) else {
-                    showAlert(title: "파라미터를 변환하는데 실패했습니다.")
-                    return
+            DispatchQueue.main.async {
+                self.showAlert(title: "파라미터를 변환하는데 실패했습니다.")
                 }
-        showAlert(title: "파라미터를 변환하는데 성공했습니다.")
-        request.httpMethod = "GET"
+                return
+        }
+//        showAlert(title: "파라미터를 변환하는데 성공했습니다.")
+        
+        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.httpBody = httpBody
+        request.httpBody = httpBody
         
         // URLSession을 사용하여 요청 보내기
         let task = URLSession.shared.dataTask(with: request) { [weak self](data, response, error) in
@@ -73,33 +79,44 @@ class LoginViewController: UIViewController {
                 }
             }
             
+            //httpResponse 응답 처리
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                    if let data = data {
-                        // 응답 데이터 처리
-                        do {
-                            let json = try JSONSerialization.jsonObject(with: data, options: [])
-                            if let responseDict = json as? [String: Any] {
-                                let status = responseDict["status"] as? Int
-                                let message = responseDict["message"] as? String
-                                guard let userToken = responseDict["userToken"] as? String else {return}
-                                
-                                self.saveToken(userToken)
-                                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
-                                self.navigationController?.pushViewController(viewController, animated: true)
-                            }
-                        } catch {
-                            self.showAlert(title: "파싱에러")
-                        }
+                    DispatchQueue.main.async {
+                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
+                        self.navigationController?.navigationBar.isHidden = true
+                        self.navigationController?.pushViewController(viewController, animated: true)
                     }
+                   
+//                    if let data = data {
+//                        // 응답 데이터 처리
+//                        do {
+//                            let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                            if let responseDict = json as? [String: Any] {
+//                                let status = responseDict["status"] as? Int
+//                                let message = responseDict["message"] as? String
+////                                guard let userToken = responseDict["userToken"] as? String else {return}
+////                                self.saveToken(userToken)
+//                                DispatchQueue.main.async {
+//                                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
+//                                    self.navigationController?.pushViewController(viewController, animated: true)
+//                                    }
+//                            }
+//                        } catch {
+//                            DispatchQueue.main.async {
+//                                self.showAlert(title: "파싱에러")
+//                            }
+//                        }
+//                    }
                 } else {
-                    self.showAlert(title: "로그인에 실패했습니다")
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "로그인에 실패했습니다")
+                    }
                 }
             }
         }
         task.resume()
     }
-    
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)

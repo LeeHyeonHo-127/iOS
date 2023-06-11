@@ -3,8 +3,8 @@ import UIKit
 struct Stock{ //한 종목에 대한 데이터 구조체
     let stockName: String //종목 이름
     let stockPriceList: [StockPrice] //주가 데이터 리스트
-        let bookMark: Bool //즐겨찾기 여부
-        let sentimentAnalysis: Bool //감성분석 결과
+    let bookMark: Bool //즐겨찾기 여부
+    let sentimentAnalysis: Bool //감성분석 결과
 }
 
 struct StockPrice{

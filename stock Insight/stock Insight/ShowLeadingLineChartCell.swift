@@ -2,25 +2,18 @@ import UIKit
 import SnapKit
 import Charts
 
-protocol ShowLineChartCellDelegate: AnyObject {
-    func showAlert(title: String, message: String?)
-}
 
-class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
-    
-    weak var delegate: ShowLineChartCellDelegate?
+class ShowLeadingLineChartCell: UICollectionViewCell{
     var lineChartView: LineChartView!
     var descriptionLabel = UILabel()
     var stockData: [[String: Double]] = [[:]]
     let customBlueColor = UIColor(red: 0.149, green: 0.098, blue: 1.0, alpha: 1.0)
     var gradientColor = UIColor(red: 0.149, green: 0.098, blue: 1.0, alpha: 1.0)
     var section:Int = 0
+    var datasetName: String = "dataset_SE"
     var num = 1
-    var datasetName: String = ""
     var isPredict = false
 
-
-    //subView Layout 설정
     override func layoutSubviews(){
         super.layoutSubviews()
         
@@ -33,7 +26,7 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
         }
     }
     
-    //reuse cell 설정
+    //재사용셀 설정
     override func prepareForReuse() {
         super.prepareForReuse()
         // 이전에 추가된 하위 뷰들을 제거
@@ -47,13 +40,22 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
     @objc func handleChartTap(_ gesture: UITapGestureRecognizer) {
         self.handleChartZoom()
     }
+    func handleChartZoom() {
+        if lineChartView.scaleX >= 2.0 && lineChartView.scaleY >= 2.0 {
+            lineChartView.data?.setDrawValues(true) // 그래프에 값 표시 활성화
+        } else {
+            lineChartView.data?.setDrawValues(false) // 그래프에 값 표시 비활성화
+        }
+    }
 
-    //ChartView 설정
+    
+    //chartView 설정
     func configureChartView(isPredict: Bool) -> LineChartView{
         let gradient = fillGradient()
         let data = setDataEntry()
         let lineChartView = setLineChartView()
-        lineChartView.delegate = self
+        lineChartView.data = data // 데이터 설정
+
         return lineChartView
         
         // 그라디언트 채우기 설정
@@ -72,20 +74,31 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
         func setDataEntry()-> LineChartData{
             var entries: [ChartDataEntry] = []
             var stockData = parseCSVFile(datasetName: self.datasetName)
-            
-            for entry in stockData {
-                if let date = entry.keys.first, let value = entry.values.first {
-                    let xValue = date.timeIntervalSince1970
-                    let yValue = value
-                    let dataEntry = ChartDataEntry(x: xValue, y: yValue)
-                    
-                    entries.append(dataEntry)
+            if(section == 1){
+                for entry in stockData {
+                    if let date = entry.keys.first, let value = entry.values.first {
+                        let xValue = date.timeIntervalSince1970
+                        let yValue = value
+                        let dataEntry = ChartDataEntry(x: xValue, y: yValue)
+                        entries.append(dataEntry)
+                    }
+                }
+            }else{
+                for entry in stockData {
+                    if let date = entry.keys.first, let value = entry.values.first {
+                        let xValue = date.timeIntervalSince1970
+                        let yValue = value
+                        let dataEntry = ChartDataEntry(x: xValue, y: yValue)
+                        entries.append(dataEntry)
+                    }
                 }
             }
+
+            
+
             // 데이터셋 생성
             let dataSet = LineChartDataSet(entries: entries, label: "data")
-            dataSet.gradientPositions
-            dataSet.setColor(.systemBlue) // 그래프 선 색상 설정
+            dataSet.setColor(gradientColor) // 그래프 선 색상 설정
             dataSet.lineWidth = 1.0 // 그래프 선 두께 설정
             dataSet.drawCirclesEnabled = false // 데이터 포인트에 원형 마커 표시 여부 설정
             dataSet.drawValuesEnabled = true //
@@ -93,7 +106,7 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
             dataSet.drawFilledEnabled = true // 채우기 활성화
             dataSet.mode = .cubicBezier
             dataSet.cubicIntensity = 0.2
-            
+
             // 데이터 배열 설정
             let data = LineChartData(dataSet: dataSet)
             return data
@@ -112,7 +125,6 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
             lineChartView.xAxis.drawGridLinesEnabled = false
             lineChartView.leftAxis.drawGridLinesEnabled = false
             
-            
             //차트 뷰 뷰 설정
             lineChartView.xAxis.labelPosition = .bottom // x축 레이블 위치 설정
             lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: []) // x축 레이블 포맷터 설정 (일단 빈 값으로 설정)
@@ -126,27 +138,24 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
             lineChartView.isUserInteractionEnabled = true
             lineChartView.noDataText = "" //데이터 없을 때 보일 문자열
             lineChartView.xAxis.valueFormatter = DateAxisValueFormatter()
+            
             lineChartView.xAxis.labelCount = 7 // x축 레이블 개수 설정
             lineChartView.xAxis.granularity = 1 // x축 레이블 간격 설정
             lineChartView.xAxis.labelRotationAngle = -45 // x축 레이블 회전 설정
-            
             if lineChartView.scaleX >= 2.0 && lineChartView.scaleY >= 2.0 {
-                print("==============TRUE=========================")
-                print("scaleX = \(lineChartView.scaleX), scaleY = \(lineChartView.scaleY)")
                 lineChartView.data?.setDrawValues(true) // 그래프에 값 표시 활성화
             } else {
-                print("==============FALSE=========================")
-                print("scaleX = \(lineChartView.scaleX), scaleY = \(lineChartView.scaleY)")
                 lineChartView.data?.setDrawValues(false) // 그래프에 값 표시 비활성화
             }
             
+            
+            let dateString = "2023/06/07"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy/MM/dd"
+            let date = dateFormatter.date(from: dateString)
+            let doubleValue = date?.timeIntervalSince1970
+            
             if isPredict == true{
-                let dateString = "2023/06/07"
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy/MM/dd"
-                let date = dateFormatter.date(from: dateString)
-                let doubleValue = date?.timeIntervalSince1970
-                
                 let limitLine = ChartLimitLine(limit: doubleValue!, label: "") // 특정 x 값에 대한 제한선 생성
                 limitLine.lineWidth = 1 // 제한선의 너비 설정
                 limitLine.lineColor = .systemRed // 제한선의 색상 설정
@@ -155,6 +164,8 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
                 lineChartView.setNeedsDisplay()
             }
             
+    
+
             //descrpitionLabel
             descriptionLabel.font = .systemFont(ofSize: 15, weight: .bold)
             descriptionLabel.textColor = .black
@@ -163,32 +174,14 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
                 $0.centerX.equalToSuperview()
                 $0.top.equalToSuperview().offset(10)
             }
-            // 터치 제스처 추가
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChartTap(_:)))
-//            lineChartView.addGestureRecognizer(tapGesture)
-//
             return lineChartView
         }
     }
     
-    func handleChartZoom() {
-        if lineChartView.scaleX >= 2.0 && lineChartView.scaleY >= 2.0 {
-            lineChartView.data?.setDrawValues(true) // 그래프에 값 표시 활성화
-        } else {
-            lineChartView.data?.setDrawValues(false) // 그래프에 값 표시 비활성화
-        }
-    }
-
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        let index = Int(entry.x)
-        self.delegate?.showAlert(title: "\(index)", message: "")
-    }
-   
     func setContentView(){
         contentView.backgroundColor = .white
         contentView.clipsToBounds = true //conentView 를 넘어가는 하위 뷰 요소를 자른다.
     }
- 
     func parseCSVFile(datasetName: String) -> [[Date: Double]] {
         var dictionaryArray: [[Date: Double]] = []
 
@@ -229,20 +222,5 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
         return dictionaryArray
     }
     
-    
 }
 
-class DateAxisValueFormatter: NSObject, AxisValueFormatter {
-    let dateFormatter: DateFormatter
-    
-    override init() {
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        super.init()
-    }
-    
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let date = Date(timeIntervalSince1970: value)
-        return dateFormatter.string(from: date)
-    }
-}
