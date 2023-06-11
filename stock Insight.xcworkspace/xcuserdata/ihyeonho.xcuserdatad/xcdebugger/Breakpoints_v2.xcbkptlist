@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "462C44CA-6318-4B24-A683-E505F7417E17"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "stock Insight/HomeViewConroller.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
+            landmarkName = "MainCollectionViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - f0fd3a597d0303ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.presentGrapeName.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - 3d4d8f71da859791"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.presentGrapeName.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - 4563437062bcb0ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.presentGrapeName.modify : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - d2e0ff0e165622c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.presentGrapeName.modify : Swift.Array&lt;Swift.String&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - dc8c447aecca3af7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.init(collectionViewLayout: __C.UICollectionViewLayout) -&gt; stock_Insight.HomeViewController"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - 8d48c31e4f84437e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; stock_Insight.HomeViewController"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "F2FEC1C5-60B7-4644-BD41-19A90E41F437 - bb347c5162d89fca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_Insight.HomeViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;stock_Insight.HomeViewController&gt;"
+                  moduleName = "stock Insight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ihyeonho/Desktop/workspace/IOS/IOS_Projects/stock%20Insight/stock%20Insight/HomeViewConroller.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "432">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

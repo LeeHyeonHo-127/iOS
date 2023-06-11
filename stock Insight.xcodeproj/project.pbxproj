@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A3ADDF3D5A7CDEB561CF825 /* Pods_stock_Insight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7A5642E5457478385AC58E /* Pods_stock_Insight.framework */; };
+		C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */; };
+		C1071CCA2A1E093B005E4D8F /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C1071CC92A1E093B005E4D8F /* SnapKit-Dynamic */; };
+		C1071CCC2A1E0AE4005E4D8F /* Content.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1071CCB2A1E0AE4005E4D8F /* Content.plist */; };
+		C1071CCE2A1E0AFA005E4D8F /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CCD2A1E0AFA005E4D8F /* MainCollectionViewController.swift */; };
+		C1071CD22A1E0B25005E4D8F /* ShowLineChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CD12A1E0B25005E4D8F /* ShowLineChartCell.swift */; };
+		C1071CD42A1E0B36005E4D8F /* StockCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1071CD32A1E0B36005E4D8F /* StockCollectionViewHeader.swift */; };
+		C12606932A2993ED008B5CDC /* StockDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12606922A2993ED008B5CDC /* StockDetailCollectionViewController.swift */; };
+		C12606972A2B4C76008B5CDC /* nodeJsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12606962A2B4C76008B5CDC /* nodeJsTestView.swift */; };
+		C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */; };
+		C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */; };
+		C13DEDD52A11FB5D00AA8EAF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD42A11FB5D00AA8EAF /* MainViewController.swift */; };
+		C13DEDD72A11FBE300AA8EAF /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD62A11FBE300AA8EAF /* MyPageViewController.swift */; };
+		C13DEDD92A11FC0700AA8EAF /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDD82A11FC0700AA8EAF /* StockDetailViewController.swift */; };
+		C13DEDDB2A11FC6100AA8EAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDDA2A11FC6100AA8EAF /* SignUpViewController.swift */; };
+		C13DEDDD2A11FC9300AA8EAF /* FindAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */; };
+		C14E786A2A20ADB4009134AA /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E78692A20ADB4009134AA /* Stock.swift */; };
+		C14E786C2A25D7E4009134AA /* LeadingIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E786B2A25D7E4009134AA /* LeadingIndex.swift */; };
+		C14E786E2A261192009134AA /* LeadingIndexCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E786D2A261192009134AA /* LeadingIndexCollectionViewHeader.swift */; };
+		C14E78702A263240009134AA /* StarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E786F2A263240009134AA /* StarCollectionViewCell.swift */; };
+		C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E78712A26DD2B009134AA /* HowPredictViewController.swift */; };
+		C154C0122A31292900235A36 /* Data_Sentimental.csv in Resources */ = {isa = PBXBuildFile; fileRef = C154C0112A31292900235A36 /* Data_Sentimental.csv */; };
+		C1A9F3902A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A9F38F2A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift */; };
+		C1A9F39A2A301E740094CC95 /* StockCollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A9F3992A301E740094CC95 /* StockCollectionViewFooter.swift */; };
+		C1A9F39C2A3064E80094CC95 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A9F39B2A3064E80094CC95 /* ArticleCell.swift */; };
+		C1A9F39E2A3071860094CC95 /* dataset.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F39D2A3071860094CC95 /* dataset.csv */; };
+		C1A9F3A02A30718E0094CC95 /* dataset_SE.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F39F2A30718E0094CC95 /* dataset_SE.csv */; };
+		C1A9F3A42A3071B00094CC95 /* sp500.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3A12A3071B00094CC95 /* sp500.csv */; };
+		C1A9F3A52A3071B00094CC95 /* kosdaq.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3A22A3071B00094CC95 /* kosdaq.csv */; };
+		C1A9F3A62A3071B00094CC95 /* kospi.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3A32A3071B00094CC95 /* kospi.csv */; };
+		C1A9F3A82A30A0A10094CC95 /* 5d_predict.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3A72A30A0A10094CC95 /* 5d_predict.csv */; };
+		C1A9F3AE2A30C2DB0094CC95 /* 20d_predict_SE00.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3A92A30C2DB0094CC95 /* 20d_predict_SE00.csv */; };
+		C1A9F3AF2A30C2DB0094CC95 /* Data_SE00.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3AA2A30C2DB0094CC95 /* Data_SE00.csv */; };
+		C1A9F3B02A30C2DB0094CC95 /* 10d_predict_SE00.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3AB2A30C2DB0094CC95 /* 10d_predict_SE00.csv */; };
+		C1A9F3B12A30C2DB0094CC95 /* 30d_predict_SE00.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3AC2A30C2DB0094CC95 /* 30d_predict_SE00.csv */; };
+		C1A9F3B22A30C2DB0094CC95 /* 5d_predict_SE00.csv in Resources */ = {isa = PBXBuildFile; fileRef = C1A9F3AD2A30C2DB0094CC95 /* 5d_predict_SE00.csv */; };
+		C1BE314D29FF72F200FF1FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BE314C29FF72F200FF1FE4 /* AppDelegate.swift */; };
+		C1BE314F29FF72F200FF1FE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BE314E29FF72F200FF1FE4 /* SceneDelegate.swift */; };
+		C1BE315129FF72F200FF1FE4 /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BE315029FF72F200FF1FE4 /* BeginViewController.swift */; };
+		C1BE315429FF72F200FF1FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315229FF72F200FF1FE4 /* Main.storyboard */; };
+		C1BE315629FF72F300FF1FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315529FF72F300FF1FE4 /* Assets.xcassets */; };
+		C1BE315929FF72F300FF1FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315729FF72F300FF1FE4 /* LaunchScreen.storyboard */; };
+		C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */; };
+		C1EADDB22A26F7C800F01A0C /* HowPredictCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0949C52CAD77EB045FAF7B0D /* Pods-stock Insight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stock Insight.debug.xcconfig"; path = "Target Support Files/Pods-stock Insight/Pods-stock Insight.debug.xcconfig"; sourceTree = "<group>"; };
+		3E7A5642E5457478385AC58E /* Pods_stock_Insight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stock_Insight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyUserInfoViewController.swift; sourceTree = "<group>"; };
+		C1071CCB2A1E0AE4005E4D8F /* Content.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Content.plist; sourceTree = "<group>"; };
+		C1071CCD2A1E0AFA005E4D8F /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		C1071CD12A1E0B25005E4D8F /* ShowLineChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLineChartCell.swift; sourceTree = "<group>"; };
+		C1071CD32A1E0B36005E4D8F /* StockCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCollectionViewHeader.swift; sourceTree = "<group>"; };
+		C12606922A2993ED008B5CDC /* StockDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		C12606962A2B4C76008B5CDC /* nodeJsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nodeJsTestView.swift; sourceTree = "<group>"; };
+		C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListViewController.swift; sourceTree = "<group>"; };
+		C13DEDD42A11FB5D00AA8EAF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C13DEDD62A11FBE300AA8EAF /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		C13DEDD82A11FC0700AA8EAF /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
+		C13DEDDA2A11FC6100AA8EAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAddressViewController.swift; sourceTree = "<group>"; };
+		C14E78692A20ADB4009134AA /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		C14E786B2A25D7E4009134AA /* LeadingIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingIndex.swift; sourceTree = "<group>"; };
+		C14E786D2A261192009134AA /* LeadingIndexCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingIndexCollectionViewHeader.swift; sourceTree = "<group>"; };
+		C14E786F2A263240009134AA /* StarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCollectionViewCell.swift; sourceTree = "<group>"; };
+		C14E78712A26DD2B009134AA /* HowPredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictViewController.swift; sourceTree = "<group>"; };
+		C154C0112A31292900235A36 /* Data_Sentimental.csv */ = {isa = PBXFileReference; lastKnownFileType = file; name = Data_Sentimental.csv; path = "stockInsight data/Data_Sentimental.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F38F2A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLeadingLineChartCell.swift; sourceTree = "<group>"; };
+		C1A9F3992A301E740094CC95 /* StockCollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCollectionViewFooter.swift; sourceTree = "<group>"; };
+		C1A9F39B2A3064E80094CC95 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		C1A9F39D2A3071860094CC95 /* dataset.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = dataset.csv; path = "stockInsight data/dataset.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F39F2A30718E0094CC95 /* dataset_SE.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = dataset_SE.csv; path = "stockInsight data/dataset_SE.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3A12A3071B00094CC95 /* sp500.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = sp500.csv; path = "stockInsight data/sp500.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3A22A3071B00094CC95 /* kosdaq.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = kosdaq.csv; path = "stockInsight data/kosdaq.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3A32A3071B00094CC95 /* kospi.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = kospi.csv; path = "stockInsight data/kospi.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3A72A30A0A10094CC95 /* 5d_predict.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = 5d_predict.csv; path = "stockInsight data/5d_predict.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3A92A30C2DB0094CC95 /* 20d_predict_SE00.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = 20d_predict_SE00.csv; path = "stockInsight data/20d_predict_SE00.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3AA2A30C2DB0094CC95 /* Data_SE00.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = Data_SE00.csv; path = "stockInsight data/Data_SE00.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3AB2A30C2DB0094CC95 /* 10d_predict_SE00.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = 10d_predict_SE00.csv; path = "stockInsight data/10d_predict_SE00.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3AC2A30C2DB0094CC95 /* 30d_predict_SE00.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = 30d_predict_SE00.csv; path = "stockInsight data/30d_predict_SE00.csv"; sourceTree = SOURCE_ROOT; };
+		C1A9F3AD2A30C2DB0094CC95 /* 5d_predict_SE00.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = 5d_predict_SE00.csv; path = "stockInsight data/5d_predict_SE00.csv"; sourceTree = SOURCE_ROOT; };
+		C1BE314929FF72F200FF1FE4 /* stock Insight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "stock Insight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1BE314C29FF72F200FF1FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C1BE314E29FF72F200FF1FE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C1BE315029FF72F200FF1FE4 /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
+		C1BE315329FF72F200FF1FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1BE315529FF72F300FF1FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1BE315829FF72F300FF1FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C1BE315A29FF72F300FF1FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictDetailViewController.swift; sourceTree = "<group>"; };
+		C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictCollectionViewCell.swift; sourceTree = "<group>"; };
+		FDD58BC9BC798488E9507F25 /* Pods-stock Insight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stock Insight.release.xcconfig"; path = "Target Support Files/Pods-stock Insight/Pods-stock Insight.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C1BE314629FF72F200FF1FE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1071CCA2A1E093B005E4D8F /* SnapKit-Dynamic in Frameworks */,
+				8A3ADDF3D5A7CDEB561CF825 /* Pods_stock_Insight.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8C12492CE69CE1EB194E2BD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0949C52CAD77EB045FAF7B0D /* Pods-stock Insight.debug.xcconfig */,
+				FDD58BC9BC798488E9507F25 /* Pods-stock Insight.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8E343854DA0E68FDE6A3AEB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E7A5642E5457478385AC58E /* Pods_stock_Insight.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1BE314029FF72F200FF1FE4 = {
+			isa = PBXGroup;
+			children = (
+				C1BE314B29FF72F200FF1FE4 /* stock Insight */,
+				C1BE314A29FF72F200FF1FE4 /* Products */,
+				8C12492CE69CE1EB194E2BD9 /* Pods */,
+				8E343854DA0E68FDE6A3AEB7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C1BE314A29FF72F200FF1FE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1BE314929FF72F200FF1FE4 /* stock Insight.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1BE314B29FF72F200FF1FE4 /* stock Insight */ = {
+			isa = PBXGroup;
+			children = (
+				C1BE314C29FF72F200FF1FE4 /* AppDelegate.swift */,
+				C1BE314E29FF72F200FF1FE4 /* SceneDelegate.swift */,
+				C1BE315029FF72F200FF1FE4 /* BeginViewController.swift */,
+				C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */,
+				C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */,
+				C13DEDDA2A11FC6100AA8EAF /* SignUpViewController.swift */,
+				C13DEDD42A11FB5D00AA8EAF /* MainViewController.swift */,
+				C1071CCD2A1E0AFA005E4D8F /* MainCollectionViewController.swift */,
+				C13DEDD82A11FC0700AA8EAF /* StockDetailViewController.swift */,
+				C12606922A2993ED008B5CDC /* StockDetailCollectionViewController.swift */,
+				C14E78712A26DD2B009134AA /* HowPredictViewController.swift */,
+				C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */,
+				C13DEDD22A11F55F00AA8EAF /* BookMarkListViewController.swift */,
+				C13DEDD62A11FBE300AA8EAF /* MyPageViewController.swift */,
+				C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */,
+				C1BE315229FF72F200FF1FE4 /* Main.storyboard */,
+				C1BE315529FF72F300FF1FE4 /* Assets.xcassets */,
+				C1A9F39D2A3071860094CC95 /* dataset.csv */,
+				C154C0112A31292900235A36 /* Data_Sentimental.csv */,
+				C1A9F3A72A30A0A10094CC95 /* 5d_predict.csv */,
+				C1A9F39F2A30718E0094CC95 /* dataset_SE.csv */,
+				C1A9F3AD2A30C2DB0094CC95 /* 5d_predict_SE00.csv */,
+				C1A9F3AB2A30C2DB0094CC95 /* 10d_predict_SE00.csv */,
+				C1A9F3A92A30C2DB0094CC95 /* 20d_predict_SE00.csv */,
+				C1A9F3AC2A30C2DB0094CC95 /* 30d_predict_SE00.csv */,
+				C1A9F3AA2A30C2DB0094CC95 /* Data_SE00.csv */,
+				C1A9F3A22A3071B00094CC95 /* kosdaq.csv */,
+				C1A9F3A32A3071B00094CC95 /* kospi.csv */,
+				C1A9F3A12A3071B00094CC95 /* sp500.csv */,
+				C1BE315729FF72F300FF1FE4 /* LaunchScreen.storyboard */,
+				C1BE315A29FF72F300FF1FE4 /* Info.plist */,
+				C1071CCB2A1E0AE4005E4D8F /* Content.plist */,
+				C1071CD12A1E0B25005E4D8F /* ShowLineChartCell.swift */,
+				C1A9F38F2A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift */,
+				C1A9F39B2A3064E80094CC95 /* ArticleCell.swift */,
+				C14E786F2A263240009134AA /* StarCollectionViewCell.swift */,
+				C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */,
+				C1071CD32A1E0B36005E4D8F /* StockCollectionViewHeader.swift */,
+				C14E786D2A261192009134AA /* LeadingIndexCollectionViewHeader.swift */,
+				C1A9F3992A301E740094CC95 /* StockCollectionViewFooter.swift */,
+				C12606962A2B4C76008B5CDC /* nodeJsTestView.swift */,
+				C14E786B2A25D7E4009134AA /* LeadingIndex.swift */,
+				C14E78692A20ADB4009134AA /* Stock.swift */,
+			);
+			path = "stock Insight";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C1BE314829FF72F200FF1FE4 /* stock Insight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1BE315D29FF72F300FF1FE4 /* Build configuration list for PBXNativeTarget "stock Insight" */;
+			buildPhases = (
+				E6962B73FE48FC06DD571754 /* [CP] Check Pods Manifest.lock */,
+				C1BE314529FF72F200FF1FE4 /* Sources */,
+				C1BE314629FF72F200FF1FE4 /* Frameworks */,
+				C1BE314729FF72F200FF1FE4 /* Resources */,
+				1F8C381DEA5DBEDE9A69E358 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "stock Insight";
+			packageProductDependencies = (
+				C1071CC92A1E093B005E4D8F /* SnapKit-Dynamic */,
+			);
+			productName = "stock Insight";
+			productReference = C1BE314929FF72F200FF1FE4 /* stock Insight.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C1BE314129FF72F200FF1FE4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					C1BE314829FF72F200FF1FE4 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = C1BE314429FF72F200FF1FE4 /* Build configuration list for PBXProject "stock Insight" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C1BE314029FF72F200FF1FE4;
+			packageReferences = (
+				C1071CC82A1E093B005E4D8F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = C1BE314A29FF72F200FF1FE4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C1BE314829FF72F200FF1FE4 /* stock Insight */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C1BE314729FF72F200FF1FE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1A9F3B22A30C2DB0094CC95 /* 5d_predict_SE00.csv in Resources */,
+				C1A9F3B12A30C2DB0094CC95 /* 30d_predict_SE00.csv in Resources */,
+				C1A9F3AF2A30C2DB0094CC95 /* Data_SE00.csv in Resources */,
+				C1A9F3B02A30C2DB0094CC95 /* 10d_predict_SE00.csv in Resources */,
+				C1A9F39E2A3071860094CC95 /* dataset.csv in Resources */,
+				C1BE315929FF72F300FF1FE4 /* LaunchScreen.storyboard in Resources */,
+				C1A9F3AE2A30C2DB0094CC95 /* 20d_predict_SE00.csv in Resources */,
+				C1BE315629FF72F300FF1FE4 /* Assets.xcassets in Resources */,
+				C1A9F3A42A3071B00094CC95 /* sp500.csv in Resources */,
+				C1A9F3A62A3071B00094CC95 /* kospi.csv in Resources */,
+				C1071CCC2A1E0AE4005E4D8F /* Content.plist in Resources */,
+				C154C0122A31292900235A36 /* Data_Sentimental.csv in Resources */,
+				C1BE315429FF72F200FF1FE4 /* Main.storyboard in Resources */,
+				C1A9F3A02A30718E0094CC95 /* dataset_SE.csv in Resources */,
+				C1A9F3A52A3071B00094CC95 /* kosdaq.csv in Resources */,
+				C1A9F3A82A30A0A10094CC95 /* 5d_predict.csv in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F8C381DEA5DBEDE9A69E358 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stock Insight/Pods-stock Insight-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stock Insight/Pods-stock Insight-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stock Insight/Pods-stock Insight-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6962B73FE48FC06DD571754 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-stock Insight-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C1BE314529FF72F200FF1FE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1EADDB22A26F7C800F01A0C /* HowPredictCollectionViewCell.swift in Sources */,
+				C13DEDD92A11FC0700AA8EAF /* StockDetailViewController.swift in Sources */,
+				C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */,
+				C1071CD22A1E0B25005E4D8F /* ShowLineChartCell.swift in Sources */,
+				C1A9F39A2A301E740094CC95 /* StockCollectionViewFooter.swift in Sources */,
+				C1BE315129FF72F200FF1FE4 /* BeginViewController.swift in Sources */,
+				C12606972A2B4C76008B5CDC /* nodeJsTestView.swift in Sources */,
+				C13DEDD72A11FBE300AA8EAF /* MyPageViewController.swift in Sources */,
+				C1BE314D29FF72F200FF1FE4 /* AppDelegate.swift in Sources */,
+				C13DEDD52A11FB5D00AA8EAF /* MainViewController.swift in Sources */,
+				C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */,
+				C14E786A2A20ADB4009134AA /* Stock.swift in Sources */,
+				C1071CCE2A1E0AFA005E4D8F /* MainCollectionViewController.swift in Sources */,
+				C13DEDDB2A11FC6100AA8EAF /* SignUpViewController.swift in Sources */,
+				C1071CD42A1E0B36005E4D8F /* StockCollectionViewHeader.swift in Sources */,
+				C14E786C2A25D7E4009134AA /* LeadingIndex.swift in Sources */,
+				C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */,
+				C1A9F3902A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift in Sources */,
+				C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */,
+				C14E78702A263240009134AA /* StarCollectionViewCell.swift in Sources */,
+				C1A9F39C2A3064E80094CC95 /* ArticleCell.swift in Sources */,
+				C13DEDDD2A11FC9300AA8EAF /* FindAddressViewController.swift in Sources */,
+				C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */,
+				C1BE314F29FF72F200FF1FE4 /* SceneDelegate.swift in Sources */,
+				C12606932A2993ED008B5CDC /* StockDetailCollectionViewController.swift in Sources */,
+				C14E786E2A261192009134AA /* LeadingIndexCollectionViewHeader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C1BE315229FF72F200FF1FE4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1BE315329FF72F200FF1FE4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C1BE315729FF72F300FF1FE4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1BE315829FF72F300FF1FE4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C1BE315B29FF72F300FF1FE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C1BE315C29FF72F300FF1FE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C1BE315E29FF72F300FF1FE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0949C52CAD77EB045FAF7B0D /* Pods-stock Insight.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G2C8H2LVDV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "stock Insight/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "LeeHyunHo.stock-Insight";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C1BE315F29FF72F300FF1FE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDD58BC9BC798488E9507F25 /* Pods-stock Insight.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G2C8H2LVDV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "stock Insight/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "LeeHyunHo.stock-Insight";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C1BE314429FF72F200FF1FE4 /* Build configuration list for PBXProject "stock Insight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1BE315B29FF72F300FF1FE4 /* Debug */,
+				C1BE315C29FF72F300FF1FE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1BE315D29FF72F300FF1FE4 /* Build configuration list for PBXNativeTarget "stock Insight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1BE315E29FF72F300FF1FE4 /* Debug */,
+				C1BE315F29FF72F300FF1FE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1071CC82A1E093B005E4D8F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1071CC92A1E093B005E4D8F /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1071CC82A1E093B005E4D8F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C1BE314129FF72F200FF1FE4 /* Project object */;
+}
