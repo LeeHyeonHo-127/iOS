@@ -25,7 +25,6 @@
 ![종목 상세화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/024ce747-d1b1-4eb5-abcb-0c5f38aed58f)
 
 ![상세 분석방법 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/a82df33e-be8b-4e27-b3f1-28e5d944750e)
-
 ![즐겨찾기 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/a506b1c4-1151-4dcc-9e89-09728b52f006)
 ![마이페이지 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/8a783535-ce4d-4fad-b5e1-252ae5136ce5)
 ![비밀번호 수정 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/98e75596-faaa-4f6b-9a62-c1fd00d12b5a)
