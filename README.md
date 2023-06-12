@@ -15,4 +15,4 @@
 이를 바탕으로 금융 시장을 조절하는 역할을 수행한다.
 
 
-![로그인 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/7825492b-9c84-4aa4-b7ac-3359852b211d)
+![launchScreen](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/7ed0a554-e212-4be1-af7f-f3f8d70ccb12)
