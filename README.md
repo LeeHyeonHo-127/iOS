@@ -2,10 +2,9 @@
 # SeeclOudseA
 북한산 운해 예측 프로젝트
 
-<img width="214" alt="메인" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/4e6e2021-0312-4c34-baa1-e2cf529cedc2">
-<img width="216" alt="버튼 누르기 전" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/967895c3-f5b5-454f-af82-b5ac9b1e4e6d">
-<img width="214" alt="버튼 누른 후" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/45ddd9dc-e56c-4691-9fa6-738a72437617">
-
+<img width="176" alt="메인-removebg-preview" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/8d7a9080-ae81-4d84-9fde-04793e169d84">
+<img width="176" alt="버튼_누르기_전-removebg-preview" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/5a015a41-dbd8-4703-98be-aa972eb55a62">
+<img width="176" alt="버튼_누른_후-removebg-preview" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/083a02ec-5e3f-4a21-9c5a-71a794d6e6c8">
 
 
 
