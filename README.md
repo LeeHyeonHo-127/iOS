@@ -1,9 +1,12 @@
 # SeeclOudseA
 북한산 운해 예측 프로젝트
+<img width="427" alt="스크린샷 2023-06-25 오후 10 58 30" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/9f80a828-e601-4af8-b2ab-e391fbb0cc95">
+
 
 # *프로젝트 목적*
 
-<img width="375" alt="image" src="https://github.com/LeeHyeonHo-127/seaCloudSea/assets/84439622/6d4bcd74-bfda-4005-b7c1-d3ad41f84b26">
+<img width="289" alt="image" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/fbd498aa-c601-4160-b61e-e9a8fb240269">
+
 
 구름바다라 불리고 구름위에 솟은 산꼭대기가 바다에 떠있는 섬처럼 보이는 것을 의미하는 운해는 많은 등산객이 보길 원하는 풍경 중 하나이다. 그래서 운해 명소로 손꼽히는 장소에선 운해가 잘 보이는 일출 시간에 사람들이 몰리는 진풍경을 볼 수 있다. 이러한 운해는 특정한 계절과 시간, 그리고 기상 조건에서만 볼 수 있다. 보통 상공 2km 부근에 대기보다 지표면에 기온이 더 낮아 대류현상이 일어나지 않는) 역전층이 존재할 때 발생하는데 이른바 ‘운해 사냥’을 다니는 등산객들이 말하는 역전층이 있는 조건으론 다음이 있다.
 
