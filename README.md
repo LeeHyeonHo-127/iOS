@@ -1,6 +1,7 @@
 # SeeclOudseA
 북한산 운해 예측 프로젝트
 <img width="427" alt="스크린샷 2023-06-25 오후 10 58 30" src="https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/9f80a828-e601-4af8-b2ab-e391fbb0cc95">
+![메인 화면](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/b516fc7c-f2ab-4b63-a5a7-d84f0b0164d7)
 
 
 # *프로젝트 목적*
