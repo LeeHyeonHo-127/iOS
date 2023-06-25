@@ -39,7 +39,8 @@
 ![image](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/13f78994-2f78-4ca1-91ec-9ac54e2bcbf3)
 ![image](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/e03c0db6-93dd-4713-a007-1cf35f77b639)
 ![image](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/1d64467a-4dff-4d8b-9916-4ccdc52a79c2)
-![image](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/cb231a9b-4459-44e7-b37c-fc2ff7245e19)
+![image](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/6193ef08-8a6d-477a-8693-1488aeaf9d37)
+![image](https://github.com/LeeHyeonHo-127/SeeclOudseA/assets/84439622/4fdcec6b-24a9-44c8-b0d1-8faedbb5e778)
 
 
 
