@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  netflix_fc
+//  netFlix_fc
 //
-//  Created by 이현호 on 2023/04/05.
+//  Created by 이현호 on 2023/05/22.
 //
 
 import UIKit

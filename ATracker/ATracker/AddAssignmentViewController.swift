@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddAssignmentViewDelegate: AnyObject{
-    func selectedAssignment(assignment:String)
+    func selectedAssignment(task:String)
 }
 
 class AddAssignmentViewController: UIViewController {
@@ -25,7 +25,7 @@ class AddAssignmentViewController: UIViewController {
         guard let assignmentText = self.assignmentTextField.text else {return}
         self.currentAssignment = assignmentText
         print(currentAssignment)
-        delegate?.selectedAssignment(assignment: currentAssignment)
+        delegate?.selectedAssignment(task: currentAssignment)
         dismiss(animated: true)
     }
     

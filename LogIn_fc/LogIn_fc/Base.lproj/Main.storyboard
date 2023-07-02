@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x7E-Hs-eIb">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="qvL-nM-sVd">
+            <objects>
+                <navigationController id="x7E-Hs-eIb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aBx-Ww-eYj">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nvv-6F-ubD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="amg-NV-QTZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-598" y="15"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="LogIn_fc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BW3-va-DEq">
+                                <rect key="frame" x="0.0" y="259.66666666666669" width="393" height="162.33333333333331"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note.house" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3GD-My-sky">
+                                        <rect key="frame" x="161.66666666666666" y="-0.3333333333333357" width="70" height="79.333333333333343"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="8GO-Ft-25S"/>
+                                            <constraint firstAttribute="width" constant="70" id="ngI-4R-AvA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 마음에 꼭 드는 또 다른 플레이리스트를 발견해보세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Voq-X7-2xl">
+                                        <rect key="frame" x="44.333333333333343" y="99.999999999999986" width="304.66666666666663" height="62.333333333333329"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Cxv-AV-UjS">
+                                <rect key="frame" x="20" y="482" width="353" height="210"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ru-SH-wKL">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="bz2-f6-LgM"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="이메일/ 비밀번호로 계속하기">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="njd-Jr-Uov" kind="show" id="rj6-7i-nTz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmV-68-xr7">
+                                        <rect key="frame" x="0.0" y="75" width="353" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="DNH-am-cbx"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="logo_google" title="구글로 계속하기">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="googleLoginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aNz-9L-z1v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXq-9y-qKU">
+                                        <rect key="frame" x="0.0" y="150" width="353" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="YWL-5T-hN9"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="logo_apple" title="Apple ID로 계속하기">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="appleLoginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="maj-7c-sU0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Cxv-AV-UjS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Jgr-e4-fTb"/>
+                            <constraint firstAttribute="trailing" secondItem="BW3-va-DEq" secondAttribute="trailing" id="fjq-5X-6zv"/>
+                            <constraint firstItem="Cxv-AV-UjS" firstAttribute="top" secondItem="BW3-va-DEq" secondAttribute="bottom" constant="60" id="hfP-D9-19x"/>
+                            <constraint firstItem="BW3-va-DEq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="4/5" id="kvN-A6-bA1"/>
+                            <constraint firstItem="Cxv-AV-UjS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lkV-or-8pC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cxv-AV-UjS" secondAttribute="trailing" constant="20" id="pgC-so-PCM"/>
+                            <constraint firstItem="BW3-va-DEq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sBz-HH-Ixf"/>
+                            <constraint firstItem="BW3-va-DEq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zdI-wH-Umj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z83-3Z-eeR"/>
+                    <connections>
+                        <outlet property="appleLoginButton" destination="JXq-9y-qKU" id="Fs7-m2-Xw5"/>
+                        <outlet property="emailLoginButton" destination="4Ru-SH-wKL" id="N0a-Tn-SJ6"/>
+                        <outlet property="googleLoginButton" destination="nmV-68-xr7" id="eFk-fi-PIF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="287.78625954198475" y="14.788732394366198"/>
+        </scene>
+        <!--이메일/비밀번호 입력하기-->
+        <scene sceneID="a11-7R-s0c">
+            <objects>
+                <viewController id="njd-Jr-Uov" customClass="EnterEmailViewController" customModule="LogIn_fc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jb3-BF-uvE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="spW-cX-XOF">
+                                <rect key="frame" x="30" y="173" width="333" height="290"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 주소가 무엇인가요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CB-e8-BHb">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="333" id="3Wz-yA-qP2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4e-17-EnJ">
+                                        <rect key="frame" x="0.0" y="60" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="333" id="rn7-Px-dku"/>
+                                            <constraint firstAttribute="height" constant="50" id="xQX-KG-gny"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 입력해 주세요." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4J-aR-120">
+                                        <rect key="frame" x="0.0" y="120" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="333" id="cNa-oO-OMu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUw-br-iua">
+                                        <rect key="frame" x="0.0" y="180" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="333" id="23q-1G-Ibt"/>
+                                            <constraint firstAttribute="height" constant="50" id="v5c-9t-b3K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghZ-8O-HBb">
+                                        <rect key="frame" x="0.0" y="240" width="333" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="333" id="4Cs-t9-QVD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.77370323129999996" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333" id="3b8-qx-IaV"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-a9-oYp">
+                                <rect key="frame" x="146.66666666666666" y="523" width="100" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SLI-T5-3NI"/>
+                                    <constraint firstAttribute="width" constant="100" id="ldu-3I-rOO"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="다음">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="njd-Jr-Uov" eventType="touchUpInside" id="CaU-co-9mq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2FM-t4-32P"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2FM-t4-32P" firstAttribute="trailing" secondItem="spW-cX-XOF" secondAttribute="trailing" constant="30" id="7PH-Ys-mfu"/>
+                            <constraint firstItem="spW-cX-XOF" firstAttribute="top" secondItem="2FM-t4-32P" secondAttribute="top" constant="70" id="H0d-fC-xVH"/>
+                            <constraint firstItem="spW-cX-XOF" firstAttribute="leading" secondItem="2FM-t4-32P" secondAttribute="leading" constant="30" id="IIc-W8-sgV"/>
+                            <constraint firstItem="tdC-a9-oYp" firstAttribute="top" secondItem="spW-cX-XOF" secondAttribute="bottom" constant="60" id="Kgs-c8-91U"/>
+                            <constraint firstItem="spW-cX-XOF" firstAttribute="centerX" secondItem="Jb3-BF-uvE" secondAttribute="centerX" id="gXh-eR-lPg"/>
+                            <constraint firstItem="tdC-a9-oYp" firstAttribute="centerX" secondItem="Jb3-BF-uvE" secondAttribute="centerX" id="q7h-vB-oIC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="이메일/비밀번호 입력하기" id="a6K-B5-R69"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="R4e-17-EnJ" id="ECA-cJ-uvn"/>
+                        <outlet property="errorLabel" destination="ghZ-8O-HBb" id="bGs-4z-cwg"/>
+                        <outlet property="nextButton" destination="tdC-a9-oYp" id="bEu-6w-67L"/>
+                        <outlet property="passworldTextField" destination="OUw-br-iua" id="W9Q-Vx-I9i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDL-r1-yCg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="15"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="Fgj-XO-hHh">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MMB-aj-m8u" customClass="MainViewController" customModule="LogIn_fc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jMW-an-VHP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="A6T-Qm-O80">
+                                <rect key="frame" x="147.66666666666666" y="377" width="97.666666666666657" height="98"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4P-YP-Cx0">
+                                        <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gv1-oh-f97">
+                                        <rect key="frame" x="0.0" y="60" width="97.666666666666671" height="38"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Log Out">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="logOutButtonTapped:" destination="MMB-aj-m8u" eventType="touchUpInside" id="ptb-BS-j9o"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bmj-sW-gQ3"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="A6T-Qm-O80" firstAttribute="centerX" secondItem="jMW-an-VHP" secondAttribute="centerX" id="E4w-Yf-C9u"/>
+                            <constraint firstItem="A6T-Qm-O80" firstAttribute="centerY" secondItem="jMW-an-VHP" secondAttribute="centerY" id="Vsm-T7-tV8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="l4P-YP-Cx0" id="BXL-qu-tR6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TZ4-hn-zS2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="15"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo_apple" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="logo_google" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="music.note.house" catalog="system" width="128" height="104"/>
+    </resources>
+</document>
