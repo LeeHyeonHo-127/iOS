@@ -9,9 +9,8 @@ LSTM, 감성분석, 장/단기 추세선을 통한 주가 전망 인사이트와
 사용자는 다양한 정보들을 한 눈에 볼 수 있고, 투자 결정에 대한 정보를 다양한 각도로 분석할 수 있다.
 
 
-![launchScreen](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/7ed0a554-e212-4be1-af7f-f3f8d70ccb12)
-![시작 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/c5c1bff7-9293-4635-8f3d-1c37f55efa43)
-![로그인 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/cb111115-459a-46d0-98da-8dbe8d22c9ca)
+
+
 
 ![메인 화면](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/c27559eb-f1e3-438d-912e-5bf0372f2eaa)
 ![종목 상세화면 2](https://github.com/LeeHyeonHo-127/stockInsight/assets/84439622/9887dbcf-2561-4528-bc6c-bdfc3cc0c646)
