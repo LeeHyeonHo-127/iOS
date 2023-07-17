@@ -34,7 +34,7 @@
  $1 ≤ b ≤ 10$
  */
 
-//MARK: 내 풀이
+//MARK: 내 코드
 /*
 let totalAmount = Int(readLine()!)!
 let numbersOfType = Int(readLine()!)!

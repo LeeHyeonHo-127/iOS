@@ -27,7 +27,7 @@
  */
 
 //MARK: 내 풀이
-
+/*
 import Foundation
 
 if let input = Int(readLine()!){
@@ -39,3 +39,4 @@ if let input = Int(readLine()!){
     }
     print("int")
 }
+*/
