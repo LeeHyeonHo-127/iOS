@@ -7,17 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C17DBA7F2A5FD20B007F45BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA7E2A5FD20B007F45BD /* main.swift */; };
-		C17DBA862A5FD912007F45BD /* baekjoon10810_공 넣기.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA852A5FD912007F45BD /* baekjoon10810_공 넣기.swift */; };
-		C17DBAA12A66544D007F45BD /* baekjoon10807_개수세기.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAA02A66544D007F45BD /* baekjoon10807_개수세기.swift */; };
-		C17DBAA32A665827007F45BD /* baekjoon5597_과제 안 내신분.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAA22A665827007F45BD /* baekjoon5597_과제 안 내신분.swift */; };
-		C17DBAA52A665A1B007F45BD /* baekjoon3052_나머지.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAA42A665A1B007F45BD /* baekjoon3052_나머지.swift */; };
-		C17DBAA72A666431007F45BD /* baekjoon10811_바구니 뒤집기.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAA62A666431007F45BD /* baekjoon10811_바구니 뒤집기.swift */; };
-		C17DBAA92A666766007F45BD /* baekjoon1546_평균.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAA82A666766007F45BD /* baekjoon1546_평균.swift */; };
+		C17DBA9A2A6651A2007F45BD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA992A6651A2007F45BD /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C17DBA792A5FD20B007F45BD /* CopyFiles */ = {
+		C17DBA942A6651A2007F45BD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -29,18 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C17DBA7B2A5FD20B007F45BD /* array_1Axis */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = array_1Axis; sourceTree = BUILT_PRODUCTS_DIR; };
-		C17DBA7E2A5FD20B007F45BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		C17DBA852A5FD912007F45BD /* baekjoon10810_공 넣기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon10810_공 넣기.swift"; sourceTree = "<group>"; };
-		C17DBAA02A66544D007F45BD /* baekjoon10807_개수세기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon10807_개수세기.swift"; sourceTree = "<group>"; };
-		C17DBAA22A665827007F45BD /* baekjoon5597_과제 안 내신분.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon5597_과제 안 내신분.swift"; sourceTree = "<group>"; };
-		C17DBAA42A665A1B007F45BD /* baekjoon3052_나머지.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon3052_나머지.swift"; sourceTree = "<group>"; };
-		C17DBAA62A666431007F45BD /* baekjoon10811_바구니 뒤집기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon10811_바구니 뒤집기.swift"; sourceTree = "<group>"; };
-		C17DBAA82A666766007F45BD /* baekjoon1546_평균.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon1546_평균.swift"; sourceTree = "<group>"; };
+		C17DBA962A6651A2007F45BD /* ict_CodingTest_HackerRank */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ict_CodingTest_HackerRank; sourceTree = BUILT_PRODUCTS_DIR; };
+		C17DBA992A6651A2007F45BD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C17DBA782A5FD20B007F45BD /* Frameworks */ = {
+		C17DBA932A6651A2007F45BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,72 +38,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C17DBA722A5FD20B007F45BD = {
+		C17DBA8D2A6651A2007F45BD = {
 			isa = PBXGroup;
 			children = (
-				C17DBA7D2A5FD20B007F45BD /* array_1Axis */,
-				C17DBA7C2A5FD20B007F45BD /* Products */,
+				C17DBA982A6651A2007F45BD /* ict_CodingTest_HackerRank */,
+				C17DBA972A6651A2007F45BD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C17DBA7C2A5FD20B007F45BD /* Products */ = {
+		C17DBA972A6651A2007F45BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C17DBA7B2A5FD20B007F45BD /* array_1Axis */,
+				C17DBA962A6651A2007F45BD /* ict_CodingTest_HackerRank */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C17DBA7D2A5FD20B007F45BD /* array_1Axis */ = {
+		C17DBA982A6651A2007F45BD /* ict_CodingTest_HackerRank */ = {
 			isa = PBXGroup;
 			children = (
-				C17DBA7E2A5FD20B007F45BD /* main.swift */,
-				C17DBA852A5FD912007F45BD /* baekjoon10810_공 넣기.swift */,
-				C17DBAA02A66544D007F45BD /* baekjoon10807_개수세기.swift */,
-				C17DBAA22A665827007F45BD /* baekjoon5597_과제 안 내신분.swift */,
-				C17DBAA42A665A1B007F45BD /* baekjoon3052_나머지.swift */,
-				C17DBAA62A666431007F45BD /* baekjoon10811_바구니 뒤집기.swift */,
-				C17DBAA82A666766007F45BD /* baekjoon1546_평균.swift */,
+				C17DBA992A6651A2007F45BD /* main.swift */,
 			);
-			path = array_1Axis;
+			path = ict_CodingTest_HackerRank;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C17DBA7A2A5FD20B007F45BD /* array_1Axis */ = {
+		C17DBA952A6651A2007F45BD /* ict_CodingTest_HackerRank */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C17DBA822A5FD20B007F45BD /* Build configuration list for PBXNativeTarget "array_1Axis" */;
+			buildConfigurationList = C17DBA9D2A6651A2007F45BD /* Build configuration list for PBXNativeTarget "ict_CodingTest_HackerRank" */;
 			buildPhases = (
-				C17DBA772A5FD20B007F45BD /* Sources */,
-				C17DBA782A5FD20B007F45BD /* Frameworks */,
-				C17DBA792A5FD20B007F45BD /* CopyFiles */,
+				C17DBA922A6651A2007F45BD /* Sources */,
+				C17DBA932A6651A2007F45BD /* Frameworks */,
+				C17DBA942A6651A2007F45BD /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = array_1Axis;
-			productName = array_1Axis;
-			productReference = C17DBA7B2A5FD20B007F45BD /* array_1Axis */;
+			name = ict_CodingTest_HackerRank;
+			productName = ict_CodingTest_HackerRank;
+			productReference = C17DBA962A6651A2007F45BD /* ict_CodingTest_HackerRank */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C17DBA732A5FD20B007F45BD /* Project object */ = {
+		C17DBA8E2A6651A2007F45BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					C17DBA7A2A5FD20B007F45BD = {
+					C17DBA952A6651A2007F45BD = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = C17DBA762A5FD20B007F45BD /* Build configuration list for PBXProject "array_1Axis" */;
+			buildConfigurationList = C17DBA912A6651A2007F45BD /* Build configuration list for PBXProject "ict_CodingTest_HackerRank" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,35 +105,29 @@
 				en,
 				Base,
 			);
-			mainGroup = C17DBA722A5FD20B007F45BD;
-			productRefGroup = C17DBA7C2A5FD20B007F45BD /* Products */;
+			mainGroup = C17DBA8D2A6651A2007F45BD;
+			productRefGroup = C17DBA972A6651A2007F45BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C17DBA7A2A5FD20B007F45BD /* array_1Axis */,
+				C17DBA952A6651A2007F45BD /* ict_CodingTest_HackerRank */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C17DBA772A5FD20B007F45BD /* Sources */ = {
+		C17DBA922A6651A2007F45BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C17DBAA52A665A1B007F45BD /* baekjoon3052_나머지.swift in Sources */,
-				C17DBA7F2A5FD20B007F45BD /* main.swift in Sources */,
-				C17DBAA32A665827007F45BD /* baekjoon5597_과제 안 내신분.swift in Sources */,
-				C17DBAA12A66544D007F45BD /* baekjoon10807_개수세기.swift in Sources */,
-				C17DBA862A5FD912007F45BD /* baekjoon10810_공 넣기.swift in Sources */,
-				C17DBAA92A666766007F45BD /* baekjoon1546_평균.swift in Sources */,
-				C17DBAA72A666431007F45BD /* baekjoon10811_바구니 뒤집기.swift in Sources */,
+				C17DBA9A2A6651A2007F45BD /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C17DBA802A5FD20B007F45BD /* Debug */ = {
+		C17DBA9B2A6651A2007F45BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -211,7 +187,7 @@
 			};
 			name = Debug;
 		};
-		C17DBA812A5FD20B007F45BD /* Release */ = {
+		C17DBA9C2A6651A2007F45BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -264,7 +240,7 @@
 			};
 			name = Release;
 		};
-		C17DBA832A5FD20B007F45BD /* Debug */ = {
+		C17DBA9E2A6651A2007F45BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -275,7 +251,7 @@
 			};
 			name = Debug;
 		};
-		C17DBA842A5FD20B007F45BD /* Release */ = {
+		C17DBA9F2A6651A2007F45BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -289,25 +265,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C17DBA762A5FD20B007F45BD /* Build configuration list for PBXProject "array_1Axis" */ = {
+		C17DBA912A6651A2007F45BD /* Build configuration list for PBXProject "ict_CodingTest_HackerRank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C17DBA802A5FD20B007F45BD /* Debug */,
-				C17DBA812A5FD20B007F45BD /* Release */,
+				C17DBA9B2A6651A2007F45BD /* Debug */,
+				C17DBA9C2A6651A2007F45BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C17DBA822A5FD20B007F45BD /* Build configuration list for PBXNativeTarget "array_1Axis" */ = {
+		C17DBA9D2A6651A2007F45BD /* Build configuration list for PBXNativeTarget "ict_CodingTest_HackerRank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C17DBA832A5FD20B007F45BD /* Debug */,
-				C17DBA842A5FD20B007F45BD /* Release */,
+				C17DBA9E2A6651A2007F45BD /* Debug */,
+				C17DBA9F2A6651A2007F45BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C17DBA732A5FD20B007F45BD /* Project object */;
+	rootObject = C17DBA8E2A6651A2007F45BD /* Project object */;
 }
