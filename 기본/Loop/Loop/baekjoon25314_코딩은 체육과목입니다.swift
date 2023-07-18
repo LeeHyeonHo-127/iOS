@@ -32,11 +32,18 @@ import Foundation
 
 if let input = Int(readLine()!){
     
-    let howLoop = input%4==0 ? input/4 : ((input/4) + (input%4))
+    let howLoop = input/4
     
     for _ in 0..<howLoop{
         print("long ",terminator: "")
     }
     print("int")
 }
+*/
+
+//MARK: 깔끔한 코드
+/*
+import Foundation
+
+print(String(repeating: "long ", count: Int(readLine()!)!/4) + "int")
 */

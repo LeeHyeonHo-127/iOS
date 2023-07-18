@@ -13,6 +13,8 @@
 		C17DBA6F2A5FACFD007F45BD /* baekjoon8393_합.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA6E2A5FACFD007F45BD /* baekjoon8393_합.swift */; };
 		C17DBA712A5FAEF4007F45BD /* baekjoon25304_영수증.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA702A5FAEF4007F45BD /* baekjoon25304_영수증.swift */; };
 		C17DBA882A653C68007F45BD /* baekjoon25314_코딩은 체육과목입니다.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA872A653C68007F45BD /* baekjoon25314_코딩은 체육과목입니다.swift */; };
+		C17DBA8A2A661A6E007F45BD /* baekjoon15552_빠른 A+B.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA892A661A6E007F45BD /* baekjoon15552_빠른 A+B.swift */; };
+		C17DBA8C2A661F96007F45BD /* baekjoon2439_별찍기2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBA8B2A661F96007F45BD /* baekjoon2439_별찍기2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +37,8 @@
 		C17DBA6E2A5FACFD007F45BD /* baekjoon8393_합.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon8393_합.swift"; sourceTree = "<group>"; };
 		C17DBA702A5FAEF4007F45BD /* baekjoon25304_영수증.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon25304_영수증.swift"; sourceTree = "<group>"; };
 		C17DBA872A653C68007F45BD /* baekjoon25314_코딩은 체육과목입니다.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon25314_코딩은 체육과목입니다.swift"; sourceTree = "<group>"; };
+		C17DBA892A661A6E007F45BD /* baekjoon15552_빠른 A+B.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon15552_빠른 A+B.swift"; sourceTree = "<group>"; };
+		C17DBA8B2A661F96007F45BD /* baekjoon2439_별찍기2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon2439_별찍기2.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				C17DBA6E2A5FACFD007F45BD /* baekjoon8393_합.swift */,
 				C17DBA702A5FAEF4007F45BD /* baekjoon25304_영수증.swift */,
 				C17DBA872A653C68007F45BD /* baekjoon25314_코딩은 체육과목입니다.swift */,
+				C17DBA892A661A6E007F45BD /* baekjoon15552_빠른 A+B.swift */,
+				C17DBA8B2A661F96007F45BD /* baekjoon2439_별찍기2.swift */,
 			);
 			path = Loop;
 			sourceTree = "<group>";
@@ -135,12 +141,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17DBA8A2A661A6E007F45BD /* baekjoon15552_빠른 A+B.swift in Sources */,
 				C17DBA642A5FAB14007F45BD /* main.swift in Sources */,
 				C17DBA6D2A5FAC73007F45BD /* baekjoon10950_A+B-3.swift in Sources */,
 				C17DBA882A653C68007F45BD /* baekjoon25314_코딩은 체육과목입니다.swift in Sources */,
 				C17DBA6B2A5FABAF007F45BD /* baekjoon2739_구구단.swift in Sources */,
 				C17DBA712A5FAEF4007F45BD /* baekjoon25304_영수증.swift in Sources */,
 				C17DBA6F2A5FACFD007F45BD /* baekjoon8393_합.swift in Sources */,
+				C17DBA8C2A661F96007F45BD /* baekjoon2439_별찍기2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
