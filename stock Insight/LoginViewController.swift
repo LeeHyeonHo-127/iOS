@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
 //        self.navigationController?.navigationBar.isHidden = true
     }
     
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         let email = emailTextField.text ?? "1"
         let password = passwordTextField.text ?? "1"
@@ -38,8 +39,9 @@ class LoginViewController: UIViewController {
 //            "memberEmail": email,
 //            "memberPassword": password
 //        ]
-        //node.js parameter
         
+        
+        //node.js parameter
         let parameter: [String: Any] = [
             "user_id": email,
             "pw": password
@@ -95,8 +97,8 @@ class LoginViewController: UIViewController {
 //                            if let responseDict = json as? [String: Any] {
 //                                let status = responseDict["status"] as? Int
 //                                let message = responseDict["message"] as? String
-////                                guard let userToken = responseDict["userToken"] as? String else {return}
-////                                self.saveToken(userToken)
+//                                guard let userToken = responseDict["userToken"] as? String else {return}
+//                                self.saveToken(userToken)
 //                                DispatchQueue.main.async {
 //                                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else {return}
 //                                    self.navigationController?.pushViewController(viewController, animated: true)

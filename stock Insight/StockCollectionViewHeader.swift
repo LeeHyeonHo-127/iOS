@@ -16,10 +16,9 @@ class StockCollectionViewHeader: UICollectionReusableView{
         sectionNameLabel.font = .systemFont(ofSize: 17, weight: .bold)
         sectionNameLabel.textColor = .black
         sectionNameLabel.sizeToFit()
-        let customBlueColor = UIColor(red: 0.149, green: 0.098, blue: 1.0, alpha: 1.0)
 
         StockDetailViewButtonTapped.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        StockDetailViewButtonTapped.tintColor = customBlueColor
+        StockDetailViewButtonTapped.tintColor = .systemBlue
         
         addSubview(sectionNameLabel)
         addSubview(StockDetailViewButtonTapped)

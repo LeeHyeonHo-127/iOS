@@ -23,8 +23,9 @@ class StockDetailCollectionViewController: UICollectionViewController{
         collectionView.register(ShowLineChartCell.self, forCellWithReuseIdentifier: "ShowLineChartCell")
         collectionView.register(ShowLeadingLineChartCell.self, forCellWithReuseIdentifier: "ShowLeadingLineChartCell")
         collectionView.register(ArticleCell.self, forCellWithReuseIdentifier: "ArticleCell")
+        
         collectionView.register(StockCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "StockCollectionViewHeader")
-        collectionView.register(LeadingIndexCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "LeadingIndexCollectionViewHeader")
+        collectionView.register(DefaultCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DefaultCollectionViewHeader")
         collectionView.register(StockCollectionViewFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "StockCollectionViewFooter")
 
         collectionView.collectionViewLayout = layout()
@@ -32,8 +33,6 @@ class StockDetailCollectionViewController: UICollectionViewController{
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "My Title"
         self.navigationController?.navigationBar.isHidden = false
-        
-
     }
 
     
@@ -275,15 +274,15 @@ extension StockDetailCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader{
             if(indexPath.section == 0){
-                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LeadingIndexCollectionViewHeader", for: indexPath) as? LeadingIndexCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DefaultCollectionViewHeader", for: indexPath) as? DefaultCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
                 headerView.sectionNameLabel.text = stocks[0].stockName
                 return headerView
             }else if(indexPath.section == 1){
-                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LeadingIndexCollectionViewHeader", for: indexPath) as? LeadingIndexCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DefaultCollectionViewHeader", for: indexPath) as? DefaultCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
                 headerView.sectionNameLabel.text = "주가 미리보기"
                 return headerView
             }else{
-                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LeadingIndexCollectionViewHeader", for: indexPath) as? LeadingIndexCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DefaultCollectionViewHeader", for: indexPath) as? DefaultCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
                 headerView.sectionNameLabel.text = "관련 기사"
                 return headerView
             }

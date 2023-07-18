@@ -10,6 +10,7 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
     var leadingIndexGraphName: [String] = ["kospi", "kosdaq", "sp500"]
     var leadingIndex: LeadingIndex = LeadingIndex(KOSPI: [], KOSDAQ: [], SnP500: [])
     var customBlueColor = UIColor(red: 0.149, green: 0.098, blue: 1.0, alpha: 1.0)
+    var articleNameAndURL = [["매일경제", "https://www.mk.co.kr/"], ["한국경제", "https://www.hankyung.com/"], ["서울경제", "https://m.sedaily.com/"]]
 
 
 
@@ -19,21 +20,29 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
         getStocks()
         getLeadingIndex()
         
-        //내비게이션 설정
+        collectionView.collectionViewLayout = layout()
         collectionView.backgroundColor = .white
         
-        //CollectionView Item(cell) 설정
-        collectionView.register(ShowLineChartCell.self, forCellWithReuseIdentifier: "ShowLineChartCell")
-        collectionView.register(ShowLeadingLineChartCell.self, forCellWithReuseIdentifier: "ShowLeadingLineChartCell")
-        collectionView.register(StockCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "StockCollectionViewHeader")
-        collectionView.register(LeadingIndexCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "LeadingIndexCollectionViewHeader")
-        
-        collectionView.collectionViewLayout = layout()
+        //register
+        self.registerCell()
+        self.registerHeader()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    //cell 등록
+    private func registerCell(){
+        collectionView.register(ShowLineChartCell.self, forCellWithReuseIdentifier: "ShowLineChartCell")
+        collectionView.register(ShowLeadingLineChartCell.self, forCellWithReuseIdentifier: "ShowLeadingLineChartCell")
+        collectionView.register(ArticleCell.self, forCellWithReuseIdentifier: "ArticleCell")
+    }
+    //header 등록
+    private func registerHeader(){
+        collectionView.register(StockCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "StockCollectionViewHeader")
+        collectionView.register(DefaultCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "DefaultCollectionViewHeader")
+    }
     
     
     //MARK: LAYOUT 설정
@@ -42,8 +51,8 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
         return UICollectionViewCompositionalLayout{[weak self] sectionNumber, environment -> NSCollectionLayoutSection? in
             guard let self = self else {return nil}
             
-            if sectionNumber == 0{
-                return self.createBasicTypeSection()
+            if sectionNumber == 2{
+                return self.createNewsTypeSection()
             }else{
                 return self.createBasicTypeSection()
             }
@@ -53,18 +62,18 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
     //주가 정보 섹션 생성
     private func createBasicTypeSection() -> NSCollectionLayoutSection{
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.95))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         //group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(200))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(230))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         group.contentInsets = .init(top: 0, leading: 10, bottom: 10, trailing: 10)
         
         //section
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .paging
         section.contentInsets = .init(top: 10, leading: 0, bottom: 0, trailing: 0)
         let sectionHeader = self.createSectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
@@ -84,8 +93,29 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
         
         //section
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .paging
         section.contentInsets = .init(top: 10, leading: 0, bottom: 0, trailing: 0)
+        let sectionHeader = self.createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
+    
+    //뉴스 기사 정보 섹션 생성
+    private func createNewsTypeSection() -> NSCollectionLayoutSection{
+        //item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = . init(top: 0, leading: 10, bottom: 0, trailing: 10)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
+        
+        //section
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
         let sectionHeader = self.createSectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
         return section
@@ -95,7 +125,7 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
     //SectionHeader Layout 설정
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
         //section header 사이즈
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30))
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         
         //section header Layout
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
@@ -154,7 +184,6 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
     }
     
    
-    
     //임시 함수
     func getLeadingIndex(){
         self.leadingIndex.KOSPI = [2813.83, 2850.38, 2872.87, 2891.96, 2889.14, 2877.47, 2875.47, 2886.30, 2892.12, 2906.57, 2917.80, 2933.37, 2932.13, 2956.98, 2987.51, 3016.39, 2996.23, 3005.97, 3019.64, 3033.93]
@@ -186,7 +215,11 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
 extension MainCollectionViewController {
     //섹션당 보여질 셀의 개수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 2{
             return 3
+        }else{
+            return 3
+        }
     }
     //콜렉션 뷰 설정
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -210,14 +243,13 @@ extension MainCollectionViewController {
             cell.isPredict = false
          
             return cell
-        }else if indexPath.section == 2{
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowLineChartCell", for: indexPath) as? ShowLineChartCell else {return UICollectionViewCell()}
-            cell.descriptionLabel.text = "반도체"
-            cell.gradientColor = .systemMint
-            cell.section = 2
+        }
+        else{
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath) as? ArticleCell else {return UICollectionViewCell()}
+            cell.titleLabel.text = self.articleNameAndURL[indexPath.row][0]
+            cell.artitleURL = self.articleNameAndURL[indexPath.row][1]
             return cell
         }
-        else{return UICollectionViewCell()}
     }
     //헤더 뷰 설정
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -228,12 +260,12 @@ extension MainCollectionViewController {
                 headerView.sectionNameLabel.text = stocks[0].stockName
                 return headerView
             }else if(indexPath.section == 1){
-                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LeadingIndexCollectionViewHeader", for: indexPath) as? LeadingIndexCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DefaultCollectionViewHeader", for: indexPath) as? DefaultCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
                 headerView.sectionNameLabel.text = "주요 지수"
                 return headerView
             }else{
-                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LeadingIndexCollectionViewHeader", for: indexPath) as? LeadingIndexCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
-                headerView.sectionNameLabel.text = "키워드 이슈 포착"
+                guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DefaultCollectionViewHeader", for: indexPath) as? DefaultCollectionViewHeader else {fatalError("Could Not Dequeue Header")}
+                headerView.sectionNameLabel.text = "관련 뉴스"
                 return headerView
             }
         }else {
@@ -242,7 +274,7 @@ extension MainCollectionViewController {
     }
     //섹션 개수 설정
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
 }
 extension MainCollectionViewController: StockCollectionViewHeaderDelegate{
@@ -255,21 +287,4 @@ extension MainCollectionViewController: StockCollectionViewHeaderDelegate{
         }
     }
 }
-
-
-
-//extension MainViewController: UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard let cell = cell as? ShowLineChartCell else {return}
-//
-//        if indexPath.section == 0{
-//            cell.gradientColor = .systemBlue
-//        }
-//        else if indexPath.section == 1{
-//            cell.gradientColor = .systemRed
-//        }else{
-//            cell.gradientColor = .systemCyan
-//        }
-//    }
-//}
 

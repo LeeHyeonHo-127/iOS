@@ -1,6 +1,6 @@
 import UIKit
 
-class LeadingIndexCollectionViewHeader: UICollectionReusableView{
+class DefaultCollectionViewHeader: UICollectionReusableView{
     let sectionNameLabel = UILabel()
     
     override func layoutSubviews() {

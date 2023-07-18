@@ -38,6 +38,7 @@ class BookMarkListViewController: UIViewController {
         refreshControl.endRefreshing()
         }
     
+    //collection layout 및 기본 설정 함수
     private func configureCollectionView(){
         self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 10)
@@ -45,6 +46,7 @@ class BookMarkListViewController: UIViewController {
         self.collectionView.delegate = self
     }
     
+    //즐겨찾기에 넣을 더미 데이터 생성 함수
     private func getBookmarkStockList(){
         let stockName1 = "삼성전자"
         let stockNumber1 = "A005930 코스피"
@@ -69,10 +71,12 @@ class BookMarkListViewController: UIViewController {
     }
 }
 
+
 extension BookMarkListViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.bookMarkStockList.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarCollectionViewCell", for: indexPath) as? StarCollectionViewCell else {return UICollectionViewCell()}
         cell.imageView.image = self.bookMarkStockList[indexPath.row].stockImage
@@ -85,7 +89,6 @@ extension BookMarkListViewController: UICollectionViewDataSource{
 extension BookMarkListViewController: UICollectionViewDelegate{
     
 }
-
 extension BookMarkListViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (UIScreen.main.bounds.width) - 20, height: 60)

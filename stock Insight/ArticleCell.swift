@@ -1,59 +1,54 @@
 import UIKit
 
 class ArticleCell: UICollectionViewCell {
-    var sourceLabel = UILabel()
-    var titleLabel = UILabel()
+    
+    var artitleURL = ""
+    var titleLabel: UILabel = {
+        var label = UILabel(frame: CGRect(x: 0, y: 0, width: 290, height: 30))
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 17)
+        
+        return label
+    }()
+    
+    var button: UIButton = {
+        var button = UIButton(frame: CGRect(x: 0, y: 0, width: 45, height: 30))
+        var chevronImage = UIImage(systemName: "chevron.right")
+        button.setImage(chevronImage, for: .normal)
+        button.tintColor = .systemBlue
+        button.addTarget(self, action: #selector(gotoArticle), for: .touchDown)
+        return button
+    }()
+    
+    @objc func gotoArticle(){
+        let websiteURL = URL(string: artitleURL)
+        if let url = websiteURL {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+    }
+    
 
     
-    //layout SubView 설정
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        sourceLabel.text = "1"
-        titleLabel.text = "2"
-        addSubview(sourceLabel)
-        addSubview(titleLabel)
+    override init(frame: CGRect){
+        super.init(frame: frame)
         
-        // 수직으로 정렬되는 Constraint 추가
-        sourceLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalStackView1 = UIStackView(arrangedSubviews: [titleLabel, button])
+        horizontalStackView1.axis = .horizontal
+        horizontalStackView1.spacing = 33
+
+        contentView.addSubview(horizontalStackView1)
         
-        NSLayoutConstraint.activate([
-            sourceLabel.topAnchor.constraint(equalTo: topAnchor),
-            sourceLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sourceLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        print("============================")
-        print("4. Article Cell Label Setting")
-        print("Source Label : \(sourceLabel.text!)")
-        print("Title Label : \(titleLabel.text!)")
+        horizontalStackView1.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-//    let sourceLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "1"
-//        label.font = UIFont.systemFont(ofSize: 9)
-//        label.tintColor = .black
-//        label.textAlignment = .left
-//        return label
-//    }()
-
-//    let titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "2"
-//        label.font = UIFont.systemFont(ofSize: 18)
-//        label.tintColor = .black
-//        label.textAlignment = .left
-//        return label
-//    }()
-
-
-//    private func setupViews() {
-//        addSubview(sourceLabel)
-//        addSubview(titleLabel)
-//    }
+    
+    
+    
 }
 

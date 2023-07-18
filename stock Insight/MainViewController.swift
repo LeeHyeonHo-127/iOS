@@ -48,10 +48,6 @@ class MainViewController: UIViewController {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "StockDetailViewController") as? StockDetailViewController else {return}
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    
-    
-    
     @objc func hideKeyboard() {
            view.endEditing(true)
        }
