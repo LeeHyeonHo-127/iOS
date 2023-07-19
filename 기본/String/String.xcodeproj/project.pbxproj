@@ -11,6 +11,10 @@
 		C17DBABE2A677908007F45BD /* baekjoon27866_문자와 문자열.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBABD2A677908007F45BD /* baekjoon27866_문자와 문자열.swift */; };
 		C17DBAC02A677A0C007F45BD /* baekjoon2743_문자열 길이재기.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBABF2A677A0C007F45BD /* baekjoon2743_문자열 길이재기.swift */; };
 		C17DBAC22A677C4E007F45BD /* barkjoon9086_문..제.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAC12A677C4E007F45BD /* barkjoon9086_문..제.swift */; };
+		C17DBAC42A67A3E4007F45BD /* baekjoon10809_알파벳찾기.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAC32A67A3E4007F45BD /* baekjoon10809_알파벳찾기.swift */; };
+		C17DBAC62A67B3C2007F45BD /* baekjoon1152_단어의 갯수.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAC52A67B3C2007F45BD /* baekjoon1152_단어의 갯수.swift */; };
+		C17DBAC82A67B799007F45BD /* baekjoon11718_그대로 출력하기.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAC72A67B799007F45BD /* baekjoon11718_그대로 출력하기.swift */; };
+		C17DBACA2A67B7C2007F45BD /* baekjoon5622_다이얼.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17DBAC92A67B7C2007F45BD /* baekjoon5622_다이얼.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +35,10 @@
 		C17DBABD2A677908007F45BD /* baekjoon27866_문자와 문자열.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon27866_문자와 문자열.swift"; sourceTree = "<group>"; };
 		C17DBABF2A677A0C007F45BD /* baekjoon2743_문자열 길이재기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon2743_문자열 길이재기.swift"; sourceTree = "<group>"; };
 		C17DBAC12A677C4E007F45BD /* barkjoon9086_문..제.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "barkjoon9086_문..제.swift"; sourceTree = "<group>"; };
+		C17DBAC32A67A3E4007F45BD /* baekjoon10809_알파벳찾기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon10809_알파벳찾기.swift"; sourceTree = "<group>"; };
+		C17DBAC52A67B3C2007F45BD /* baekjoon1152_단어의 갯수.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon1152_단어의 갯수.swift"; sourceTree = "<group>"; };
+		C17DBAC72A67B799007F45BD /* baekjoon11718_그대로 출력하기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon11718_그대로 출력하기.swift"; sourceTree = "<group>"; };
+		C17DBAC92A67B7C2007F45BD /* baekjoon5622_다이얼.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon5622_다이얼.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,10 @@
 				C17DBABD2A677908007F45BD /* baekjoon27866_문자와 문자열.swift */,
 				C17DBABF2A677A0C007F45BD /* baekjoon2743_문자열 길이재기.swift */,
 				C17DBAC12A677C4E007F45BD /* barkjoon9086_문..제.swift */,
+				C17DBAC32A67A3E4007F45BD /* baekjoon10809_알파벳찾기.swift */,
+				C17DBAC52A67B3C2007F45BD /* baekjoon1152_단어의 갯수.swift */,
+				C17DBAC72A67B799007F45BD /* baekjoon11718_그대로 출력하기.swift */,
+				C17DBAC92A67B7C2007F45BD /* baekjoon5622_다이얼.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -130,9 +142,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C17DBAC02A677A0C007F45BD /* baekjoon2743_문자열 길이재기.swift in Sources */,
+				C17DBAC82A67B799007F45BD /* baekjoon11718_그대로 출력하기.swift in Sources */,
 				C17DBABE2A677908007F45BD /* baekjoon27866_문자와 문자열.swift in Sources */,
+				C17DBAC42A67A3E4007F45BD /* baekjoon10809_알파벳찾기.swift in Sources */,
 				C17DBAC22A677C4E007F45BD /* barkjoon9086_문..제.swift in Sources */,
+				C17DBAC62A67B3C2007F45BD /* baekjoon1152_단어의 갯수.swift in Sources */,
 				C17DBAB72A6772E1007F45BD /* main.swift in Sources */,
+				C17DBACA2A67B7C2007F45BD /* baekjoon5622_다이얼.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
