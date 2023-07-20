@@ -140,3 +140,4 @@ linkedList.remove(index: 1)
 linkedList.printAllNode() //1 2 4 3
 //search
 print(linkedList.search(index: 0)?.data) //1
+
