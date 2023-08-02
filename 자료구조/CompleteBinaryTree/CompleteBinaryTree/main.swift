@@ -9,6 +9,9 @@ completeBinaryTree.printTree()
 completeBinaryTree.printInorder()
 completeBinaryTree.printPreorder()
 completeBinaryTree.printPostorder()
+print("nodeCount = \(completeBinaryTree.nodeCount(node: completeBinaryTree.root))")
+print("leafNodeCount = \(completeBinaryTree.leafNodeCount(node: completeBinaryTree.root))")
+print("treeHeight = \(completeBinaryTree.treeHeight(node: completeBinaryTree.root))")
 
 /*
                     0
@@ -31,4 +34,9 @@ _______/ \_______                     ________/ \________
 
 ==== Postorder ====
 15 16 7 17 18 8 3 19 20 9 21 22 10 4 1 23 24 11 25 26 12 5 27 28 13 29 30 14 6 2 0
+ 
+nodeCount = 31
+leafNodeCount = 16
+
+
  */

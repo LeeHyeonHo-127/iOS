@@ -68,6 +68,43 @@ struct CompleteBinaryTree<T: Comparable>{
         print(node.data, terminator: " ")
     }
     
+    func nodeCount(node: TreeNode<T>?)->Int{
+        if node == nil{
+            return 0
+        }
+        else {
+            return nodeCount(node: node?.leftChild) + nodeCount(node: node?.rightChild) + 1
+            
+        }
+    }
+    
+    func leafNodeCount(node: TreeNode<T>?)->Int{
+        if node == nil{
+            return 0
+        }
+        if node!.rightChild == nil && node!.leftChild == nil{
+            return 1
+        }else{
+            return leafNodeCount(node: node?.leftChild) + leafNodeCount(node: node?.rightChild)
+        }
+    }
+    
+    func treeHeight(node: TreeNode<T>?)->Int{
+        return treeHeightInner(node: node) - 1
+    }
+    
+    func treeHeightInner(node: TreeNode<T>?)->Int{
+        if node == nil{
+            return 0
+        }else{
+            if(treeHeightInner(node: node?.leftChild) > treeHeightInner(node: node?.rightChild)){
+                return treeHeightInner(node: node?.leftChild) + 1
+            }else{
+                return treeHeightInner(node: node?.rightChild) + 1
+            }
+        }
+    }
+    
     func printTree(){
         print(root!.asString)
     }
