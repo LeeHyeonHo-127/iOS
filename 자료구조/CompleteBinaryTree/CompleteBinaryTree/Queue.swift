@@ -2,7 +2,7 @@ import Foundation
 
 class Queue<T>{
     var queueArray:[T] = []
-    var isEmpty = queueArray.isEmpty
+    
     
     func inqueue(data: T){
         queueArray.append(data)
@@ -11,4 +11,12 @@ class Queue<T>{
     func dequeue()->T{
         return queueArray.removeFirst()
     }
+    
+    func isEmpty()->Bool{
+        return self.queueArray.isEmpty
+    }
+    func queueCount()->Int{
+        return self.queueArray.count
+    }
+    
 }
