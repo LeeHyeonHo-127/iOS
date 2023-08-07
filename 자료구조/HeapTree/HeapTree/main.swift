@@ -7,13 +7,29 @@
 
 import Foundation
 
-var array:[Int] = [1,2,3,4]
-var elements = [5,6,7,8]
+var heap: Heap<Int> = Heap(data: 3)
+heap.insert(data: 1)
+heap.insert(data: 10)
+heap.insert(data: 7)
+heap.insert(data: 11)
+heap.insert(data: 100)
 
-array = [9] + elements
-print(array)
+print(heap.heap)
 
-
+print("pop = \(heap.pop())")
+print("pop = \(heap.pop())")
+print("pop = \(heap.pop())")
+print("pop = \(heap.pop())")
+print("pop = \(heap.pop())")
+print("pop = \(heap.pop())")
+/*
+ pop = 100
+ pop = 11
+ pop = 10
+ pop = 7
+ pop = 3
+ pop = 1
+ */
 
 
 
