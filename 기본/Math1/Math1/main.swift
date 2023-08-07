@@ -1,26 +1,70 @@
 /*
- 위의 그림과 같이 육각형으로 이루어진 벌집이 있다. 그림에서 보는 바와 같이 중앙의 방 1부터 시작해서 이웃하는 방에 돌아가면서 1씩 증가하는 번호를 주소로 매길 수 있다. 숫자 N이 주어졌을 때, 벌집의 중앙 1에서 N번 방까지 최소 개수의 방을 지나서 갈 때 몇 개의 방을 지나가는지(시작과 끝을 포함하여)를 계산하는 프로그램을 작성하시오. 예를 들면, 13까지는 3개, 58까지는 5개를 지난다.
- 
+ 문제
+ 미국으로 유학간 동혁이는 세탁소를 운영하고 있다. 동혁이는 최근에 아르바이트로 고등학생 리암을 채용했다.
+
+ 동혁이는 리암에게 실망했다.
+
+ 리암은 거스름돈을 주는 것을 자꾸 실수한다.
+
+ 심지어 $0.5달러를 줘야하는 경우에 거스름돈으로 $5달러를 주는것이다!
+
+ 어쩔수 없이 뛰어난 코딩 실력을 발휘해 리암을 도와주는 프로그램을 작성하려고 하지만, 디아블로를 하느라 코딩할 시간이 없어서 이 문제를 읽고 있는 여러분이 대신 해주어야 한다.
+
+ 거스름돈의 액수가 주어지면 리암이 줘야할 쿼터(Quarter, $0.25)의 개수, 다임(Dime, $0.10)의 개수, 니켈(Nickel, $0.05)의 개수, 페니(Penny, $0.01)의 개수를 구하는 프로그램을 작성하시오. 거스름돈은 항상 $5.00 이하이고, 손님이 받는 동전의 개수를 최소로 하려고 한다. 예를 들어, $1.24를 거슬러 주어야 한다면, 손님은 4쿼터, 2다임, 0니켈, 4페니를 받게 된다.
+
  입력
- 첫째 줄에 N(1 ≤ N ≤ 1,000,000,000)이 주어진다.
- 
+ 첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 거스름돈 C를 나타내는 정수 하나로 이루어져 있다. C의 단위는 센트이다. (1달러 = 100센트) (1<=C<=500)
+
  출력
- 입력으로 주어진 방까지 최소 개수의 방을 지나서 갈 때 몇 개의 방을 지나는지 출력한다.
+ 각 테스트케이스에 대해 필요한 쿼터의 개수, 다임의 개수, 니켈의 개수, 페니의 개수를 공백으로 구분하여 출력한다.
  */
 
 import Foundation
 
-var N = Int(readLine()!)!
-var room = 1
-var level = 1
-var line = 2
-
-while(true){
-    if(N <= room){
-        print(level)
-        break
+//MARK: 내 풀이
+/*
+if let n = Int(readLine()!){
+    for _ in 1...n{
+        let C = Int(readLine()!)!
+        printChange(C: C)
     }
-    room = room + line * 6 - 6
-    level = level + 1
-    line = line + 1
+}
+
+func printChange(C: Int){
+    var C = C
+    print(C/25, terminator: " ")
+    C = C%25
+    print(C/10, terminator: " ")
+    C = C%10
+    print(C/5, terminator: " ")
+    C = C%5
+    print(C/1, terminator: " ")
+}
+*/
+
+//MARK: 다른 풀이
+var array = [0,0,0,0]
+if let n = Int(readLine()!){
+    for _ in 1...n{
+        var C = Int(readLine()!)!
+        array[0] = C/25
+        C = C%25
+        array[1] = C/10
+        C = C%10
+        array[2] = C/5
+        C = C%5
+        array[3] = C/1
+        print(array.map{String($0)}.joined(separator: " "))
+    }
+}
+
+func printChange(C: Int){
+    var C = C
+    print(C/25, terminator: " ")
+    C = C%25
+    print(C/10, terminator: " ")
+    C = C%10
+    print(C/5, terminator: " ")
+    C = C%5
+    print(C/1, terminator: " ")
 }
