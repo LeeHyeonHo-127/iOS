@@ -84,9 +84,9 @@
 		C1AC808C2A851078005E1AE6 /* Moya_practice */ = {
 			isa = PBXGroup;
 			children = (
+				C1AC80912A851078005E1AE6 /* ViewController.swift */,
 				C1AC808D2A851078005E1AE6 /* AppDelegate.swift */,
 				C1AC808F2A851078005E1AE6 /* SceneDelegate.swift */,
-				C1AC80912A851078005E1AE6 /* ViewController.swift */,
 				C1AC80932A851078005E1AE6 /* Main.storyboard */,
 				C1AC80962A851079005E1AE6 /* Assets.xcassets */,
 				C1AC80982A851079005E1AE6 /* LaunchScreen.storyboard */,
