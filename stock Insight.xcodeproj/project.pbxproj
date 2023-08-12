@@ -29,6 +29,12 @@
 		C14E78702A263240009134AA /* StarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E786F2A263240009134AA /* StarCollectionViewCell.swift */; };
 		C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E78712A26DD2B009134AA /* HowPredictViewController.swift */; };
 		C154C0122A31292900235A36 /* Data_Sentimental.csv in Resources */ = {isa = PBXBuildFile; fileRef = C154C0112A31292900235A36 /* Data_Sentimental.csv */; };
+		C185E0E52A87670000895C2D /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0E42A87670000895C2D /* SignInService.swift */; };
+		C185E0E72A87680200895C2D /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0E62A87680200895C2D /* SignUpService.swift */; };
+		C185E0EA2A8768D300895C2D /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0E92A8768D300895C2D /* APIConstants.swift */; };
+		C185E0ED2A876DDF00895C2D /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0EC2A876DDF00895C2D /* NetworkResult.swift */; };
+		C185E0EF2A8773ED00895C2D /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0EE2A8773ED00895C2D /* GenericResponse.swift */; };
+		C185E0F12A87AC9200895C2D /* AuthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0F02A87AC9200895C2D /* AuthData.swift */; };
 		C1A9F3902A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A9F38F2A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift */; };
 		C1A9F39A2A301E740094CC95 /* StockCollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A9F3992A301E740094CC95 /* StockCollectionViewFooter.swift */; };
 		C1A9F39C2A3064E80094CC95 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A9F39B2A3064E80094CC95 /* ArticleCell.swift */; };
@@ -76,6 +82,12 @@
 		C14E786F2A263240009134AA /* StarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCollectionViewCell.swift; sourceTree = "<group>"; };
 		C14E78712A26DD2B009134AA /* HowPredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictViewController.swift; sourceTree = "<group>"; };
 		C154C0112A31292900235A36 /* Data_Sentimental.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = Data_Sentimental.csv; path = "stock Insight/Resource/dummy/Data_Sentimental.csv"; sourceTree = SOURCE_ROOT; };
+		C185E0E42A87670000895C2D /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
+		C185E0E62A87680200895C2D /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		C185E0E92A8768D300895C2D /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		C185E0EC2A876DDF00895C2D /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		C185E0EE2A8773ED00895C2D /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		C185E0F02A87AC9200895C2D /* AuthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthData.swift; sourceTree = "<group>"; };
 		C1A9F38F2A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLeadingLineChartCell.swift; sourceTree = "<group>"; };
 		C1A9F3992A301E740094CC95 /* StockCollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCollectionViewFooter.swift; sourceTree = "<group>"; };
 		C1A9F39B2A3064E80094CC95 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
@@ -133,6 +145,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C185E0E82A8768BC00895C2D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C185E0E92A8768D300895C2D /* APIConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C185E0EB2A876DBC00895C2D /* Sentences */ = {
+			isa = PBXGroup;
+			children = (
+				C185E0EC2A876DDF00895C2D /* NetworkResult.swift */,
+				C185E0EE2A8773ED00895C2D /* GenericResponse.swift */,
+			);
+			path = Sentences;
+			sourceTree = "<group>";
+		};
 		C1AC80A82A8604EC005E1AE6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +177,7 @@
 		C1AC80A92A8604F2005E1AE6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C185E0E82A8768BC00895C2D /* Constants */,
 				C1AC80AB2A86052A005E1AE6 /* dummy */,
 				C1AC80AA2A86050D005E1AE6 /* StoryBoard */,
 				C1BE315A29FF72F300FF1FE4 /* Info.plist */,
@@ -190,6 +220,7 @@
 			children = (
 				C14E786B2A25D7E4009134AA /* LeadingIndex.swift */,
 				C14E78692A20ADB4009134AA /* Stock.swift */,
+				C185E0F02A87AC9200895C2D /* AuthData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +271,9 @@
 		C1AC80B02A8606A5005E1AE6 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				C185E0EB2A876DBC00895C2D /* Sentences */,
+				C185E0E42A87670000895C2D /* SignInService.swift */,
+				C185E0E62A87680200895C2D /* SignUpService.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -411,11 +445,14 @@
 				C13DEDD92A11FC0700AA8EAF /* StockDetailViewController.swift in Sources */,
 				C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */,
 				C1071CD22A1E0B25005E4D8F /* ShowLineChartCell.swift in Sources */,
+				C185E0EF2A8773ED00895C2D /* GenericResponse.swift in Sources */,
 				C1A9F39A2A301E740094CC95 /* StockCollectionViewFooter.swift in Sources */,
 				C1BE315129FF72F200FF1FE4 /* BeginViewController.swift in Sources */,
 				C12606972A2B4C76008B5CDC /* nodeJsTestView.swift in Sources */,
+				C185E0EA2A8768D300895C2D /* APIConstants.swift in Sources */,
 				C13DEDD72A11FBE300AA8EAF /* MyPageViewController.swift in Sources */,
 				C1BE314D29FF72F200FF1FE4 /* AppDelegate.swift in Sources */,
+				C185E0E72A87680200895C2D /* SignUpService.swift in Sources */,
 				C13DEDD52A11FB5D00AA8EAF /* MainViewController.swift in Sources */,
 				C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */,
 				C14E786A2A20ADB4009134AA /* Stock.swift in Sources */,
@@ -425,12 +462,15 @@
 				C14E786C2A25D7E4009134AA /* LeadingIndex.swift in Sources */,
 				C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */,
 				C1A9F3902A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift in Sources */,
+				C185E0F12A87AC9200895C2D /* AuthData.swift in Sources */,
 				C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */,
+				C185E0E52A87670000895C2D /* SignInService.swift in Sources */,
 				C14E78702A263240009134AA /* StarCollectionViewCell.swift in Sources */,
 				C1A9F39C2A3064E80094CC95 /* ArticleCell.swift in Sources */,
 				C13DEDDD2A11FC9300AA8EAF /* FindAddressViewController.swift in Sources */,
 				C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */,
 				C1BE314F29FF72F200FF1FE4 /* SceneDelegate.swift in Sources */,
+				C185E0ED2A876DDF00895C2D /* NetworkResult.swift in Sources */,
 				C12606932A2993ED008B5CDC /* StockDetailCollectionViewController.swift in Sources */,
 				C14E786E2A261192009134AA /* DefaultCollectionViewHeader.swift in Sources */,
 			);

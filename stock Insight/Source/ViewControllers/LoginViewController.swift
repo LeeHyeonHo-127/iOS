@@ -5,91 +5,169 @@ class LoginViewController: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = false
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        activityIndicator.startAnimating()
+        return activityIndicator
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.passwordTextField.isSecureTextEntry = true
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
 //        self.navigationController?.navigationBar.isHidden = true
     }
     
     
+    private func attachActivityIndicator() {
+        self.view.addSubview(self.activityIndicator)
+    }
+    
+    private func detachActivityIndicator() {
+        if self.activityIndicator.isAnimating {
+            self.activityIndicator.stopAnimating()
+        }
+        self.activityIndicator.removeFromSuperview()
+    }
+    
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
-        let email = emailTextField.text ?? "1"
-        let password = passwordTextField.text ?? "1"
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        self.logIn(email: email, password: password)
+        
+        //임시 코드
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)
-//        self.login(email: email, password: password)
     }
     
-    func login(email: String, password: String) {
-        let urlString = "https://watch.ngrok.app/loginProc"
-        guard let url = URL(string: urlString) else {
-            DispatchQueue.main.async {
-                self.showAlert(title: "url 객체 변환 실패")
+    
+    //로그인
+    func logIn(email: String, password: String){
+        self.attachActivityIndicator()
+        SignInService.shared.signIn(email: email, password: password, completion: {(networkResult) in
+            self.detachActivityIndicator()
+            switch networkResult{
+            case .success(let data):
+                //로그인 성공
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
+                self.navigationController?.navigationBar.isHidden = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case .requestErr(let msg):
+                if let message = msg as? String {
+                    print(message)
+                }
+            case .pathErr:
+                print("pathErr in postSignUpWithAPI")
+            case .serverErr:
+                print("serverErr in postSignUpWithAPI")
+            case .networkFail:
+                print("networkFail in postSignUpWithAPI")
             }
-            return
-        }
+        })
+    }
+    
+    
+    //showAlert
+    func showAlert(title: String, message: String? = nil) {
+           let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+           alertController.addAction(okAction)
+           present(alertController, animated: true, completion: nil)
+       }
+
+    
+}
+
+
+//토큰 저장 코드 임시
+/*
+func saveToken(_ token: String) {
+    UserDefaults.standard.set(token, forKey: "UserToken")
+    UserDefaults.standard.set(true, forKey: "I")
+}
+ */
+
+
+
+//URLSession LogIn
+/*
+ func login(email: String, password: String) {
+     let urlString = "https://watch.ngrok.app/loginProc"
+     guard let url = URL(string: urlString) else {
+         DispatchQueue.main.async {
+             self.showAlert(title: "url 객체 변환 실패")
+         }
+         return
+     }
 //        self.showAlert(title: "url 객체 변환 성공")
-        
-        // 요청에 필요한 파라미터 설정
+     
+     // 요청에 필요한 파라미터 설정
 //        let parameter: [String: Any] = [
 //            "memberEmail": email,
 //            "memberPassword": password
 //        ]
-        
-        
-        //node.js parameter
-        let parameter: [String: Any] = [
-            "user_id": email,
-            "pw": password
-        ]
+     
+     
+     //node.js parameter
+     let parameter: [String: Any] = [
+         "user_id": email,
+         "pw": password
+     ]
 
-        // URLRequest 생성
-        var request = URLRequest(url: url)
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameter) else {
-            DispatchQueue.main.async {
-                self.showAlert(title: "파라미터를 변환하는데 실패했습니다.")
-                }
-                return
-        }
+     // URLRequest 생성
+     var request = URLRequest(url: url)
+     guard let httpBody = try? JSONSerialization.data(withJSONObject: parameter) else {
+         DispatchQueue.main.async {
+             self.showAlert(title: "파라미터를 변환하는데 실패했습니다.")
+             }
+             return
+     }
 //        showAlert(title: "파라미터를 변환하는데 성공했습니다.")
-        
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = httpBody
-        
-        // URLSession을 사용하여 요청 보내기
-        let task = URLSession.shared.dataTask(with: request) { [weak self](data, response, error) in
-            guard let self = self else {return}
-            
-            if let error = error{
-                let code = (error as NSError).code
-                switch code{
-                case 17007: //아이디 및 비밀버호가 다를 때
-                    DispatchQueue.main.async {
-                        self.showAlert(title: "아이디/비밀번호를 확인해 주세요")
-                    }
-                    return
-                default:
-                    DispatchQueue.main.async {
-                        self.showAlert(title: "로그인 에러", message: "\(error.localizedDescription)")
-                    }
-                    return
-                }
-            }
-            
-            //httpResponse 응답 처리
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    DispatchQueue.main.async {
-                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
-                        self.navigationController?.navigationBar.isHidden = true
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    }
-                   
+     
+     request.httpMethod = "POST"
+     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+     request.httpBody = httpBody
+     
+     // URLSession을 사용하여 요청 보내기
+     let task = URLSession.shared.dataTask(with: request) { [weak self](data, response, error) in
+         guard let self = self else {return}
+         
+         if let error = error{
+             let code = (error as NSError).code
+             switch code{
+             case 17007: //아이디 및 비밀버호가 다를 때
+                 DispatchQueue.main.async {
+                     self.showAlert(title: "아이디/비밀번호를 확인해 주세요")
+                 }
+                 return
+             default:
+                 DispatchQueue.main.async {
+                     self.showAlert(title: "로그인 에러", message: "\(error.localizedDescription)")
+                 }
+                 return
+             }
+         }
+         
+         //httpResponse 응답 처리
+         if let httpResponse = response as? HTTPURLResponse {
+             if httpResponse.statusCode == 200 {
+                 DispatchQueue.main.async {
+                     guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
+                     self.navigationController?.navigationBar.isHidden = true
+                     self.navigationController?.pushViewController(viewController, animated: true)
+                 }
+                
 //                    if let data = data {
 //                        // 응답 데이터 처리
 //                        do {
@@ -110,25 +188,13 @@ class LoginViewController: UIViewController {
 //                            }
 //                        }
 //                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.showAlert(title: "로그인에 실패했습니다")
-                    }
-                }
-            }
-        }
-        task.resume()
-    }
-    func showAlert(title: String, message: String? = nil) {
-           let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-           let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-           alertController.addAction(okAction)
-           present(alertController, animated: true, completion: nil)
-       }
-    func saveToken(_ token: String) {
-        UserDefaults.standard.set(token, forKey: "UserToken")
-        UserDefaults.standard.set(true, forKey: "I")
-    }
-    
-}
-
+             } else {
+                 DispatchQueue.main.async {
+                     self.showAlert(title: "로그인에 실패했습니다")
+                 }
+             }
+         }
+     }
+     task.resume()
+ }
+ */

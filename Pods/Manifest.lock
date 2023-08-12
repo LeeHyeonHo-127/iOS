@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.7.1)
   - Charts (4.1.0):
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
@@ -7,20 +8,23 @@ PODS:
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.4)
   - Charts
   - MarkdownKit
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Charts
     - MarkdownKit
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Charts: 354f86803d11d9c35de280587fef50d1af063978
   MarkdownKit: 0b15195c63cf3e39387949c4bdeccde0055e252a
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: e15bf579cbf8d3af34df31f5da4d805eb85bffa0
+PODFILE CHECKSUM: 8f6897621f27e1e7fdd49ad077f6aba42649fc30
 
 COCOAPODS: 1.12.1

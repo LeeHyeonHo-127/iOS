@@ -9,7 +9,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet var rePasswordTextField: UITextField!
     @IBOutlet var userNameTextField: UITextField!
     
-    
     override func viewDidLoad() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -20,7 +19,28 @@ class SignUpViewController: UIViewController {
         self.rePasswordTextField.isSecureTextEntry = true
     }
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = false
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        activityIndicator.startAnimating()
+        return activityIndicator
+    }()
     
+    private func attachActivityIndicator() {
+        self.view.addSubview(self.activityIndicator)
+    }
+    
+    private func detachActivityIndicator() {
+        if self.activityIndicator.isAnimating {
+            self.activityIndicator.stopAnimating()
+        }
+        self.activityIndicator.removeFromSuperview()
+    }
+    
+
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -30,13 +50,52 @@ class SignUpViewController: UIViewController {
         if password == rePassword{
 //            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
 //            self.navigationController?.pushViewController(viewController, animated: true)
-            self.signUp(email: email, password: password, userName: userName)
+//            self.signUp(email: email, password: password, userName: userName)
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
         }
     }
     
     func signUp(email: String, password: String, userName: String){
+        self.attachActivityIndicator()
+        
+        SignUpService.shared.singUp(email: email, password: password, name: userName, completion: {(networkResult) -> Void in
+            self.detachActivityIndicator()
+            
+            switch networkResult{
+            case .success(let data):
+                if let signUpData = data as? AuthData{
+                    print("회원가입 성공")
+                    // 회원가입 성공
+                    APIConstants.userId = signUpData.user.id
+                    UserDefaults.standard.setValue(signUpData.token, forKey: "token")
+                    UserDefaults.standard.setValue(signUpData.user.id, forKey: "userId")
+                    UserDefaults.standard.setValue("email", forKey: "loginType")
+                    UserDefaults.standard.setValue(false, forKey: "didLogin")
+                    
+                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }else{
+                    print("회원가입 실패")
+                }
+            case .requestErr(let msg):
+                if let message = msg as? String {
+                    print(message)
+                }
+            case .pathErr:
+                print("pathErr in postSignUpWithAPI")
+            case .serverErr:
+                print("serverErr in postSignUpWithAPI")
+            case .networkFail:
+                print("networkFail in postSignUpWithAPI")
+            }
+        })
+    }
+    
+    
+    
+    //과거 버전
+    func signUp_urlSessionVer(email: String, password: String, userName: String){
 //        let urlString = "http://172.17.104.130:8080/member/save"
         let urlString = "https://watch.ngrok.app/register"
         
@@ -109,7 +168,6 @@ class SignUpViewController: UIViewController {
         }
         task.resume()
     }
-    
     
     
     func showAlert(title: String, message: String? = nil) {

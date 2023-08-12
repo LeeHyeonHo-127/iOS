@@ -121,7 +121,6 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
         return section
     }
 
-    
     //SectionHeader Layout 설정
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
         //section header 사이즈
