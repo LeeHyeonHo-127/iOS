@@ -35,4 +35,7 @@ if(up == length){
 }
 */
 
-
+//MARK: 깔끔한 풀이
+/*
+ var r=readLine()!.split{$0==" "}.map{Int($0)!};print(1+(r[2]-r[1]-1)/(r[0]-r[1]))
+ */
