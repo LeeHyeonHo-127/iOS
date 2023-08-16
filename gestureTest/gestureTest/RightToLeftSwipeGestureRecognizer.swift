@@ -20,7 +20,7 @@ final class RightToLeftSwipeGestureRecognizer: UIPanGestureRecognizer{
         
         guard
             velocity(in: view).x.magnitude > velocity(in: view).y.magnitude,
-            velocity(in: view).x > 0 //좌 -> 우 스와이프
+            velocity(in: view).x < 0 //우 -> 좌 스와이프
         else{
             self.state = .failed
             return

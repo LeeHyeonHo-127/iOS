@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
   private let nextGesture = RightToLeftSwipeGestureRecognizer()
   private let beforeGesture = LeftToRightSwipeGestureRecognizer()
+    
   private var animator: UIViewPropertyAnimator?
   private var views = Mock.getViews()
     private var beforeViews = Mock.getViews()
@@ -61,7 +62,7 @@ class ViewController: UIViewController {
       switch gesture.state {
       case .began:
         self.view.isUserInteractionEnabled = false
-        self.animator = self.getNextAnimator()
+        self.animator = self.getBeforeAnimator()
       case .changed:
         let translationX = gesture.translation(in: self.view).x / self.view.bounds.width
         let fractionComplete = translationX.clamped(to: 0...1)
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
         .ended,
         .cancelled
       :
-        self.animator?.isReversed = gesture.velocity(in: self.view).x > 200 || gesture.state == .cancelled
+        self.animator?.isReversed = gesture.velocity(in: self.view).x < 200 || gesture.state == .cancelled
         self.animator?.startAnimation() // isReversed를 사용하면 다시 active해야하므로
       default:
         break
@@ -126,7 +127,7 @@ class ViewController: UIViewController {
       
       guard self.views.count > 1 else { return nil }
       let currentView = self.views[0]
-      let beforeView = self.beforeViews[0]
+      let beforeView = self.views[1]
       
       // Init
       let animator = UIViewPropertyAnimator(
