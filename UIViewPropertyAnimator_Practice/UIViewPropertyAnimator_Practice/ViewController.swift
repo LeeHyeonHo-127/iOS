@@ -4,7 +4,7 @@
 //
 //  Created by 이현호 on 2023/08/16.
 //
-
+//참고 : https://ios-development.tistory.com/922
 import UIKit
 
 class ViewController: UIViewController {
