@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         self.setupDelegate()
         self.configure()
         
-        guard let firstViewController = self.storyboard?.instantiateViewController(identifier: "FirstViewController") as? FirstViewController else {return}
+        guard let firstViewController = self.storyboard?.instantiateViewController(identifier: "NavigationViewController") as? NavigationViewController else {return}
         guard let secondViewController = self.storyboard?.instantiateViewController(identifier: "SecondViewController") as? SecondViewController else {return}
         guard let thirdViewController = self.storyboard?.instantiateViewController(identifier: "ThirdViewController") as? ThirdViewController else {return}
         dataViewControllers = [firstViewController, secondViewController, thirdViewController]

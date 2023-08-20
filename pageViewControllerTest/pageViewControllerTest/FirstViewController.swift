@@ -10,6 +10,7 @@ import UIKit
 class FirstViewController: UIViewController {
 
     @IBOutlet var helloWorldLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.helloWorldLabel.isHidden = true
@@ -19,8 +20,16 @@ class FirstViewController: UIViewController {
     @IBAction func tappedHelloButton(_ sender: Any) {
         self.helloWorldLabel.isHidden = false
     }
+    @IBAction func tappedShowOtherPage(_ sender: Any) {
+        guard let viewcontroller = self.storyboard?.instantiateViewController(identifier: "OtherViewController") as? OtherViewController else {return}
+        print("hi")
+        self.navigationController?.pushViewController(viewcontroller, animated: true)
+        
+    }
+    
     /*
-    // MARK: - Navigation
+
+     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

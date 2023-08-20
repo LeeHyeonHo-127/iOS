@@ -96,11 +96,14 @@ class ViewController: UIViewController {
     
     //해당 지역으로 이동
     func moveLocation(latitudeValue: CLLocationDegrees, longtudeValue: CLLocationDegrees, delta span: Double) {
-        let pLocation = CLLocationCoordinate2DMake(latitudeValue, longtudeValue)
-        let pSpanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
-        let pRegion = MKCoordinateRegion(center: pLocation, span: pSpanValue)
-        mapkit.setRegion(pRegion, animated: true)
+        let pLocation = CLLocationCoordinate2DMake(latitudeValue, longtudeValue) //위치
+        let pSpanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span) //지도 영역의 높이와 너비
+        let pRegion = MKCoordinateRegion(center: pLocation, span: pSpanValue) //위도 경도와 이를 눌러싼 사각형의 값을 가진 구조체
+        mapkit.setRegion(pRegion, animated: true) //MKCoordinateRegion으로 이동
     }
+    
+    
+    
     //annnotation 생성
     func setAnnotation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span :Double, title strTitle: String, subtitle strSubTitle:String) {
         mapkit.removeAnnotations(mapkit.annotations)
@@ -120,8 +123,8 @@ class ViewController: UIViewController {
         if interval < 0.25 { return }
             
         let coordinate = mapkit.centerCoordinate
-        print(coordinate.latitude)
-        print(coordinate.longitude)
+//        print(coordinate.latitude)
+//        print(coordinate.longitude)
             
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
@@ -138,6 +141,9 @@ class ViewController: UIViewController {
         }
         runTimeInterval = nil
     }
+    
+    
+    //dummy location 생성 및 dummy Annotation 생성
     func makeLocation(){
         for _ in 0...30{
             let lat = Double.random(in: 37.389829539...37.615316721)
@@ -150,6 +156,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MKMapViewDelegate, CLLocationManagerDelegate{
+    
+    //새로운 위치데이터 사용 함수
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let pLocation = locations.last
         moveLocation(latitudeValue: (pLocation?.coordinate.latitude)!, longtudeValue: (pLocation?.coordinate.longitude)!, delta: 0.01)
@@ -162,72 +170,74 @@ extension ViewController: MKMapViewDelegate, CLLocationManagerDelegate{
                 self.subTitle.text = address
             }
         })
-        
         locationManager.stopUpdatingLocation()
     }
     
+    //지도가 보이는 곳이 달라지면 알리는 함수
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         runTimeInterval = Date().timeIntervalSinceReferenceDate
     }
+    
+    //mapkit.addAnnotation 으로 들어있는 annotation들을 이 함수에서 MKAnnotationView로 생성
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        //유저의 위치와 annotation이 같다면 return -> 유저의 현재 위치를 띄우기 위해서.
         guard !annotation.isKind(of: MKUserLocation.self) else {
-            // 유저 위치를 나타낼때는 기본 파란 그 점 아시죠? 그거 쓰고싶으니까~ 요렇게 해주시고 만약에 쓰고싶은 어노테이션이 있다면 그녀석을 리턴해 주시면 되긋죠? 하하!
             return nil
         }
         if annotation is MKUserLocation {
-            // Return nil for the user's location annotation to use the default view.
             return nil
         }
-        let identifier = "CustomAnnotation"
-                var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
-
-                if annotationView == nil {
-                    annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                    annotationView?.canShowCallout = true
-                } else {
-                    annotationView?.annotation = annotation
-                }
-                    let miniButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                    miniButton.setImage(UIImage(systemName: "airpodsmax"), for: .normal)
-
-
-                // Set the marker color based on the custom annotation's color property
         
-                if let customAnnotation = annotation as? CustomAnnotation {
-                    switch customAnnotation.genre {
-                    case .hiphop:
-                        annotationView?.markerTintColor = .red
-                        annotationView?.glyphTintColor = .red
-                        miniButton.tintColor = .red
-                        annotationView?.rightCalloutAccessoryView = miniButton
-                    case .balad:
-                        annotationView?.markerTintColor = .blue
-                        annotationView?.glyphTintColor = .blue
-                        miniButton.tintColor = .blue
-                        annotationView?.rightCalloutAccessoryView = miniButton
-                    case .classic:
-                        annotationView?.markerTintColor = .green
-                        annotationView?.glyphTintColor = .green
-                        miniButton.tintColor = .green
-                        annotationView?.rightCalloutAccessoryView = miniButton
-                    case .pop:
-                        annotationView?.markerTintColor = .purple
-                        annotationView?.glyphTintColor = .purple
-                        miniButton.tintColor = .purple
-                        annotationView?.rightCalloutAccessoryView = miniButton
-                    case .rock:
-                        annotationView?.markerTintColor = .orange
-                        annotationView?.glyphTintColor = .orange
-                        miniButton.tintColor = .orange
-                        annotationView?.rightCalloutAccessoryView = miniButton
+        let identifier = "CustomAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
 
-                    // Add more cases for other colors as needed
-                    }
-                }
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true}
+        else {
+            annotationView?.annotation = annotation
+        }
+                    
+        let miniButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        miniButton.setImage(UIImage(systemName: "airpodsmax"), for: .normal)
 
-                return annotationView
+
+        // Set the marker color based on the custom annotation's color property
+        
+        if let customAnnotation = annotation as? CustomAnnotation {
+            switch customAnnotation.genre {
+            case .hiphop:
+                annotationView?.markerTintColor = .red
+                annotationView?.glyphTintColor = .red
+                miniButton.tintColor = .red
+                annotationView?.rightCalloutAccessoryView = miniButton
+            case .balad:
+                annotationView?.markerTintColor = .blue
+                annotationView?.glyphTintColor = .blue
+                miniButton.tintColor = .blue
+                annotationView?.rightCalloutAccessoryView = miniButton
+            case .classic:
+                annotationView?.markerTintColor = .green
+                annotationView?.glyphTintColor = .green
+                miniButton.tintColor = .green
+                annotationView?.rightCalloutAccessoryView = miniButton
+            case .pop:
+                annotationView?.markerTintColor = .purple
+                annotationView?.glyphTintColor = .purple
+                miniButton.tintColor = .purple
+                annotationView?.rightCalloutAccessoryView = miniButton
+            case .rock:
+                annotationView?.markerTintColor = .orange
+                annotationView?.glyphTintColor = .orange
+                miniButton.tintColor = .orange
+                annotationView?.rightCalloutAccessoryView = miniButton
+
+            // Add more cases for other colors as needed
+            }
+        }
+        return annotationView
     }
-    
 }
 
 

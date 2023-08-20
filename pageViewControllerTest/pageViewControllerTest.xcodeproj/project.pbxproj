@@ -16,6 +16,8 @@
 		C1D1E67D2A8DF9F100DF7207 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1E67C2A8DF9F100DF7207 /* FirstViewController.swift */; };
 		C1D1E67F2A8DF9F800DF7207 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1E67E2A8DF9F800DF7207 /* SecondViewController.swift */; };
 		C1D1E6812A8DFA0400DF7207 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1E6802A8DFA0400DF7207 /* ThirdViewController.swift */; };
+		C1D1E6832A8E01FD00DF7207 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1E6822A8E01FD00DF7207 /* OtherViewController.swift */; };
+		C1D1E6852A8E033100DF7207 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1E6842A8E033100DF7207 /* NavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		C1D1E67C2A8DF9F100DF7207 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		C1D1E67E2A8DF9F800DF7207 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C1D1E6802A8DFA0400DF7207 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		C1D1E6822A8E01FD00DF7207 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
+		C1D1E6842A8E033100DF7207 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				C1D1E67C2A8DF9F100DF7207 /* FirstViewController.swift */,
 				C1D1E67E2A8DF9F800DF7207 /* SecondViewController.swift */,
 				C1D1E6802A8DFA0400DF7207 /* ThirdViewController.swift */,
+				C1D1E6822A8E01FD00DF7207 /* OtherViewController.swift */,
+				C1D1E6842A8E033100DF7207 /* NavigationViewController.swift */,
 			);
 			path = pageViewControllerTest;
 			sourceTree = "<group>";
@@ -147,8 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D1E6852A8E033100DF7207 /* NavigationViewController.swift in Sources */,
 				C120609A2A8CFF8400200D3E /* ViewController.swift in Sources */,
 				C12060962A8CFF8400200D3E /* AppDelegate.swift in Sources */,
+				C1D1E6832A8E01FD00DF7207 /* OtherViewController.swift in Sources */,
 				C12060982A8CFF8400200D3E /* SceneDelegate.swift in Sources */,
 				C1D1E67F2A8DF9F800DF7207 /* SecondViewController.swift in Sources */,
 				C1D1E6812A8DFA0400DF7207 /* ThirdViewController.swift in Sources */,
