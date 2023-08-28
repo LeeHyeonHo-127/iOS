@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Begin View Controller-->
+        <!--BeginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BeginViewController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BeginViewController" title="BeginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="BeginViewController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +49,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="회원가입" cornerStyle="medium">
                                             <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="strokeColor" red="0.12941176469999999" green="0.10980392160000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
@@ -66,7 +67,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tTT-fw-inZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="31J-jW-Ygz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tTT-fw-inZ" secondAttribute="bottom" constant="60" id="TiM-0c-cbo"/>
@@ -192,7 +193,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MbT-UC-iYo"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GK5-UV-Lvy" firstAttribute="centerX" secondItem="6zp-8O-bvL" secondAttribute="centerX" id="26a-7F-45M"/>
                             <constraint firstItem="GK5-UV-Lvy" firstAttribute="top" secondItem="MbT-UC-iYo" secondAttribute="top" constant="20" id="Qr4-ZZ-EhP"/>
@@ -227,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="-83" y="779"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--BeginNavigationController-->
         <scene sceneID="E4V-86-ifW">
             <objects>
-                <navigationController id="jfd-r1-vU5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BeginNavigationController" title="BeginNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jfd-r1-vU5" customClass="BeginNavigationController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sGh-iy-NFl">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -243,10 +244,10 @@
             </objects>
             <point key="canvasLocation" x="-1720" y="27"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginViewController-->
         <scene sceneID="kGJ-vG-EEp">
             <objects>
-                <viewController storyboardIdentifier="LoginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNw-bP-wTL" customClass="LoginViewController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNw-bP-wTL" customClass="LoginViewController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V5C-f1-65S">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,6 +281,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="회원정보 찾기" cornerStyle="medium">
                                             <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="strokeColor" red="0.12941176469999999" green="0.10980392160000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </backgroundConfiguration>
                                             <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
@@ -310,13 +312,13 @@
                                             <constraint firstAttribute="width" constant="330" id="eAo-dF-Iox"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yPJ-5F-Zdw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i45-YF-BGx" firstAttribute="top" secondItem="dCl-4g-0tD" secondAttribute="bottom" constant="20" id="7fZ-cY-kTa"/>
                             <constraint firstItem="dCl-4g-0tD" firstAttribute="centerX" secondItem="V5C-f1-65S" secondAttribute="centerX" id="ODO-Ok-tb8"/>
@@ -341,10 +343,14 @@
             <objects>
                 <navigationController id="aY4-T2-msB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="마이페이지" image="person.fill" catalog="system" id="0pU-UL-CPo"/>
+                    <navigationItem key="navigationItem" id="626-mB-jPj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BW1-hQ-ubj">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="nfP-4a-1oT" kind="relationship" relationship="rootViewController" id="6rM-S2-bDv"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1S-QA-7BG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -374,19 +380,19 @@
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZC7-J7-8W6">
                                 <rect key="frame" x="0.0" y="153" width="393" height="616"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4aC-Y8-qII">
-                                    <size key="itemSize" width="125" height="128"/>
+                                    <size key="itemSize" width="393" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="StarCollectionViewCell" reuseIdentifier="StarCollectionViewCell" id="pua-N9-eqh" customClass="StarCollectionViewCell" customModule="stock_Insight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jqc-AW-N43">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="zSy-D7-KTc">
@@ -416,7 +422,7 @@
                                                 </stackView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="125" height="128"/>
+                                        <size key="customSize" width="393" height="128"/>
                                         <connections>
                                             <outlet property="imageView" destination="1ba-Bh-6FF" id="TAi-nj-G6k"/>
                                             <outlet property="stockNameLabel" destination="xrb-TL-Xfw" id="K3T-RO-DY7"/>
@@ -427,7 +433,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mql-bV-ito"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Mql-bV-ito" firstAttribute="bottom" secondItem="ZC7-J7-8W6" secondAttribute="bottom" id="WDV-H6-5hk"/>
                             <constraint firstItem="nd7-8b-Qzf" firstAttribute="leading" secondItem="Mql-bV-ito" secondAttribute="leading" constant="20" id="ZGp-s0-Pnn"/>
@@ -774,7 +780,7 @@
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zvt-So-5Ni">
                                 <rect key="frame" x="0.0" y="148" width="393" height="621"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wa5-Xh-ty7">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -794,7 +800,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Epm-5b-TUK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7HY-Ah-UVV" firstAttribute="top" secondItem="Epm-5b-TUK" secondAttribute="top" id="JwI-jC-bKA"/>
                             <constraint firstItem="zvt-So-5Ni" firstAttribute="top" secondItem="7HY-Ah-UVV" secondAttribute="bottom" id="LPO-cF-KPx"/>
@@ -842,7 +848,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CVH-Wt-7bs">
-                                <rect key="frame" x="20" y="124" width="353" height="110"/>
+                                <rect key="frame" x="20" y="168" width="353" height="110"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="NpV-dq-OMu">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="45"/>
@@ -863,7 +869,7 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system" title=""/>
                                                 <connections>
                                                     <action selector="modifyUserInfoButtonTapped:" destination="nfP-4a-1oT" eventType="touchUpInside" id="sEk-Za-wWp"/>
-                                                    <segue destination="vGp-Ei-Qqp" kind="push" id="hCk-Fw-eGw"/>
+                                                    <segue destination="vGp-Ei-Qqp" kind="push" id="glF-45-Dm5"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -900,7 +906,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Guq-oM-fg8">
-                                <rect key="frame" x="20" y="59" width="353" height="45"/>
+                                <rect key="frame" x="20" y="103" width="353" height="45"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W5f-NE-7bu">
                                         <rect key="frame" x="0.0" y="-2.3333333333333357" width="45" height="50.333333333333336"/>
@@ -957,11 +963,11 @@
             <objects>
                 <viewController id="vGp-Ei-Qqp" customClass="ModifyUserInfoViewController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSF-JP-Xgz">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wSo-Px-lUw">
-                                <rect key="frame" x="31.666666666666657" y="0.0" width="330" height="190"/>
+                                <rect key="frame" x="31.666666666666657" y="103" width="330" height="190"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gx9-jg-o88">
                                         <rect key="frame" x="0.0" y="0.0" width="330" height="50"/>
@@ -973,28 +979,30 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이전 비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-RW-OPO">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이전 비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lE-kf-SeA">
                                         <rect key="frame" x="0.0" y="70" width="330" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Ng6-rY-AJ5"/>
-                                            <constraint firstAttribute="width" constant="330" id="pPb-KK-Zf3"/>
+                                            <constraint firstAttribute="height" constant="50" id="4y4-Fd-xXs"/>
+                                            <constraint firstAttribute="width" constant="330" id="i0v-wC-bwG"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="t9d-PW-f49"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새로운 비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Zx-2g-AB0">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새로운 비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfR-yD-cWc">
                                         <rect key="frame" x="0.0" y="140" width="330" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="330" id="45I-pQ-WA5"/>
-                                            <constraint firstAttribute="height" constant="50" id="v50-hG-rQq"/>
+                                            <constraint firstAttribute="height" constant="50" id="30g-cc-GFt"/>
+                                            <constraint firstAttribute="width" constant="330" id="cU4-cc-CbK"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="v5V-0r-j5N"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXA-E8-mRS">
-                                <rect key="frame" x="31.666666666666657" y="210" width="330" height="50"/>
+                                <rect key="frame" x="31.666666666666657" y="313" width="330" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="330" id="4se-HB-Ngx"/>
                                     <constraint firstAttribute="height" constant="50" id="68j-Jp-p8c"/>
@@ -1024,8 +1032,8 @@
                     <navigationItem key="navigationItem" id="2Mv-Gf-fdC"/>
                     <connections>
                         <outlet property="modifyUserInfoButton" destination="IXA-E8-mRS" id="6lg-eb-Jd4"/>
-                        <outlet property="newPwTextField" destination="9Zx-2g-AB0" id="CgZ-Zs-Zn8"/>
-                        <outlet property="oldPwTextField" destination="aYq-RW-OPO" id="vTb-I1-BIE"/>
+                        <outlet property="newPwTextField" destination="gfR-yD-cWc" id="LxK-BW-MtI"/>
+                        <outlet property="oldPwTextField" destination="8lE-kf-SeA" id="DbL-7m-vVl"/>
                         <outlet property="userIdTextField" destination="gx9-jg-o88" id="WyU-GB-ijS"/>
                     </connections>
                 </viewController>
@@ -1064,7 +1072,7 @@
                         <segue destination="NQy-zB-tzH" kind="relationship" relationship="viewControllers" id="ywo-tA-q0X"/>
                         <segue destination="zRs-qC-pTU" kind="relationship" relationship="viewControllers" id="Nft-It-TE2"/>
                         <segue destination="CvP-WG-Auq" kind="relationship" relationship="viewControllers" id="yMS-0c-GV4"/>
-                        <segue destination="nfP-4a-1oT" kind="relationship" relationship="viewControllers" id="Pm8-C0-mX5"/>
+                        <segue destination="aY4-T2-msB" kind="relationship" relationship="viewControllers" id="ysx-gY-I0M"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFy-TG-git" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

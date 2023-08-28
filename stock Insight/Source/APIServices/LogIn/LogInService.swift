@@ -1,8 +1,8 @@
 import Foundation
 import Alamofire
 
-struct SignInService{
-    static let shared = SignInService()
+struct LogInService{
+    static let shared = LogInService()
     
     func signIn(email: String, password: String, completion: @escaping (NetworkResult<Any>) -> Void){
         let url = APIConstants.signInURL
@@ -42,12 +42,12 @@ struct SignInService{
         case 200:
             // 로그인 성공
             return .success(decodedData.data)
-        case 400:
+        case 404:
             // 존재하지 않는 회원
             print("400")
             return .requestErr(decodedData.message)
-        case 500:
-            // 서버 내부 에러
+        case 400:
+            // 에러
             print("500")
             return .serverErr
         default:

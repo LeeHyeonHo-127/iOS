@@ -189,6 +189,8 @@ class MainCollectionViewController: UICollectionViewController, ShowLineChartCel
         self.leadingIndex.KOSDAQ = [2820.21, 2849.19, 2865.94, 2876.80, 2862.62, 2875.59, 2890.43, 2912.01, 2924.08, 2916.37, 2941.36, 2933.17, 2964.94, 2981.22, 2973.33, 2981.95, 2977.05, 2986.15, 2992.57, 3004.56]
         self.leadingIndex.SnP500 = [2812.13, 2845.67, 2852.89, 2885.77, 2895.21, 2903.28, 2911.15, 2924.34, 2913.88, 2925.40, 2941.77, 2952.74, 2962.43, 2975.48, 2983.51, 2992.15, 3003.54, 2998.47, 3012.32, 3015.88]
     }
+    
+    
     func getStocks(){
         let samsungPresentPrice = [2813.83, 2850.38, 2872.87, 2891.96, 2889.14, 2877.47, 2875.47, 2886.30, 2892.12, 2906.57, 2917.80, 2933.37, 2932.13, 2956.98, 2987.51, 3016.39, 2996.23, 3005.97, 3019.64, 3033.93]
         let stockPrice: StockPrice = StockPrice(grahpType: .presentPrice, price: samsungPresentPrice)
@@ -224,6 +226,7 @@ extension MainCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowLineChartCell", for: indexPath) as? ShowLineChartCell else {return UICollectionViewCell()}
+            cell.backgroundColor = .black
             cell.descriptionLabel.text = self.predictGraphName[indexPath.row]
             cell.section = 0
             cell.gradientColor = .systemBlue

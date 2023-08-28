@@ -20,6 +20,9 @@ struct APIConstants{
     //로그인(post)
     static let signInURL = baseURL + "/loginProc"
     
+    //로그아웃(get)
+    static let signOutURL = baseURL + "/logout"
+    
     // 회원 조회(get), 회원 탈퇴(delete) url
     static var userInfoURL = usersURL + "/\(userId)" {
         willSet(newUserInfoURL) {

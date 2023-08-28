@@ -23,7 +23,6 @@ class ShowLineChartCell: UICollectionViewCell, ChartViewDelegate{
     //subView Layout 설정
     override func layoutSubviews(){
         super.layoutSubviews()
-        
         if lineChartView == nil {
             self.lineChartView = configureChartView(isPredict: isPredict)
             setContentView()

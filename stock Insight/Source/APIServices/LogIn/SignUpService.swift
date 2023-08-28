@@ -10,6 +10,7 @@ struct SignUpService{
                 name: String,
                 completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
+        
         let url = APIConstants.signUpURL
         
         let header: HTTPHeaders = [
@@ -52,15 +53,15 @@ struct SignUpService{
         }
         
         switch status {
-        case 201:
+        case 200:
             // 회원가입 성공
             return .success(decodedData.data)
-        case 400:
+        case 409:
             // 중복된 이메일
             return .requestErr(decodedData.message)
-        case 500:
-            // 서버 내부 에러
-            return .serverErr
+        case 400:
+            // 잘못된 파라미터
+            return .wrongParameter
         default:
             return .networkFail
         }

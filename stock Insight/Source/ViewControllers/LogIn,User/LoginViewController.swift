@@ -15,23 +15,26 @@ class LoginViewController: UIViewController {
         activityIndicator.startAnimating()
         return activityIndicator
     }()
-    
 
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.passwordTextField.isSecureTextEntry = true
     }
     
-    
+    //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
 //        self.navigationController?.navigationBar.isHidden = true
     }
     
     
+    //MARK: setting 함수들
+    
+    //Attach ActivityIndicator
     private func attachActivityIndicator() {
         self.view.addSubview(self.activityIndicator)
     }
     
+    //Dettach ActivityIndicator
     private func detachActivityIndicator() {
         if self.activityIndicator.isAnimating {
             self.activityIndicator.stopAnimating()
@@ -39,11 +42,13 @@ class LoginViewController: UIViewController {
         self.activityIndicator.removeFromSuperview()
     }
     
+    //MARK: 버튼 눌렸을 시
     
+    //로그인 버튼
     @IBAction func loginButtonTapped(_ sender: Any) {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        self.logIn(email: email, password: password)
+        self.logInWithAPI(email: email, password: password)
         
         //임시 코드
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
@@ -52,17 +57,21 @@ class LoginViewController: UIViewController {
     }
     
     
-    //로그인
-    func logIn(email: String, password: String){
+    //MARK: 로그인 함수
+    
+    
+    //로그인 함수
+    func logInWithAPI(email: String, password: String){
         self.attachActivityIndicator()
-        SignInService.shared.signIn(email: email, password: password, completion: {(networkResult) in
+        LogInService.shared.signIn(email: email, password: password, completion: {(networkResult) in
             self.detachActivityIndicator()
+            
             switch networkResult{
             case .success(let data):
                 //로그인 성공
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
-                self.navigationController?.navigationBar.isHidden = true
-                self.navigationController?.pushViewController(viewController, animated: true)
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
+
             case .requestErr(let msg):
                 if let message = msg as? String {
                     print(message)
@@ -73,10 +82,13 @@ class LoginViewController: UIViewController {
                 print("serverErr in postSignUpWithAPI")
             case .networkFail:
                 print("networkFail in postSignUpWithAPI")
+            default:
+                print("networkFail in logInWithAPI")
             }
         })
     }
     
+    //MARK: 기타 함수
     
     //showAlert
     func showAlert(title: String, message: String? = nil) {
@@ -88,6 +100,17 @@ class LoginViewController: UIViewController {
 
     
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 //토큰 저장 코드 임시

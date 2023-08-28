@@ -8,32 +8,64 @@
 import UIKit
 
 class MyPageViewController: UIViewController {
-
+    
+    
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-   
+    //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    
+    //MARK: 화면 이동 버튼 함수
+    
+    //개인정보 수정 화면 이동
     @IBAction func modifyUserInfoButtonTapped(_ sender: Any) {
         self.navigationController?.navigationBar.isHidden = false
 
     }
     
-    
-    
+    //로그아웃 버튼
     @IBAction func logOutButtonTapped(_ sender: Any) {
 
-        print("로그아웃 버튼 눌림")
-        
-        // 로그인 화면으로 이동합니다.
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.logOutWithAPI(email: "", password: "")
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
     }
     
-    func logOut(email: String, password: String) {
+    
+    //MARK: 로그아웃 함수
+    
+    //로그아웃 함수
+    func logOutWithAPI(email: String, password: String){
+        LogOutService.shared.logOut(email: email, password: password, completion: {networkResult in
+            switch networkResult{
+            case .success(_):
+                // 로그인 화면으로 이동합니다.
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
+            case .requestErr(let msg):
+                if let message = msg as? String {
+                    print(message)
+                }
+            case .pathErr:
+                print("pathErr in logOutWithAPI")
+            case .serverErr:
+                print("serverErr in logOutWithAPI")
+            case .networkFail:
+                print("networkFail in logOutWithAPI")
+            default:
+                print("networkFail in logOutWithAPI")
+            }
+        })
+    }
+    
+    //urlSeesion Version Logout
+    func logOutURLSessionVersion(email: String, password: String) {
         let urlString = "https://watch.ngrok.app/logout"
         guard let url = URL(string: urlString) else {
             DispatchQueue.main.async {
@@ -86,12 +118,13 @@ class MyPageViewController: UIViewController {
         task.resume()
     }
     
+    
+    
+    //MARK: 기타 함수
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
            alertController.addAction(okAction)
            present(alertController, animated: true, completion: nil)
        }
-
-    
 }

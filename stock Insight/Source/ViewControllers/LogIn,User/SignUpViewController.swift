@@ -9,16 +9,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet var rePasswordTextField: UITextField!
     @IBOutlet var userNameTextField: UITextField!
     
-    override func viewDidLoad() {
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        rePasswordTextField.delegate = self
-        userNameTextField.delegate = self
-        self.signUpButton.isEnabled = false
-        self.passwordTextField.isSecureTextEntry = true
-        self.rePasswordTextField.isSecureTextEntry = true
-    }
-    
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
@@ -29,10 +19,21 @@ class SignUpViewController: UIViewController {
         return activityIndicator
     }()
     
+    
+    //viewDidLoad
+    override func viewDidLoad() {
+        self.configureTexFieldAndButton()
+    }
+    
+
+    //MARK: 설정 함수
+    
+    //Attach ActivityIndicator
     private func attachActivityIndicator() {
         self.view.addSubview(self.activityIndicator)
     }
     
+    //Dettach ActivityIndicator
     private func detachActivityIndicator() {
         if self.activityIndicator.isAnimating {
             self.activityIndicator.stopAnimating()
@@ -40,7 +41,22 @@ class SignUpViewController: UIViewController {
         self.activityIndicator.removeFromSuperview()
     }
     
+    //configure TextField and Button 함수
+    func configureTexFieldAndButton(){
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        rePasswordTextField.delegate = self
+        userNameTextField.delegate = self
+        
+        self.signUpButton.isEnabled = false
+        self.passwordTextField.isSecureTextEntry = true
+        self.rePasswordTextField.isSecureTextEntry = true
+    }
+    
+    
+    //MARK: 회원가입 버튼
 
+    //회원가입 버튼
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -48,15 +64,17 @@ class SignUpViewController: UIViewController {
         let userName = userNameTextField.text ?? ""
         
         if password == rePassword{
-//            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
-//            self.navigationController?.pushViewController(viewController, animated: true)
-//            self.signUp(email: email, password: password, userName: userName)
+            self.signUpWithAPI(email: email, password: password, userName: userName)
+
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
         }
     }
     
-    func signUp(email: String, password: String, userName: String){
+    
+    //MARK: 회원가입 함수
+    
+    func signUpWithAPI(email: String, password: String, userName: String){
         self.attachActivityIndicator()
         
         SignUpService.shared.singUp(email: email, password: password, name: userName, completion: {(networkResult) -> Void in
@@ -75,6 +93,10 @@ class SignUpViewController: UIViewController {
                     
                     guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
                     self.navigationController?.pushViewController(viewController, animated: true)
+                    
+                    
+                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 }else{
                     print("회원가입 실패")
                 }
@@ -88,10 +110,11 @@ class SignUpViewController: UIViewController {
                 print("serverErr in postSignUpWithAPI")
             case .networkFail:
                 print("networkFail in postSignUpWithAPI")
+            default:
+                print("networkFail in signUpWithAPI")
             }
         })
     }
-    
     
     
     //과거 버전
@@ -170,6 +193,7 @@ class SignUpViewController: UIViewController {
     }
     
     
+    //MARK: 기타 함수
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -181,8 +205,8 @@ class SignUpViewController: UIViewController {
 
 
 
-
 extension SignUpViewController: UITextFieldDelegate{
+    //return 키가 눌리면 키보드 내리기
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //return 키가 눌렸을 때 동작
         view.endEditing(true)
         return false
@@ -194,6 +218,6 @@ extension SignUpViewController: UITextFieldDelegate{
         let isRepasswordEmpty = rePasswordTextField.text == ""
         let isUserNameEmpty = userNameTextField.text == ""
         
-        signUpButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty
+        self.signUpButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty
     }
 }

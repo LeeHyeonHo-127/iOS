@@ -2,34 +2,40 @@ import UIKit
 
 class ModifyUserInfoViewController: UIViewController {
     
-    
-    
     @IBOutlet var modifyUserInfoButton: UIButton!
     @IBOutlet var userIdTextField: UITextField!
     @IBOutlet var oldPwTextField: UITextField!
     @IBOutlet var newPwTextField: UITextField!
     
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    //MARK: 설정 함수
+    func configureButtonAndTextField(){
         userIdTextField.delegate = self
         oldPwTextField.delegate = self
         newPwTextField.delegate = self
+        oldPwTextField.textContentType = .newPassword
+        newPwTextField.textContentType = .newPassword
         self.modifyUserInfoButton.isEnabled = false
-        self.oldPwTextField.isSecureTextEntry = true
-        self.newPwTextField.isSecureTextEntry = true
-
     }
     
+    //MARK: 유저 정보 수정 버튼
+    
+    //유저 정보 수정 버튼
     @IBAction func modifyUserInfoButtonTapped(_ sender: Any) {
         let user_id = userIdTextField.text ?? ""
         let old_pw = oldPwTextField.text ?? ""
         let new_pw = newPwTextField.text ?? ""
         self.dismiss(animated: true, completion: nil)
-        self.modifyPassword(user_id:user_id, old_pw: old_pw, new_pw: new_pw )
     }
     
     
-    //비밀번호 수정///
+    //MARK: 비밀번호 수정 함수
+    
+    //URLSeesion Version 비밀번호 수정
     func modifyPassword(user_id:String, old_pw:String, new_pw:String){
         let urlString = "https://watch.ngrok.app/logineditProc"
         guard let url = URL(string: urlString) else {
@@ -86,14 +92,22 @@ class ModifyUserInfoViewController: UIViewController {
         }
         task.resume()
     }
+    
+    
+    //MARK: 기타 함수
+    
+    //showAlert
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
            alertController.addAction(okAction)
            present(alertController, animated: true, completion: nil)
-       }
+    }
+    
+    
 }
 extension ModifyUserInfoViewController: UITextFieldDelegate{
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //return 키가 눌렸을 때 동작
         view.endEditing(true)
         return false
