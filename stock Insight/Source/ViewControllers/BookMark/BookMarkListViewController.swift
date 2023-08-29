@@ -16,27 +16,25 @@ struct BookMarkStock{
 class BookMarkListViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
+    
     var bookMarkStockList: [BookMarkStock] = []
     let refreshControl = UIRefreshControl()
     
   
+    //viweDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         getBookmarkStockList()
-        
-        // UIRefreshControl 설정
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        collectionView.refreshControl = refreshControl
     }
     
+    //viewWillAppead
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    @objc private func refreshData() {
-        refreshControl.endRefreshing()
-        }
+
+    //MARK: - 설정 함수
     
     //collection layout 및 기본 설정 함수
     private func configureCollectionView(){
@@ -44,7 +42,18 @@ class BookMarkListViewController: UIViewController {
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 10)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
+    
+    @objc private func refreshData() {
+        refreshControl.endRefreshing()
+    }
+    
+    //MARK: - 데이터 관련 함수
+    
+
     
     //즐겨찾기에 넣을 더미 데이터 생성 함수
     private func getBookmarkStockList(){
@@ -73,10 +82,12 @@ class BookMarkListViewController: UIViewController {
 
 
 extension BookMarkListViewController: UICollectionViewDataSource{
+    //collectionView item 수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.bookMarkStockList.count
     }
     
+    //cell 반환
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarCollectionViewCell", for: indexPath) as? StarCollectionViewCell else {return UICollectionViewCell()}
         cell.imageView.image = self.bookMarkStockList[indexPath.row].stockImage
@@ -87,9 +98,11 @@ extension BookMarkListViewController: UICollectionViewDataSource{
 }
 
 extension BookMarkListViewController: UICollectionViewDelegate{
-    
 }
+
+
 extension BookMarkListViewController: UICollectionViewDelegateFlowLayout{
+    //collectionView 레이아웃 설정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (UIScreen.main.bounds.width) - 20, height: 60)
     }

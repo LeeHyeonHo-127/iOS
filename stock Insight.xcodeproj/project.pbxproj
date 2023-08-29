@@ -57,6 +57,8 @@
 		C1BE315429FF72F200FF1FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315229FF72F200FF1FE4 /* Main.storyboard */; };
 		C1BE315629FF72F300FF1FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315529FF72F300FF1FE4 /* Assets.xcassets */; };
 		C1BE315929FF72F300FF1FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315729FF72F300FF1FE4 /* LaunchScreen.storyboard */; };
+		C1D653112A9DBFCA0081B7A0 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D653102A9DBFCA0081B7A0 /* BookmarkService.swift */; };
+		C1D653142A9DC8CF0081B7A0 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D653132A9DC8CF0081B7A0 /* Bookmark.swift */; };
 		C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */; };
 		C1EADDB22A26F7C800F01A0C /* HowPredictCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +116,8 @@
 		C1BE315529FF72F300FF1FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1BE315829FF72F300FF1FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1BE315A29FF72F300FF1FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1D653102A9DBFCA0081B7A0 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
+		C1D653132A9DC8CF0081B7A0 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictDetailViewController.swift; sourceTree = "<group>"; };
 		C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDD58BC9BC798488E9507F25 /* Pods-stock Insight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stock Insight.release.xcconfig"; path = "Target Support Files/Pods-stock Insight/Pods-stock Insight.release.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 		C1AC80AC2A860540005E1AE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C1D653122A9DC8B50081B7A0 /* Bookmark */,
 				C14E786B2A25D7E4009134AA /* LeadingIndex.swift */,
 				C14E78692A20ADB4009134AA /* Stock.swift */,
 				C185E0F02A87AC9200895C2D /* AuthData.swift */,
@@ -318,6 +323,7 @@
 		C1AC80B02A8606A5005E1AE6 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				C1D6530F2A9DBFAF0081B7A0 /* Bookmark */,
 				C17F3A272A9CCAB800656598 /* LogIn */,
 				C185E0EB2A876DBC00895C2D /* Sentences */,
 			);
@@ -351,6 +357,22 @@
 				C1BE314E29FF72F200FF1FE4 /* SceneDelegate.swift */,
 			);
 			path = "stock Insight";
+			sourceTree = "<group>";
+		};
+		C1D6530F2A9DBFAF0081B7A0 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				C1D653102A9DBFCA0081B7A0 /* BookmarkService.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		C1D653122A9DC8B50081B7A0 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				C1D653132A9DC8CF0081B7A0 /* Bookmark.swift */,
+			);
+			path = Bookmark;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +524,7 @@
 				C13DEDD52A11FB5D00AA8EAF /* MainViewController.swift in Sources */,
 				C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */,
 				C17F3A2D2A9CD0C400656598 /* LogOutService.swift in Sources */,
+				C1D653142A9DC8CF0081B7A0 /* Bookmark.swift in Sources */,
 				C14E786A2A20ADB4009134AA /* Stock.swift in Sources */,
 				C1071CCE2A1E0AFA005E4D8F /* MainCollectionViewController.swift in Sources */,
 				C13DEDDB2A11FC6100AA8EAF /* SignUpViewController.swift in Sources */,
@@ -518,6 +541,7 @@
 				C13DEDDD2A11FC9300AA8EAF /* FindAddressViewController.swift in Sources */,
 				C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */,
 				C1BE314F29FF72F200FF1FE4 /* SceneDelegate.swift in Sources */,
+				C1D653112A9DBFCA0081B7A0 /* BookmarkService.swift in Sources */,
 				C185E0ED2A876DDF00895C2D /* NetworkResult.swift in Sources */,
 				C12606932A2993ED008B5CDC /* StockDetailCollectionViewController.swift in Sources */,
 				C14E786E2A261192009134AA /* DefaultCollectionViewHeader.swift in Sources */,

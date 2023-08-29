@@ -33,5 +33,17 @@ struct APIConstants{
     // 비밀번호 변경(put), 확인(post) url
     static var passwordURL = userInfoURL + "/password"
     
+    
+    //MARK: 즐겨찾기
+    
+    //즐겨찾기 추가(post)
+    static let addBookmark = baseURL + "/addfavoriteProc"
+    
+    //즐겨찾기 조회(get)
+    static let getBookmark = baseURL + "/addfavoriteList"
+    
+    //즐겨찾기 삭제
+    
 
+    
 }
