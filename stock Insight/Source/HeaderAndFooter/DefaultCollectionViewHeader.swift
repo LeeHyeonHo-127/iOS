@@ -5,7 +5,14 @@ class DefaultCollectionViewHeader: UICollectionReusableView{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        self.makeLabel_And_Button()
+    }
+    
+    
+    //MARK: - 설정 함수
+    
+    //nameLabel, Button 생성
+    func makeLabel_And_Button(){
         sectionNameLabel.font = .systemFont(ofSize: 17, weight: .bold)
         sectionNameLabel.textColor = .black
         sectionNameLabel.sizeToFit()
@@ -13,6 +20,7 @@ class DefaultCollectionViewHeader: UICollectionReusableView{
         
         addSubview(sectionNameLabel)
         
+        //constraint 설정
         sectionNameLabel.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.top.bottom.leading.equalToSuperview().offset(10)

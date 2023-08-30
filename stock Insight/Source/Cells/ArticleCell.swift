@@ -20,11 +20,12 @@ class ArticleCell: UICollectionViewCell {
         return button
     }()
     
+    
     @objc func gotoArticle(){
         let websiteURL = URL(string: artitleURL)
         if let url = websiteURL {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
 

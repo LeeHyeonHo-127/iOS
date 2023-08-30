@@ -1,6 +1,6 @@
 import UIKit
 
-
+//종목 상세화면 CollectionView
 class StockDetailCollectionViewController: UICollectionViewController{
     var stocks: [Stock] = []
     var predictGraphName: [String] = ["시계열분석", "감성 분석", "현재 주가"]
@@ -10,7 +10,7 @@ class StockDetailCollectionViewController: UICollectionViewController{
     var customBlueColor = UIColor(red: 0.149, green: 0.098, blue: 1.0, alpha: 1.0)
 
 
-
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         //데이터 가져오기
@@ -30,12 +30,15 @@ class StockDetailCollectionViewController: UICollectionViewController{
 
         collectionView.collectionViewLayout = layout()
     }
+    
+    //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "My Title"
         self.navigationController?.navigationBar.isHidden = false
     }
 
     
+    //MARK: - 설정 함수
     
     //각각의 섹션 타입에 대한 UICollectionViewLayout 생성
     private func layout() ->UICollectionViewLayout{
@@ -54,7 +57,6 @@ class StockDetailCollectionViewController: UICollectionViewController{
         }
     }
     
-    //MARK: LAYOUT 설정
     //주가 정보 섹션 생성
     private func createBasicTypeSection() -> NSCollectionLayoutSection{
         //item
@@ -75,6 +77,8 @@ class StockDetailCollectionViewController: UICollectionViewController{
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
+    
+    
     //지수 정보 섹션 생성
     private func createLeadingIndexTypeSection() -> NSCollectionLayoutSection{
         //item
@@ -96,6 +100,8 @@ class StockDetailCollectionViewController: UICollectionViewController{
         section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
         return section
     }
+    
+    
     //뉴스 기사 section
     private func createArticleSection() -> NSCollectionLayoutSection {
         // Item
@@ -121,6 +127,7 @@ class StockDetailCollectionViewController: UICollectionViewController{
         return section
     }
     
+    
     //SectionHeader Layout 설정
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
         //section header 사이즈
@@ -131,6 +138,8 @@ class StockDetailCollectionViewController: UICollectionViewController{
         
         return sectionHeader
     }
+    
+    
     // SectionFooter Layout 설정
     private func createSectionFooter() -> NSCollectionLayoutBoundarySupplementaryItem {
         // Section footer 사이즈
@@ -145,8 +154,9 @@ class StockDetailCollectionViewController: UICollectionViewController{
         
         return sectionFooter
     }
+    
 
-    //MARK: 그외 함수
+    //MARK: - 기타 함수
     //Show Alert 함수
     func showAlert(title: String, message: String? = nil) {
            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -154,6 +164,7 @@ class StockDetailCollectionViewController: UICollectionViewController{
            alertController.addAction(okAction)
            present(alertController, animated: true, completion: nil)
        }
+    
     //csvFile 파싱 함수
     func parseCSVFile(datasetName: String) -> [[Date: Double]] {
         var dictionaryArray: [[Date: Double]] = []
@@ -194,12 +205,17 @@ class StockDetailCollectionViewController: UICollectionViewController{
         }
         return dictionaryArray
     }
-    //임시 함수
+    
+    //MARK: - Data 관련 함수
+    
+    //임시 함수_지수 데이터 가져오기
     func getLeadingIndex(){
         self.leadingIndex.KOSPI = [2813.83, 2850.38, 2872.87, 2891.96, 2889.14, 2877.47, 2875.47, 2886.30, 2892.12, 2906.57, 2917.80, 2933.37, 2932.13, 2956.98, 2987.51, 3016.39, 2996.23, 3005.97, 3019.64, 3033.93]
         self.leadingIndex.KOSDAQ = [2820.21, 2849.19, 2865.94, 2876.80, 2862.62, 2875.59, 2890.43, 2912.01, 2924.08, 2916.37, 2941.36, 2933.17, 2964.94, 2981.22, 2973.33, 2981.95, 2977.05, 2986.15, 2992.57, 3004.56]
         self.leadingIndex.SnP500 = [2812.13, 2845.67, 2852.89, 2885.77, 2895.21, 2903.28, 2911.15, 2924.34, 2913.88, 2925.40, 2941.77, 2952.74, 2962.43, 2975.48, 2983.51, 2992.15, 3003.54, 2998.47, 3012.32, 3015.88]
     }
+    
+    //임시함수_주가 데이터 생성
     func getStocks(){
         let samsungPresentPrice = [2813.83, 2850.38, 2872.87, 2891.96, 2889.14, 2877.47, 2875.47, 2886.30, 2892.12, 2906.57, 2917.80, 2933.37, 2932.13, 2956.98, 2987.51, 3016.39, 2996.23, 3005.97, 3019.64, 3033.93]
         let stockPrice: StockPrice = StockPrice(grahpType: .presentPrice, price: samsungPresentPrice)
@@ -220,7 +236,6 @@ class StockDetailCollectionViewController: UICollectionViewController{
         self.stocks.append(teslaStock)
     }
 }
-
 
 
 
@@ -270,6 +285,7 @@ extension StockDetailCollectionViewController {
         else{return UICollectionViewCell()}
     }
     
+    
     //헤더 뷰 설정
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader{
@@ -294,6 +310,7 @@ extension StockDetailCollectionViewController {
             return UICollectionViewCell()
         }
     }
+    
     
     //섹션 개수 설정
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

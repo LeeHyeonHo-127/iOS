@@ -1,14 +1,20 @@
 import UIKit
 
 class HowPredictViewController: UIViewController {
+    
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
+    
+    //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
 
+    //MARK: - 버튼 함수
+    
+    //lstm 상세화면으로 이동
     @IBAction func LSTMDetailButtonTapped(_ sender: Any) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HowPredictDetailViewController") as? HowPredictDetailViewController else {return}
         self.navigationController?.navigationBar.isHidden = false
@@ -48,6 +54,8 @@ class HowPredictViewController: UIViewController {
         """
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    //감성분석 상세화면으로 이동
     @IBAction func sentimentAnalysisDetailButtonTapped(_ sender: Any) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HowPredictDetailViewController") as? HowPredictDetailViewController else {return}
         self.navigationController?.navigationBar.isHidden = false

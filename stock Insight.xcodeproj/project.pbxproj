@@ -29,6 +29,8 @@
 		C14E78702A263240009134AA /* StarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E786F2A263240009134AA /* StarCollectionViewCell.swift */; };
 		C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E78712A26DD2B009134AA /* HowPredictViewController.swift */; };
 		C154C0122A31292900235A36 /* Data_Sentimental.csv in Resources */ = {isa = PBXBuildFile; fileRef = C154C0112A31292900235A36 /* Data_Sentimental.csv */; };
+		C16CACA72A9E235200FED71D /* MainViewUITestViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16CACA62A9E235200FED71D /* MainViewUITestViewContoller.swift */; };
+		C16CACA92A9E46B900FED71D /* VerticalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16CACA82A9E46B900FED71D /* VerticalViewController.swift */; };
 		C17F3A2D2A9CD0C400656598 /* LogOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17F3A2C2A9CD0C400656598 /* LogOutService.swift */; };
 		C17F3A2F2A9CDC1000656598 /* ModifyUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */; };
 		C185E0E52A87670000895C2D /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0E42A87670000895C2D /* LogInService.swift */; };
@@ -59,6 +61,7 @@
 		C1BE315929FF72F300FF1FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BE315729FF72F300FF1FE4 /* LaunchScreen.storyboard */; };
 		C1D653112A9DBFCA0081B7A0 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D653102A9DBFCA0081B7A0 /* BookmarkService.swift */; };
 		C1D653142A9DC8CF0081B7A0 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D653132A9DC8CF0081B7A0 /* Bookmark.swift */; };
+		C1D653172A9DDAA00081B7A0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D653162A9DDAA00081B7A0 /* UIColor.swift */; };
 		C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */; };
 		C1EADDB22A26F7C800F01A0C /* HowPredictCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,8 @@
 		C14E786F2A263240009134AA /* StarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCollectionViewCell.swift; sourceTree = "<group>"; };
 		C14E78712A26DD2B009134AA /* HowPredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictViewController.swift; sourceTree = "<group>"; };
 		C154C0112A31292900235A36 /* Data_Sentimental.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = Data_Sentimental.csv; path = "stock Insight/Resource/dummy/Data_Sentimental.csv"; sourceTree = SOURCE_ROOT; };
+		C16CACA62A9E235200FED71D /* MainViewUITestViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewUITestViewContoller.swift; sourceTree = "<group>"; };
+		C16CACA82A9E46B900FED71D /* VerticalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalViewController.swift; sourceTree = "<group>"; };
 		C17F3A2C2A9CD0C400656598 /* LogOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutService.swift; sourceTree = "<group>"; };
 		C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyUserInfoService.swift; sourceTree = "<group>"; };
 		C185E0E42A87670000895C2D /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 		C1BE315A29FF72F300FF1FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1D653102A9DBFCA0081B7A0 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 		C1D653132A9DC8CF0081B7A0 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		C1D653162A9DDAA00081B7A0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C1EADDAF2A26F48000F01A0C /* HowPredictDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictDetailViewController.swift; sourceTree = "<group>"; };
 		C1EADDB12A26F7C800F01A0C /* HowPredictCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowPredictCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDD58BC9BC798488E9507F25 /* Pods-stock Insight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stock Insight.release.xcconfig"; path = "Target Support Files/Pods-stock Insight/Pods-stock Insight.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,11 +231,12 @@
 		C1AC80A82A8604EC005E1AE6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C1AC80AC2A860540005E1AE6 /* Models */,
 				C1AC80B02A8606A5005E1AE6 /* APIServices */,
 				C1AC80AF2A8605A5005E1AE6 /* ViewControllers */,
-				C1AC80AE2A860589005E1AE6 /* HeaderAndFooter */,
 				C1AC80AD2A860570005E1AE6 /* Cells */,
-				C1AC80AC2A860540005E1AE6 /* Models */,
+				C1AC80AE2A860589005E1AE6 /* HeaderAndFooter */,
+				C1D653152A9DDA830081B7A0 /* Extensions */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -316,6 +323,8 @@
 				C17F3A282A9CCB0D00656598 /* LogIn,User */,
 				C17F3A2A2A9CCBC000656598 /* How Predict */,
 				C12606962A2B4C76008B5CDC /* nodeJsTestView.swift */,
+				C16CACA62A9E235200FED71D /* MainViewUITestViewContoller.swift */,
+				C16CACA82A9E46B900FED71D /* VerticalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -323,8 +332,8 @@
 		C1AC80B02A8606A5005E1AE6 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				C1D6530F2A9DBFAF0081B7A0 /* Bookmark */,
 				C17F3A272A9CCAB800656598 /* LogIn */,
+				C1D6530F2A9DBFAF0081B7A0 /* Bookmark */,
 				C185E0EB2A876DBC00895C2D /* Sentences */,
 			);
 			path = APIServices;
@@ -373,6 +382,14 @@
 				C1D653132A9DC8CF0081B7A0 /* Bookmark.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		C1D653152A9DDA830081B7A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C1D653162A9DDAA00081B7A0 /* UIColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,6 +531,7 @@
 				C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */,
 				C1071CD22A1E0B25005E4D8F /* ShowLineChartCell.swift in Sources */,
 				C185E0EF2A8773ED00895C2D /* GenericResponse.swift in Sources */,
+				C16CACA72A9E235200FED71D /* MainViewUITestViewContoller.swift in Sources */,
 				C1A9F39A2A301E740094CC95 /* StockCollectionViewFooter.swift in Sources */,
 				C1BE315129FF72F200FF1FE4 /* BeginViewController.swift in Sources */,
 				C12606972A2B4C76008B5CDC /* nodeJsTestView.swift in Sources */,
@@ -531,6 +549,7 @@
 				C1071CD42A1E0B36005E4D8F /* StockCollectionViewHeader.swift in Sources */,
 				C14E786C2A25D7E4009134AA /* LeadingIndex.swift in Sources */,
 				C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */,
+				C1D653172A9DDAA00081B7A0 /* UIColor.swift in Sources */,
 				C1A9F3902A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift in Sources */,
 				C185E0F12A87AC9200895C2D /* AuthData.swift in Sources */,
 				C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */,
@@ -545,6 +564,7 @@
 				C185E0ED2A876DDF00895C2D /* NetworkResult.swift in Sources */,
 				C12606932A2993ED008B5CDC /* StockDetailCollectionViewController.swift in Sources */,
 				C14E786E2A261192009134AA /* DefaultCollectionViewHeader.swift in Sources */,
+				C16CACA92A9E46B900FED71D /* VerticalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
     //로그인 함수
     func logInWithAPI(email: String, password: String){
         self.attachActivityIndicator()
-        LogInService.shared.signIn(email: email, password: password, completion: {(networkResult) in
+        LogInService.shared.logIn(email: email, password: password, completion: {(networkResult) in
             self.detachActivityIndicator()
             
             switch networkResult{

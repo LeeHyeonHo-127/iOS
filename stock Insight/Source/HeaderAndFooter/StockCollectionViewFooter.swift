@@ -1,6 +1,7 @@
 import UIKit
 
 class StockCollectionViewFooter: UICollectionReusableView {
+    
     let buttonHeight: CGFloat = 20
     let buttonSpacing: CGFloat = 5
     let buttonName = ["5일 예측", "10일 예측", "20일 예측", "30일 예측" ]
@@ -8,15 +9,20 @@ class StockCollectionViewFooter: UICollectionReusableView {
     let customBlueColor = UIColor(red: 0.3, green: 0.35, blue: 1.0, alpha: 1.0)
     var customBlackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureButtons()
     }
     
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureButtons()
     }
+    
+    //MARK: - 설정 함수
+    
     //버튼 생성
     func configureButtons() {
         let buttonWidth = (bounds.width - (buttonSpacing * CGFloat(4 - 1))) / CGFloat(4)
@@ -50,6 +56,7 @@ class StockCollectionViewFooter: UICollectionReusableView {
             addSubview(button)
         }
     }
+    
     //버튼 동작
     @objc func buttonTapped(_ sender: UIButton) {
         guard let collectionView = superview as? UICollectionView else { return }
