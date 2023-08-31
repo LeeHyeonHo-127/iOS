@@ -9,7 +9,12 @@ import UIKit
 
 class StarCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var stockNumberLabel: UILabel!
-    @IBOutlet var stockNameLabel: UILabel!
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var stockCodeLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var percentageLabel: UILabel!
+    
+    func settingCell(){
+        self.percentageLabel.layer.cornerRadius = 10
+    }
 }

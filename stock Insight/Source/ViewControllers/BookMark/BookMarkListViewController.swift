@@ -39,7 +39,7 @@ class BookMarkListViewController: UIViewController {
     //collection layout 및 기본 설정 함수
     private func configureCollectionView(){
         self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 10)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
@@ -90,9 +90,7 @@ extension BookMarkListViewController: UICollectionViewDataSource{
     //cell 반환
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarCollectionViewCell", for: indexPath) as? StarCollectionViewCell else {return UICollectionViewCell()}
-        cell.imageView.image = self.bookMarkStockList[indexPath.row].stockImage
-        cell.stockNameLabel.text = self.bookMarkStockList[indexPath.row].stockName
-        cell.stockNumberLabel.text = self.bookMarkStockList[indexPath.row].stockNumber
+        cell.settingCell()
         return cell
     }
 }
@@ -104,6 +102,6 @@ extension BookMarkListViewController: UICollectionViewDelegate{
 extension BookMarkListViewController: UICollectionViewDelegateFlowLayout{
     //collectionView 레이아웃 설정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width) - 20, height: 60)
+        return CGSize(width: (UIScreen.main.bounds.width) , height: 50)
     }
 }

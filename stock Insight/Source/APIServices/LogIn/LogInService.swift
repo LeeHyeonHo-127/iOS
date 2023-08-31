@@ -37,7 +37,7 @@ struct LogInService{
     
     func doLogIn(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<AuthData>.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(GenericResponse<User>.self, from: data) else {return .pathErr}
         
         
         switch status {

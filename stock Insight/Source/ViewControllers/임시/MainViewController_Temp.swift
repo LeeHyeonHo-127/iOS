@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController_Temp: UIViewController {
 
     
     @IBOutlet var collectionView: UICollectionView!
@@ -81,7 +81,7 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: UITextFieldDelegate{
+extension MainViewController_Temp: UITextFieldDelegate{
     // UITextFieldDelegate 메서드로 텍스트 필드에서 리턴 키를 눌렀을 때 키패드를 사라지게 할 수도 있습니다.
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()

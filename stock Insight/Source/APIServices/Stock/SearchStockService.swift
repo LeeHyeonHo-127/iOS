@@ -1,26 +1,22 @@
 import Foundation
 import Alamofire
 
-struct SignUpService{
-    static let shared = SignUpService()
+struct SearchStockService{
+    static let shared = SearchStockService()
     
-    //회원가입
-    func singUp(email: String,
-                password: String,
-                name: String,
+    //종목 검색
+    func searchStock(stockName: String,
                 completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
         
-        let url = APIConstants.signUpURL
+        let url = APIConstants.searchStockInfo
         
         let header: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
         
         let body: Parameters = [
-            "user_id" : email,
-            "pw" : password,
-            "name" : name
+            "stockName" : stockName
         ]
         
         let dataRequest = AF.request(url,
@@ -37,7 +33,7 @@ struct SignUpService{
                 guard let data = response.value else {
                     return
                 }
-                completion(doSignUp(status: statusCode, data: data))
+                completion(judgeSearchStock(status: statusCode, data: data))
             case .failure(let error):
                 print(error)
                 completion(.networkFail)
@@ -45,10 +41,10 @@ struct SignUpService{
         })
     }
     
-    //회원가입 여부 확인
-    private func doSignUp(status: Int, data: Data) -> NetworkResult<Any>{
+    //종목 검색 여부 확인
+    private func judgeSearchStock(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(User.self, from: data) else {
+        guard let decodedData = try? decoder.decode(SearchStock.self, from: data) else {
             return .pathErr
         }
         
@@ -56,9 +52,10 @@ struct SignUpService{
         case 200:
             // 회원가입 성공
             return .success(decodedData)
-        case 409:
-            // 중복된 이메일
-            return .requestErr(decodedData)
+        case 408:
+            // 주식 API 문제로 요청 시간초과
+            var overTimeMessage = "주식 API 문제로 요청 시간초과"
+            return .requestErr(overTimeMessage)
         case 400:
             // 잘못된 파라미터
             return .wrongParameter

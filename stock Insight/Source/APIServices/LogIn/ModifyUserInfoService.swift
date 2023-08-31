@@ -48,17 +48,17 @@ struct ModifyPasswordService{
     //회원가입 여부 확인
     private func doSignUp(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<AuthData>.self, from: data) else {
+        guard let decodedData = try? decoder.decode(User.self, from: data) else {
             return .pathErr
         }
         
         switch status {
         case 200:
             // 비밀번호 수정 완요
-            return .success(decodedData.data)
+            return .success(decodedData)
         case 409:
             // 중복된 이메일
-            return .requestErr(decodedData.message)
+            return .requestErr(decodedData)
         case 400:
             // 잘못된 파라미터
             return .wrongParameter

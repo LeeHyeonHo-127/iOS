@@ -35,17 +35,17 @@ struct LogOutService{
     
     func doLogOut(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<AuthData>.self, from: data) else {return .pathErr}
+        guard let decodedData = try? decoder.decode(User.self, from: data) else {return .pathErr}
         
         //다시 수정해야함
         switch status {
         case 200:
             // 로그인 성공
-            return .success(decodedData.data)
+            return .success(decodedData)
         case 404:
             // 존재하지 않는 회원
             print("400")
-            return .requestErr(decodedData.message)
+            return .requestErr(decodedData)
         case 400:
             // 에러
             print("500")

@@ -82,14 +82,14 @@ class SignUpViewController: UIViewController {
             
             switch networkResult{
             case .success(let data):
-                if let signUpData = data as? AuthData{
+                if let signUpData = data as? User{
                     print("회원가입 성공")
                     // 회원가입 성공
-                    APIConstants.userId = signUpData.user.id
-                    UserDefaults.standard.setValue(signUpData.token, forKey: "token")
-                    UserDefaults.standard.setValue(signUpData.user.id, forKey: "userId")
-                    UserDefaults.standard.setValue("email", forKey: "loginType")
-                    UserDefaults.standard.setValue(false, forKey: "didLogin")
+//                    APIConstants.userId = signUpData.user.id
+//                    UserDefaults.standard.setValue(signUpData.token, forKey: "token")
+//                    UserDefaults.standard.setValue(signUpData.user.id, forKey: "userId")
+//                    UserDefaults.standard.setValue("email", forKey: "loginType")
+//                    UserDefaults.standard.setValue(false, forKey: "didLogin")
                     
                     guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
                     self.navigationController?.pushViewController(viewController, animated: true)

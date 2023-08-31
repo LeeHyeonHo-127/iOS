@@ -14,6 +14,7 @@ class HowPredictDetailViewController: UIViewController {
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textView.backgroundColor = .black
         self.displayMarkdownDocument(markdown: self.markdown, in: self.textView)
     }
     
@@ -33,6 +34,7 @@ class HowPredictDetailViewController: UIViewController {
     func displayMarkdownDocument(markdown: String, in textView: UITextView) {
         if let attributedString = renderMarkdownDocument(markdown: markdown) {
             textView.attributedText = attributedString
+            textView.textColor = .white
         } else {
             textView.text = "Failed to load markdown document."
         }

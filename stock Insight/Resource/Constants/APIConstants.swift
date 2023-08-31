@@ -44,7 +44,7 @@ struct APIConstants{
     //MARK: - 주식
     
     //주식 조회(post)
-    static let getStockInfo = baseURL + "/getStockInfo"
+    static let searchStockInfo = baseURL + "/getStockInfo"
     
     //주요지수 가져오기(post)
     static let getIndexInfo = baseURL + "/mainstocks"
