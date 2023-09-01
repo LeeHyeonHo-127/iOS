@@ -6,7 +6,7 @@ struct LogInService{
     
     func logIn(email: String, password: String, completion: @escaping (NetworkResult<Any>) -> Void){
         let url = APIConstants.logInURL
-        
+        print("======LogInService.LogIn In=========")
         let header: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
@@ -24,6 +24,7 @@ struct LogInService{
         dataRequest.responseData(completionHandler: {response in
             switch response.result{
             case .success:
+                print("======LogiIn Success=========")
                 guard let status = response.response?.statusCode else {return}
                 guard let data = response.value else {return}
                 completion(doLogIn(status: status, data: data, url: URL(string: url)!))
@@ -36,13 +37,18 @@ struct LogInService{
     
     
     func doLogIn(status: Int, data: Data, url: URL) -> NetworkResult<Any>{
+        print("======doLogIn In=========")
+        print("======Decoding 시도=========")
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<User>.self, from: data) else {return .pathErr}
+        print(type(of: data))
+        guard let decodedData = try? decoder.decode(User.self, from: data) else {return .pathErr}
+        print("======Decoding 성공=========")
         
         
         switch status {
         case 200: // 로그인 성공
             //토큰 저장
+            print("=====Status200 성공!=========")
             if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
                 for cookie in cookies {
                     if cookie.name == "access_token" {
@@ -55,11 +61,12 @@ struct LogInService{
                     }
                 }
             }
-            return .success(decodedData.data)
+            return .success(decodedData)
         case 404:
+            print("=====Status404 실패=========")
             // 존재하지 않는 회원
             print("400")
-            return .requestErr(decodedData.message)
+            return .requestErr(decodedData)
         case 400:
             // 에러
             print("500")

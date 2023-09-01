@@ -13,6 +13,7 @@ struct SignUpService{
                 completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
         
+       
         let url = APIConstants.signUpURL
         
         let header: HTTPHeaders = [
@@ -31,7 +32,7 @@ struct SignUpService{
         let dataRequest = AF.request(url,
                                      method: .post,
                                      parameters: body,
-                                     encoding: URLEncoding.default,
+                                     encoding: JSONEncoding.default,
                                      headers: header)
         dataRequest.responseData(completionHandler: {(response) in
             switch response.result{
@@ -52,18 +53,17 @@ struct SignUpService{
     
     //회원가입 여부 확인
     private func doSignUp(status: Int, data: Data) -> NetworkResult<Any>{
-        let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(User.self, from: data) else {
-            return .pathErr
-        }
+
+        let msg1 = "회원가입 성공"
+        let msg2 = "회원가입 실패"
         
         switch status {
         case 200:
             // 회원가입 성공
-            return .success(decodedData)
+            return .success(msg1)
         case 409:
             // 중복된 이메일
-            return .requestErr(decodedData)
+            return .requestErr(msg2)
         case 400:
             // 잘못된 파라미터
             return .wrongParameter

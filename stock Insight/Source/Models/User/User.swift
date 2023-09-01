@@ -3,7 +3,7 @@ import UIKit
 
 // MARK: - User
 
-struct User: Codable {
+struct User: Codable{
     var user_id: String
     var pw: String
     var name: String
@@ -28,3 +28,4 @@ class UserManager {
         user?.name = name
     }
 }
+

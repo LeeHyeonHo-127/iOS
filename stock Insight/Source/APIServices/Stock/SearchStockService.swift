@@ -44,13 +44,13 @@ struct SearchStockService{
     //종목 검색 여부 확인
     private func judgeSearchStock(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(SearchStock.self, from: data) else {
+        guard let decodedData = try? decoder.decode(Stock.self, from: data) else {
             return .pathErr
         }
-        
+
         switch status {
         case 200:
-            // 회원가입 성공
+            // 성공
             return .success(decodedData)
         case 408:
             // 주식 API 문제로 요청 시간초과

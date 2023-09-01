@@ -44,13 +44,14 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     var indexLineChartView: LineChartView!
     
     //data
-    var searchStockData: SearchStock?
-    var presentStockData: PresentStockData?
+    var presentStockData: Stock?
+    var searchStockData: Stock?
     
     //dummy
     var gradientColor = UIColor.stockInsightBlue
     var datasetName: String = "5d_predict_SE00"
-    var presentStockData_Dummy: PresentStockData_Dummy?
+    
+    var presentStockData_Dummy: Stock_Dummy?
 
 
 
@@ -60,8 +61,8 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
         self.settingView()
         
         //ChartView 설정
-        self.predictLineChartView = configureChartView(isPredict: true, color: UIColor.stockInsightBlue)
-        self.indexLineChartView = configureChartView(isPredict: true, color: UIColor.systemYellow)
+        self.predictLineChartView = configureChartView(isPredict: true, color: UIColor.stockInsightBlue, chartDataType: .presentPrice)
+        self.indexLineChartView = configureChartView(isPredict: true, color: UIColor.systemYellow,chartDataType: .presentPrice)
         self.predicePriceView.addSubview(predictLineChartView)
         self.indexView.addSubview(indexLineChartView)
     }
@@ -100,7 +101,7 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     }
     
     //chartView 생성
-    func configureChartView(isPredict: Bool, color: UIColor) -> LineChartView{
+    func configureChartView(isPredict: Bool, color: UIColor, chartDataType: ChartDataType ) -> LineChartView{
         let gradient = fillGradient()
         let data = setDataEntry()
         let lineChartView = setLineChartView()
@@ -123,9 +124,23 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
         // 데이터 엔트리 생성
         func setDataEntry() -> LineChartData{
             var entries: [ChartDataEntry] = []
-            var stockData = parseCSVFile(datasetName: self.datasetName)
+            var stockData: [[Date: Double]]? = []
             
-            for entry in stockData {
+            switch chartDataType{
+            case .presentPrice:
+                stockData = self.presentStockData_Dummy?.Prices
+            case .predict5day:
+                stockData = self.presentStockData_Dummy?.dayFivePrices
+            case .predict10day:
+                stockData = self.presentStockData_Dummy?.dayTenPrices
+            default:
+                stockData = parseCSVFile(datasetName: "5d_predict_SE00")
+            }
+            
+            
+            
+            //x,y 값 생성
+            for entry in stockData! {
                 if let date = entry.keys.first, let value = entry.values.first {
                     let xValue = date.timeIntervalSince1970
                     let yValue = value
@@ -196,7 +211,7 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
                 lineChartView.data?.setDrawValues(false) // 그래프에 값 표시 비활성화
             }
             
-            if isPredict == true{
+            if chartDataType == .predict5day || chartDataType == .predict10day {
                 let dateString = "2023/06/07"
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy/MM/dd"
@@ -233,6 +248,11 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //현재 주가 버튼1
     @IBAction func presentPriceButtonTapped(_ sender: Any) {
+
+        self.predictLineChartView.removeFromSuperview()
+        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.stockInsightBlue, chartDataType: .presentPrice)
+        self.predicePriceView.addSubview(self.predictLineChartView)
+        
         self.presentPriceButton.backgroundColor = .darkGray
         self.LSTMButton.backgroundColor = .black
         self.sentimentalButton.backgroundColor = .black
@@ -240,6 +260,11 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //LSTM 예측 버튼
     @IBAction func LSTMPredictButtonTapped(_ sender: Any) {
+        
+        self.predictLineChartView.removeFromSuperview()
+        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemYellow, chartDataType: .predict5day)
+        self.predicePriceView.addSubview(self.predictLineChartView)
+        
         self.presentPriceButton.backgroundColor = .black
         self.LSTMButton.backgroundColor = .darkGray
         self.sentimentalButton.backgroundColor = .black
@@ -247,6 +272,10 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //감성분석 예측 버튼
     @IBAction func sentimentalPredictButtonTapped(_ sender: Any) {
+        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .presentPrice)
+        self.predicePriceView.addSubview(self.predictLineChartView)
+        
+        
         self.presentPriceButton.backgroundColor = .black
         self.LSTMButton.backgroundColor = .black
         self.sentimentalButton.backgroundColor = .darkGray
@@ -254,13 +283,24 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //현재 주가 버튼 2
     @IBAction func presentPriceButton2Tapped(_ sender: Any) {
+        self.indexLineChartView.removeFromSuperview()
+        self.indexLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .KOSPI)
+        self.indexView.addSubview(self.indexLineChartView)
+        
+        
         self.presentPriceButton2.backgroundColor = .darkGray
         self.predict5DayButton.backgroundColor = .black
         self.predict10DayButton.backgroundColor = .black
+    
     }
     
     //5일 예측 버튼
     @IBAction func predict5DayButton(_ sender: Any) {
+        self.indexLineChartView.removeFromSuperview()
+        self.indexLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .KOSDAQ)
+        self.indexView.addSubview(self.indexLineChartView)
+        
+        
         self.presentPriceButton2.backgroundColor = .black
         self.predict5DayButton.backgroundColor = .darkGray
         self.predict10DayButton.backgroundColor = .black
@@ -268,6 +308,10 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //10일 예측 버튼
     @IBAction func predict10DayButton(_ sender: Any) {
+        self.indexLineChartView.removeFromSuperview()
+        self.indexLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .KOSPI200)
+        self.indexView.addSubview(self.indexLineChartView)
+        
         self.presentPriceButton2.backgroundColor = .black
         self.predict5DayButton.backgroundColor = .black
         self.predict10DayButton.backgroundColor = .darkGray
@@ -283,7 +327,7 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
         SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
-                guard let searchData = data as? SearchStock else {return}
+                guard let searchData = data as? Stock else {return}
                 self.searchStockData = searchData
                 
                 //종목 상세화면으로 이동 함수

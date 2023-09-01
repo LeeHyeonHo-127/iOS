@@ -51,9 +51,9 @@ class LoginViewController: UIViewController {
         self.logInWithAPI(email: email, password: password)
         
         //임시 코드
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
-        self.navigationController?.navigationBar.isHidden = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
+//        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
     //회원가입 버튼
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -87,11 +87,11 @@ class LoginViewController: UIViewController {
                     print(message)
                 }
             case .pathErr:
-                print("pathErr in postSignUpWithAPI")
+                print("pathErr in logInWithAPI")
             case .serverErr:
-                print("serverErr in postSignUpWithAPI")
+                print("serverErr in logInWithAPI")
             case .networkFail:
-                print("networkFail in postSignUpWithAPI")
+                print("networkFail in logInWithAPI")
             default:
                 print("networkFail in logInWithAPI")
             }

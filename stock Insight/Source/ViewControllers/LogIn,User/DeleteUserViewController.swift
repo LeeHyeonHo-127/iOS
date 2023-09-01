@@ -107,20 +107,20 @@ class DeleteUserViewController: UIViewController {
         let answer = quizAnswerTextField.text ?? ""
         
         if password == rePassword{
-            guard let viewController = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else {return}
-            self.navigationController?.popViewController(animated: true)
-//            self.resetPasswordWithAPI(username: userName, newPassword: password, quiz: quiz, answer: answer)
+            self.deleteUserWithAPI(username: userName, password: password, quiz: quiz, answer: answer)
+//            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+//            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
         }
     }
     
     //MARK: - 유저 삭세 함수
-    func resetPasswordWithAPI(username: String, newPassword: String, quiz: String, answer: String){
-        ResetPasswordService.shared.modifyPassword(username: username, newPassword: newPassword, quiz: quiz, answer: answer, completion: { (networkResult) in
+    func deleteUserWithAPI(username: String, password: String, quiz: String, answer: String){
+        DeleteUserService.shared.deleteUser(username: username, Password: password, quiz: quiz, answer: answer, completion: { (networkResult) in
             
             switch networkResult{
-            case .success(let data):
+            case .success(_):
                 guard let viewController = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else {return}
                 self.navigationController?.popViewController(animated: true)
             case .requestErr(let msg):

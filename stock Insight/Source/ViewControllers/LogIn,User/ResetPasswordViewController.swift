@@ -106,9 +106,9 @@ class ResetPasswordViewController: UIViewController {
         let answer = quizAnswerTextField.text ?? ""
         
         if password == rePassword{
-            guard let viewController = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else {return}
-            self.navigationController?.popViewController(animated: true)
-//            self.resetPasswordWithAPI(username: userName, newPassword: password, quiz: quiz, answer: answer)
+            self.resetPasswordWithAPI(username: userName, newPassword: password, quiz: quiz, answer: answer)
+//            guard let viewController = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else {return}
+//            self.navigationController?.popViewController(animated: true)
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
         }

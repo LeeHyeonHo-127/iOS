@@ -245,7 +245,7 @@
                                     <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="loginButtonTapped:" destination="MNw-bP-wTL" eventType="touchUpInside" id="vpH-Wy-QZI"/>
+                                    <action selector="signUpButtonTapped:" destination="Qva-xo-xbh" eventType="touchUpInside" id="IPS-XQ-Bhk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입 하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I28-X6-b0M">
@@ -1492,6 +1492,7 @@
                                     <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="deleteUserButtonTapped:" destination="kTC-pe-AXr" eventType="touchUpInside" id="G5P-Vx-Jif"/>
                                     <action selector="resetPasswordButtonTapped:" destination="6YC-cZ-Wp4" eventType="touchUpInside" id="N8f-ao-TCP"/>
                                 </connections>
                             </button>
@@ -2579,10 +2580,12 @@
                         <outlet property="everyDayEconomyView" destination="CJm-g7-zMc" id="OKd-RE-xHN"/>
                         <outlet property="hankyungBusinessView" destination="hRF-jD-GmR" id="w8S-Uo-aI2"/>
                         <outlet property="indexView" destination="XV2-6f-bsZ" id="eMg-We-2NU"/>
+                        <outlet property="indexViewTypeLabel" destination="Zax-Cf-iOY" id="8wQ-cS-M2w"/>
                         <outlet property="kosdaqButton" destination="eZh-7t-3tP" id="Kq3-xE-dfj"/>
                         <outlet property="kospi200Button" destination="jt0-by-vGh" id="MXj-qY-m2V"/>
                         <outlet property="kospiButton" destination="uks-An-Tfo" id="ian-UP-vxv"/>
                         <outlet property="predicePriceView" destination="txs-QO-cih" id="F0E-X4-hR8"/>
+                        <outlet property="predictViewTypeLabel" destination="WZf-8h-EML" id="RV3-xu-gPb"/>
                         <outlet property="presentPriceButton" destination="D5T-iW-1s5" id="gyx-D0-sHH"/>
                         <outlet property="presentPriceLabel" destination="zoi-mM-On2" id="7ez-2e-n3y"/>
                         <outlet property="searchTextField" destination="BYS-sG-gcG" id="Cbh-b0-AkD"/>

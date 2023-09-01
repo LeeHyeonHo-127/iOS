@@ -1,15 +1,14 @@
 import UIKit
 import Charts
 
-enum ChartDataType{
-    case sentimentalPredict
-    case presentPrice
-    case predict5day
-    case predict10day
-    case predict15day
-    case KOSPI
-    case KOSDAQ
-    case KOSPI200
+enum ChartDataType: String{
+    case sentimentalPredict = "감성분석"
+    case presentPrice = "현재주가"
+    case predict5day = "5일 예측"
+    case predict10day = "10일 예측"
+    case KOSPI = "KOSPI"
+    case KOSDAQ = "KOSDAQ"
+    case KOSPI200 = "KOSPI200"
     
 }
 
@@ -25,6 +24,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     @IBOutlet var presentPriceLabel: UILabel!
     @IBOutlet var changePriceLabel: UILabel!
     @IBOutlet var arrowLabel: UIImageView!
+    
+    @IBOutlet var indexViewTypeLabel: UILabel!
+    @IBOutlet var predictViewTypeLabel: UILabel!
     
     //button
     @IBOutlet var presentPriceButton: UIButton!
@@ -44,27 +46,24 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     var predictLineChartView: LineChartView!
     var indexLineChartView: LineChartView!
     
-    //data
-    var searchStockData: SearchStock?
-    var presentStockData: PresentStockData?
-    var indexDatas: IndexData?
-    
     //뉴스 뷰
     @IBOutlet var everyDayEconomyView: UIView!
     @IBOutlet var hankyungBusinessView: UIView!
     @IBOutlet var economistView: UIView!
     
+    //data
+    var searchStockData: Stock?
+    var presentStockData: Stock?
+    var indexDatas: IndexData?
+    
     
     //Dummy data
     var gradientColor = UIColor.stockInsightBlue
     var datasetName: String = "5d_predict_SE00"
-    var searchStockData_Dummy: SearchStock_Dummy?
-    var presentStockData_Dummy: PresentStockData_Dummy?
+    var searchStockData_Dummy: Stock_Dummy?
+    var presentStockData_Dummy: Stock_Dummy?
     
 
-    
-
-    
 
 
     //viewDidLoad
@@ -74,7 +73,10 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         //data 가져오기
         //self.getIndexWithAPI() //지수 가져오기
         //self.getPresentStockWithAPI(stockName: "삼성전자") //현재 보여질 주식에 대한 값 가져오기
+        
+        //Dummy Data 가져오기
         self.getPresentStock_Dummy()
+        self.getIndex_Dummy()
         
         
         //뷰 세팅
@@ -85,7 +87,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         
         //주가 그래프 뷰 세팅
         self.predictLineChartView = configureChartView(isPredict: true, color: UIColor.stockInsightBlue, chartDataType: .presentPrice)
-        self.indexLineChartView = configureChartView(isPredict: true, color: UIColor.systemOrange, chartDataType: .presentPrice)
+        self.indexLineChartView = configureChartView(isPredict: true, color: UIColor.systemOrange, chartDataType: .KOSPI)
         self.predicePriceView.addSubview(predictLineChartView)
         self.indexView.addSubview(indexLineChartView)
     }
@@ -113,12 +115,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         let dayComponent = calendar.component(.day, from: currentDate)
         self.dateLabel.text = "\(monthComponent)월 \(dayComponent)일"
         
-        //현재 주가 데이터 출력
-        self.stockNameLabel.text = "현대차"
-        self.stockCodeLabel.text = self.presentStockData_Dummy?.stockCode
-        self.presentPriceLabel.text = "\(Int(currentPrice))"
-        self.changePriceLabel.text = "+\(changePrice)(\(change)%)"
-        self.arrowLabel.image = UIImage(systemName: "arrow.up")
+      
         
         
         
@@ -131,6 +128,22 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         self.kospi200Button.layer.cornerRadius = 5
         self.predicePriceView.layer.cornerRadius = 5
         self.indexView.layer.cornerRadius = 5
+    }
+    
+    //라벨 뷰 세팅 함수
+    func predictViewLabeSetting(type: ChartDataType){
+        //예측 값이 얼마나 올랐는지 계산하는 코드 필요
+        guard let currentPrice = self.presentStockData_Dummy?.currentPrice else {return}
+        guard let change = self.presentStockData_Dummy?.change else {return}
+        let changePrice = 1600
+        
+        //현재 주가 데이터 출력
+        self.stockNameLabel.text = self.presentStockData_Dummy?.stockName
+        self.stockCodeLabel.text = self.presentStockData_Dummy?.stockCode
+        self.presentPriceLabel.text = "\(Int(currentPrice))"
+        self.changePriceLabel.text = "+\(changePrice)(\(change)%)"
+        self.arrowLabel.image = UIImage(systemName: "arrow.up")
+        self.predictViewTypeLabel.text = type.rawValue
     }
     
     //제스쳐 세팅 함수
@@ -180,8 +193,12 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
                 stockData = self.indexDatas?.KOSDAQ
             case .KOSPI200:
                 stockData = self.indexDatas?.KOSPI200
+            case .presentPrice:
+                stockData = self.presentStockData_Dummy?.Prices
+            case .predict5day:
+                stockData = self.presentStockData_Dummy?.dayFivePrices
             case .predict10day:
-                stockData = parseCSVFile(datasetName: "10d_predict_SE00")
+                stockData = self.presentStockData_Dummy?.dayTenPrices
             default:
                 stockData = parseCSVFile(datasetName: "5d_predict_SE00")
             }
@@ -260,7 +277,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
                 lineChartView.data?.setDrawValues(false) // 그래프에 값 표시 비활성화
             }
             
-            if isPredict == true{
+            if chartDataType == .predict5day || chartDataType == .predict10day {
                 let dateString = "2023/06/07"
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy/MM/dd"
@@ -306,6 +323,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
             print("종목 상세화면으로 이동")
             //종목 상세화면으로 이동
             guard let viewController = self.storyboard?.instantiateViewController(identifier: "StockDetailViewController") as? StockDetailViewController else {return}
+            viewController.presentStockData_Dummy = self.searchStockData_Dummy
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -324,8 +342,10 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     //현재 주가 버튼
     @IBAction func presentPriceButtonTapped(_ sender: Any) {
         self.predictLineChartView.removeFromSuperview()
-        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.stockInsightBlue, chartDataType: .predict15day)
+        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.stockInsightBlue, chartDataType: .presentPrice)
         self.predicePriceView.addSubview(self.predictLineChartView)
+        
+        self.predictViewLabeSetting(type: .presentPrice)
         
         self.presentPriceButton.backgroundColor = .darkGray
         self.LSTMButton.backgroundColor = .black
@@ -335,10 +355,11 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     //lstm 예측 버튼
     @IBAction func lstmPriceButtonTapped(_ sender: Any) {
-        
         self.predictLineChartView.removeFromSuperview()
-        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemYellow, chartDataType: .predict10day)
+        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemYellow, chartDataType: .predict5day)
         self.predicePriceView.addSubview(self.predictLineChartView)
+        
+        self.predictViewLabeSetting(type: .predict5day)
         
         self.presentPriceButton.backgroundColor = .black
         self.LSTMButton.backgroundColor = .darkGray
@@ -347,21 +368,27 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     //감성분석 예측 버튼
     @IBAction func sentimentalPriceButtonTapped(_ sender: Any) {
-        
         self.predictLineChartView.removeFromSuperview()
-        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .predict10day)
+        
+        //감성 분석 결과에 따른 색 변화 코드 필요
+        
+        self.predictLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .presentPrice)
         self.predicePriceView.addSubview(self.predictLineChartView)
+        
+        self.predictViewLabeSetting(type: .sentimentalPredict)
         
         self.presentPriceButton.backgroundColor = .black
         self.LSTMButton.backgroundColor = .black
         self.sentimentalButton.backgroundColor = .darkGray
     }
     
+    
     //kospi지수 버튼
     @IBAction func kospiIndexButtonTapped(_ sender: Any) {
-        
-        
-        
+        self.indexLineChartView.removeFromSuperview()
+        self.indexLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .KOSPI)
+        self.indexView.addSubview(self.indexLineChartView)
+
         self.kospiButton.backgroundColor = .darkGray
         self.kosdaqButton.backgroundColor = .black
         self.kospi200Button.backgroundColor = .black
@@ -370,7 +397,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     //kosdaq지수 버튼
     @IBAction func kosdaqIndexButtonTapped(_ sender: Any) {
-        
+        self.indexLineChartView.removeFromSuperview()
+        self.indexLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .KOSDAQ)
+        self.indexView.addSubview(self.indexLineChartView)
         
         self.kospiButton.backgroundColor = .black
         self.kosdaqButton.backgroundColor = .darkGray
@@ -378,7 +407,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     }
     //kospi200지수 버튼
     @IBAction func kospi200IndexButtonTapped(_ sender: Any) {
-        
+        self.indexLineChartView.removeFromSuperview()
+        self.indexLineChartView = self.configureChartView(isPredict: true, color: UIColor.systemGreen, chartDataType: .KOSPI200)
+        self.indexView.addSubview(self.indexLineChartView)
         
         self.kospiButton.backgroundColor = .black
         self.kosdaqButton.backgroundColor = .black
@@ -396,11 +427,12 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
-                guard let searchData = data as? SearchStock else {return}
+                guard let searchData = data as? Stock else {return}
                 self.searchStockData = searchData
                 
                 //종목 상세화면으로 이동 함수
                 guard let viewController = self.storyboard?.instantiateViewController(identifier: "StockDetailViewController") as? StockDetailViewController else {return}
+                viewController.presentStockData = self.searchStockData
                 self.navigationController?.pushViewController(viewController, animated: true)
                 
             case .requestErr(let msg):
@@ -425,7 +457,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
-                guard let presentStockData = data as? PresentStockData else {return}
+                guard let presentStockData = data as? Stock else {return}
                 self.presentStockData = presentStockData
                 
             case .requestErr(let msg):
@@ -477,11 +509,21 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     //현재 주가 데이터 Dummy 로 가져오기 함수
     func getPresentStock_Dummy(){
-        self.presentStockData_Dummy = PresentStockData_Dummy(currentPrice: 189100, change: 0.69, stockCode: "005380",
-                                                             newsURL: "https://www.hankyung.com/",
-                                                             magazineURL: "https://www.mk.co.kr/",
-                                                             economisURL: "https://economist.co.kr/article/search?searchText=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90")
         
+        var day10 = parseCSVFile(datasetName: "10d_predict_SE00")
+        var day5 = parseCSVFile(datasetName: "5d_predict_SE00")
+        var day0 = parseCSVFile(datasetName: "Data_SE00")
+        
+
+        self.presentStockData_Dummy = Stock_Dummy(stockName: "현대차", stockCode: "005380", currentPrice: 189100, change: 600, changePercentage: 0.69, dayFivePrices: day5, dayTenPrices: day10, Prices: day5, newsUrl: "https://www.hankyung.com/", magazineUrl: "https://www.mk.co.kr/", economistUrl: "https://economist.co.kr/article/search?searchText=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90")
+        self.searchStockData_Dummy = Stock_Dummy(stockName: "현대차", stockCode: "005380", currentPrice: 189100, change: 600, changePercentage: 0.69, dayFivePrices: day5, dayTenPrices: day10, Prices: day5, newsUrl: "https://www.hankyung.com/", magazineUrl: "https://www.mk.co.kr/", economistUrl: "https://economist.co.kr/article/search?searchText=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90")
+    }
+    
+    func getIndex_Dummy(){
+        let kospiData = parseCSVFile(datasetName: "kospi")
+        let kosdaqData = parseCSVFile(datasetName: "kosdaq")
+        let kospi200Data = parseCSVFile(datasetName: "sp500")
+        self.indexDatas = IndexData(KOSPI: kospiData, KOSDAQ: kosdaqData, KOSPI200: kospi200Data)
     }
     
     
@@ -490,7 +532,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     @objc func everyDayEconomyHandleTap(_ gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
-            guard let urlString = self.presentStockData_Dummy?.magazineURL else {return}
+            guard let urlString = self.presentStockData_Dummy?.magazineUrl else {return}
             let websiteURL = URL(string: urlString)
             if let url = websiteURL {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -499,7 +541,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     }
     @objc func hankyungBusinessHandleTap(_ gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
-            guard let urlString = self.presentStockData_Dummy?.newsURL else {return}
+            guard let urlString = self.presentStockData_Dummy?.newsUrl else {return}
             let websiteURL = URL(string: urlString)
             if let url = websiteURL {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -508,7 +550,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     }
     @objc func economistHandleTap(_ gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
-            guard let urlString = self.presentStockData_Dummy?.economisURL else {return}
+            guard let urlString = self.presentStockData_Dummy?.economistUrl else {return}
             let websiteURL = URL(string: urlString)
             if let url = websiteURL {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)

@@ -41,13 +41,13 @@ class MainViewController_Temp: UIViewController {
     
     //collectionView 추가 함수
     func configureCollectionView(){
-        let MainCollectionViewController = MainCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        let MainCollectionViewController = MainCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
 
-        // HomeViewController를 자식 뷰 컨트롤러로 추가
-        addChild(MainCollectionViewController)
-        MainCollectionViewController.view.frame = collectionView.bounds
-        collectionView.addSubview(MainCollectionViewController.view)
-        MainCollectionViewController.didMove(toParent: self)
+//        // HomeViewController를 자식 뷰 컨트롤러로 추가
+//        addChild(MainCollectionViewController)
+//        MainCollectionViewController.view.frame = collectionView.bounds
+//        collectionView.addSubview(MainCollectionViewController.view)
+//        MainCollectionViewController.didMove(toParent: self)
     }
     
 
