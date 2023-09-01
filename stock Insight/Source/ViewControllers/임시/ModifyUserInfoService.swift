@@ -1,15 +1,13 @@
 import Foundation
 import Alamofire
 
-struct SignUpService{
-    static let shared = SignUpService()
+struct ModifyPasswordService{
+    static let shared = ModifyPasswordService()
     
     //회원가입
-    func singUp(email: String,
-                password: String,
-                name: String,
-                resetQuestionIndex: String,
-                resetAnswer: String,
+    func modifyPassword(email: String,
+                oldPassword: String,
+                newPassword: String,
                 completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
         
@@ -21,12 +19,9 @@ struct SignUpService{
         
         let body: Parameters = [
             "user_id" : email,
-            "pw" : password,
-            "name" : name,
-            "resetQuestionIndex" : resetQuestionIndex,
-            "resetAnswer" : resetAnswer
+            "old_ps" : oldPassword,
+            "new_pw" : newPassword
         ]
-
         
         let dataRequest = AF.request(url,
                                      method: .post,
@@ -59,7 +54,7 @@ struct SignUpService{
         
         switch status {
         case 200:
-            // 회원가입 성공
+            // 비밀번호 수정 완요
             return .success(decodedData)
         case 409:
             // 중복된 이메일

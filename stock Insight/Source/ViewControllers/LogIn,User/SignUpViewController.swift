@@ -8,6 +8,19 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var rePasswordTextField: UITextField!
     @IBOutlet var userNameTextField: UITextField!
+    @IBOutlet var checkImageView: UIImageView!
+    @IBOutlet var quizTextField: UITextField!
+    @IBOutlet var quizAnswerTextField: UITextField!
+    
+    var picker = UIPickerView()
+    let quizList = [
+        "첫 번째 애완동물의 이름은 무엇인가요?",
+        "초등학교 시절 최고의 친구는 누구였나요?",
+        "당신이 태어난 도시는 어디인가요?",
+        "첫 번째 자동차의 모델은 무엇인가요?",
+        "당신이 존경하는 인물은 누구인가요?",
+        "당신의 어린 시절 별명은 무엇인가요?"
+    ]
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -23,10 +36,61 @@ class SignUpViewController: UIViewController {
     //viewDidLoad
     override func viewDidLoad() {
         self.configureTexFieldAndButton()
+        self.configPickerView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
     }
     
 
-    //MARK: 설정 함수
+    //MARK: - 설정 함수
+    
+    //pickerView 설정 함수
+    func configPickerView(){
+        self.picker.delegate = self
+        self.picker.dataSource = self
+        self.quizTextField.inputView = picker
+        
+        configToolbar()
+    }
+    
+    //툴바 설정 함수
+    func configToolbar(){
+        let toolBar = UIToolbar()
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+//        toolBar.backgroundColor = UIColor.systemGray2
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(self.donePicker))
+        let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(self.cancelPicker))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([doneButton,flexibleSpace,cancelButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        self.quizTextField.inputAccessoryView = toolBar
+        self.quizTextField.inputAccessoryView?.backgroundColor = .systemGray2
+        
+
+        
+    }
+    
+    // "완료" 클릭 시 데이터를 textfield에 입력 후 입력창 내리기
+    @objc func donePicker() {
+        let row = self.picker.selectedRow(inComponent: 0)
+        self.picker.selectRow(row, inComponent: 0, animated: false)
+        self.quizTextField.text = self.quizList[row]
+        self.quizTextField.resignFirstResponder()
+    }
+    
+    // "취소" 클릭 시 textfield의 텍스트 값을 nil로 처리 후 입력창 내리기
+    @objc func cancelPicker() {
+        self.quizTextField.text = nil
+        self.quizTextField.resignFirstResponder()
+    }
+
     
     //Attach ActivityIndicator
     private func attachActivityIndicator() {
@@ -47,14 +111,17 @@ class SignUpViewController: UIViewController {
         passwordTextField.delegate = self
         rePasswordTextField.delegate = self
         userNameTextField.delegate = self
+        quizTextField.delegate = self
+        quizAnswerTextField.delegate = self
         
         self.signUpButton.isEnabled = false
         self.passwordTextField.isSecureTextEntry = true
         self.rePasswordTextField.isSecureTextEntry = true
+        self.checkImageView.isHidden = true
     }
     
     
-    //MARK: 회원가입 버튼
+    //MARK: - 회원가입 버튼
 
     //회원가입 버튼
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -62,9 +129,11 @@ class SignUpViewController: UIViewController {
         let password = passwordTextField.text ?? ""
         let rePassword = rePasswordTextField.text ?? ""
         let userName = userNameTextField.text ?? ""
+        let quiz = quizTextField.text ?? ""
+        let answer = quizAnswerTextField.text ?? ""
         
         if password == rePassword{
-            self.signUpWithAPI(email: email, password: password, userName: userName)
+            self.signUpWithAPI(email: email, password: password, userName: userName, quiz: quiz, answer: answer)
 
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
@@ -74,12 +143,12 @@ class SignUpViewController: UIViewController {
     
     //MARK: 회원가입 함수
     
-    func signUpWithAPI(email: String, password: String, userName: String){
+    func signUpWithAPI(email: String, password: String, userName: String, quiz: String, answer: String){
         self.attachActivityIndicator()
-        
-        SignUpService.shared.singUp(email: email, password: password, name: userName, completion: {(networkResult) -> Void in
+
+        SignUpService.shared.singUp(email: email, password: password, name: userName,resetQuestionIndex: quiz, resetAnswer: answer, completion: {(networkResult) -> Void in
             self.detachActivityIndicator()
-            
+
             switch networkResult{
             case .success(let data):
                 if let signUpData = data as? User{
@@ -90,11 +159,11 @@ class SignUpViewController: UIViewController {
 //                    UserDefaults.standard.setValue(signUpData.user.id, forKey: "userId")
 //                    UserDefaults.standard.setValue("email", forKey: "loginType")
 //                    UserDefaults.standard.setValue(false, forKey: "didLogin")
-                    
+
                     guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
                     self.navigationController?.pushViewController(viewController, animated: true)
-                    
-                    
+
+
                     guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else {return}
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }else{
@@ -217,7 +286,33 @@ extension SignUpViewController: UITextFieldDelegate{
         let isPasswordEmpty = passwordTextField.text == ""
         let isRepasswordEmpty = rePasswordTextField.text == ""
         let isUserNameEmpty = userNameTextField.text == ""
+        let isQuizEmpty = quizTextField.text == ""
+        let isAnswerEmpty = quizAnswerTextField.text == ""
         
-        self.signUpButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty
+        self.signUpButton.isEnabled = !isEmailEmpty && !isPasswordEmpty && !isRepasswordEmpty && !isUserNameEmpty && !isQuizEmpty && !isAnswerEmpty
+        
+        if(passwordTextField.text != "" && passwordTextField.text == rePasswordTextField.text){
+            self.checkImageView.isHidden = false
+        }else{
+            self.checkImageView.isHidden = true
+        }
+    }
+}
+
+extension SignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return quizList[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.quizList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.quizTextField.text = self.quizList[row]
     }
 }

@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     
     //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     
@@ -55,7 +55,16 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    //회원가입 버튼
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {return}
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     
+    @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "ResetPasswordViewController") as? ResetPasswordViewController else {return}
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     
     //MARK: 로그인 함수
     

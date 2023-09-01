@@ -26,7 +26,7 @@ struct LogInService{
             case .success:
                 guard let status = response.response?.statusCode else {return}
                 guard let data = response.value else {return}
-                completion(doLogIn(status: status, data: data))
+                completion(doLogIn(status: status, data: data, url: URL(string: url)!))
             case .failure(let error):
                 print(error)
                 completion(.networkFail)
@@ -35,14 +35,26 @@ struct LogInService{
     }
     
     
-    func doLogIn(status: Int, data: Data) -> NetworkResult<Any>{
+    func doLogIn(status: Int, data: Data, url: URL) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<User>.self, from: data) else {return .pathErr}
         
         
         switch status {
-        case 200:
-            // 로그인 성공
+        case 200: // 로그인 성공
+            //토큰 저장
+            if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
+                for cookie in cookies {
+                    if cookie.name == "access_token" {
+                        print("Received access token:", cookie.value)
+                        UserDefaults.standard.set(cookie.value, forKey: cookie.name)
+                    }
+                    else if cookie.name == "refresh_token"{
+                        print("Received refresh token:", cookie.value)
+                        UserDefaults.standard.set(cookie.value, forKey: cookie.name)
+                    }
+                }
+            }
             return .success(decodedData.data)
         case 404:
             // 존재하지 않는 회원
@@ -59,3 +71,6 @@ struct LogInService{
         }
     }
 }
+
+
+

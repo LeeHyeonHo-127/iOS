@@ -23,28 +23,39 @@ class MyPageViewController: UIViewController {
     
     //MARK: 화면 이동 버튼 함수
     
-    //개인정보 수정 화면 이동
-    @IBAction func modifyUserInfoButtonTapped(_ sender: Any) {
-        self.navigationController?.navigationBar.isHidden = false
-
+    //비밀번호 수정 화면 이동
+    @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        guard let viewContrller = self.storyboard?.instantiateViewController(identifier: "ResetPasswordViewController") as? ResetPasswordViewController else {return}
+        self.navigationController?.pushViewController(viewContrller, animated: true)
     }
+    
     
     //로그아웃 버튼
     @IBAction func logOutButtonTapped(_ sender: Any) {
-
-//        self.logOutWithAPI(email: "", password: "")
+        self.logOutWithAPI()
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
     }
+    
+    //회원탈퇴 버튼
+    @IBAction func deleteUserButtonTapped(_ sender: Any) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "DeleteUserViewController") as? DeleteUserViewController else {return}
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     
     
     //MARK: 로그아웃 함수
     
     //로그아웃 함수
-    func logOutWithAPI(email: String, password: String){
-        LogOutService.shared.logOut(email: email, password: password, completion: {networkResult in
+    func logOutWithAPI(){
+        LogOutService.shared.logOut(completion: {networkResult in
             switch networkResult{
             case .success(_):
+                
+                UserDefaults.standard.removeObject(forKey: "refresh_token")
+                UserDefaults.standard.removeObject(forKey: "access_token")
+
                 // 로그인 화면으로 이동합니다.
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)

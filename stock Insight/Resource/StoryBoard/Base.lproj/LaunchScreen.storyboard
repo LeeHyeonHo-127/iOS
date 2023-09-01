@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,18 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STOCK INSIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a5-hg-wbe">
-                                <rect key="frame" x="11.333333333333343" y="395" width="370.66666666666663" height="62.333333333333314"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="48"/>
-                                <color key="textColor" red="0.12941176469999999" green="0.10980392160000001" blue="1" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STOCK INSIGHT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTF-Ej-P6t">
+                                <rect key="frame" x="85.666666666666686" y="279" width="222" height="45.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="37"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6a5-hg-wbe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QhP-Ui-1qT"/>
-                            <constraint firstItem="6a5-hg-wbe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uZs-03-7Ju"/>
+                            <constraint firstItem="WTF-Ej-P6t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="220" id="i2I-rF-lpP"/>
+                            <constraint firstItem="WTF-Ej-P6t" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="op5-8g-X97"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,8 +38,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

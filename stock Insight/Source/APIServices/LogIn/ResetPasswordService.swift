@@ -1,32 +1,28 @@
 import Foundation
 import Alamofire
 
-struct SignUpService{
-    static let shared = SignUpService()
+struct ResetPasswordService{
+    static let shared = ResetPasswordService()
     
-    //회원가입
-    func singUp(email: String,
-                password: String,
-                name: String,
-                resetQuestionIndex: String,
-                resetAnswer: String,
-                completion: @escaping (NetworkResult<Any>) -> (Void) ) {
+    //비밀번호 수정
+    func modifyPassword(username: String,
+                        newPassword: String,
+                        quiz: String,
+                        answer: String,
+                        completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
-        
-        let url = APIConstants.signUpURL
+        let url = APIConstants.resetPasswordURL
         
         let header: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
         
         let body: Parameters = [
-            "user_id" : email,
-            "pw" : password,
-            "name" : name,
-            "resetQuestionIndex" : resetQuestionIndex,
-            "resetAnswer" : resetAnswer
+            "username" : username,
+            "newPassword" : newPassword,
+            "selectedQuestionIndex" : quiz,
+            "answer": answer
         ]
-
         
         let dataRequest = AF.request(url,
                                      method: .post,
@@ -42,7 +38,7 @@ struct SignUpService{
                 guard let data = response.value else {
                     return
                 }
-                completion(doSignUp(status: statusCode, data: data))
+                completion(doResetPassword(status: statusCode, data: data))
             case .failure(let error):
                 print(error)
                 completion(.networkFail)
@@ -51,19 +47,17 @@ struct SignUpService{
     }
     
     //회원가입 여부 확인
-    private func doSignUp(status: Int, data: Data) -> NetworkResult<Any>{
-        let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(User.self, from: data) else {
-            return .pathErr
-        }
+    private func doResetPassword(status: Int, data: Data) -> NetworkResult<Any>{
+        let success = "성공"
+        let error = "중복된 이메일"
         
         switch status {
         case 200:
-            // 회원가입 성공
-            return .success(decodedData)
+            // 비밀번호 수정 완요
+            return .success(success)
         case 409:
             // 중복된 이메일
-            return .requestErr(decodedData)
+            return .requestErr(error)
         case 400:
             // 잘못된 파라미터
             return .wrongParameter

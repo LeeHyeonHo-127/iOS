@@ -517,6 +517,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     }
     
     
+    
+    
+    
     //CSV 다운, 파싱 함수
     func downloadCSVFile(indexURL: URL) -> [[Date: Double]] {
         var dictionaryArray: [[Date: Double]] = []

@@ -17,12 +17,12 @@ struct APIConstants{
     static let logInURL = baseURL + "/loginProc"
     
     //로그아웃(get)
-    static let signOutURL = baseURL + "/logout"
+    static let logOutURL = baseURL + "/logout"
     
     //회원가입(post)
     static let signUpURL = baseURL + "/register"
     
-    //비밀번호 재설정(post?)
+    //비밀번호 재설정(post)
     static let resetPasswordURL = baseURL + "/reset-password"
     
     //회원 탈퇴(post)
@@ -51,3 +51,16 @@ struct APIConstants{
 
     
 }
+
+
+/*
+ UserDefaults key : Value
+ 
+ 
+ key : access_token   |||  value : token 값
+ key : refresh_token  |||  value : token 값
+ key : token값        |||   value : user 구조체
+ key : userID         |||   value : 즐겨찾기 구조체
+
+
+*/

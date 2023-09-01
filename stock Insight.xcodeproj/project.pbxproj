@@ -38,6 +38,10 @@
 		C174B04E2AA035F80057ED0E /* GetIndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B04D2AA035F80057ED0E /* GetIndexService.swift */; };
 		C174B0502AA0383B0057ED0E /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B04F2AA0383B0057ED0E /* Index.swift */; };
 		C174B0522AA06D160057ED0E /* PresentStockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0512AA06D160057ED0E /* PresentStockData.swift */; };
+		C174B0542AA1919D0057ED0E /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0532AA1919D0057ED0E /* ResetPasswordViewController.swift */; };
+		C174B0562AA197810057ED0E /* ResetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0552AA197810057ED0E /* ResetPasswordService.swift */; };
+		C174B0582AA1A9C60057ED0E /* DeleteUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0572AA1A9C60057ED0E /* DeleteUserViewController.swift */; };
+		C174B05A2AA1ADB10057ED0E /* deleteUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0592AA1ADB10057ED0E /* deleteUserService.swift */; };
 		C17F3A2D2A9CD0C400656598 /* LogOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17F3A2C2A9CD0C400656598 /* LogOutService.swift */; };
 		C17F3A2F2A9CDC1000656598 /* ModifyUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */; };
 		C185E0E52A87670000895C2D /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0E42A87670000895C2D /* LogInService.swift */; };
@@ -104,6 +108,10 @@
 		C174B04D2AA035F80057ED0E /* GetIndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexService.swift; sourceTree = "<group>"; };
 		C174B04F2AA0383B0057ED0E /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
 		C174B0512AA06D160057ED0E /* PresentStockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStockData.swift; sourceTree = "<group>"; };
+		C174B0532AA1919D0057ED0E /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		C174B0552AA197810057ED0E /* ResetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordService.swift; sourceTree = "<group>"; };
+		C174B0572AA1A9C60057ED0E /* DeleteUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewController.swift; sourceTree = "<group>"; };
+		C174B0592AA1ADB10057ED0E /* deleteUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteUserService.swift; sourceTree = "<group>"; };
 		C17F3A2C2A9CD0C400656598 /* LogOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutService.swift; sourceTree = "<group>"; };
 		C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyUserInfoService.swift; sourceTree = "<group>"; };
 		C185E0E42A87670000895C2D /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
@@ -202,6 +210,10 @@
 		C174B04A2AA030230057ED0E /* 임시 */ = {
 			isa = PBXGroup;
 			children = (
+				C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */,
+				C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */,
+				C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */,
+				C1BE315029FF72F200FF1FE4 /* BeginViewController.swift */,
 				C13DEDD42A11FB5D00AA8EAF /* MainViewController_Temp.swift */,
 				C1071CCD2A1E0AFA005E4D8F /* MainCollectionViewController.swift */,
 				C13DEDD82A11FC0700AA8EAF /* StockDetailViewController_temp.swift */,
@@ -217,7 +229,8 @@
 				C185E0E62A87680200895C2D /* SignUpService.swift */,
 				C185E0E42A87670000895C2D /* LogInService.swift */,
 				C17F3A2C2A9CD0C400656598 /* LogOutService.swift */,
-				C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */,
+				C174B0552AA197810057ED0E /* ResetPasswordService.swift */,
+				C174B0592AA1ADB10057ED0E /* deleteUserService.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -225,12 +238,11 @@
 		C17F3A282A9CCB0D00656598 /* LogIn,User */ = {
 			isa = PBXGroup;
 			children = (
-				C102150B2A1602CC009A1D32 /* ModifyUserInfoViewController.swift */,
+				C174B0572AA1A9C60057ED0E /* DeleteUserViewController.swift */,
 				C13DEDD62A11FBE300AA8EAF /* MyPageViewController.swift */,
-				C1BE315029FF72F200FF1FE4 /* BeginViewController.swift */,
 				C13DEDD02A11F4B300AA8EAF /* LoginViewController.swift */,
 				C13DEDDA2A11FC6100AA8EAF /* SignUpViewController.swift */,
-				C13DEDDC2A11FC9300AA8EAF /* FindAddressViewController.swift */,
+				C174B0532AA1919D0057ED0E /* ResetPasswordViewController.swift */,
 			);
 			path = "LogIn,User";
 			sourceTree = "<group>";
@@ -594,6 +606,7 @@
 				C174B0502AA0383B0057ED0E /* Index.swift in Sources */,
 				C185E0E72A87680200895C2D /* SignUpService.swift in Sources */,
 				C13DEDD52A11FB5D00AA8EAF /* MainViewController_Temp.swift in Sources */,
+				C174B0542AA1919D0057ED0E /* ResetPasswordViewController.swift in Sources */,
 				C1EADDB02A26F48000F01A0C /* HowPredictDetailViewController.swift in Sources */,
 				C174B04E2AA035F80057ED0E /* GetIndexService.swift in Sources */,
 				C17F3A2D2A9CD0C400656598 /* LogOutService.swift in Sources */,
@@ -604,8 +617,10 @@
 				C1071CD42A1E0B36005E4D8F /* StockCollectionViewHeader.swift in Sources */,
 				C14E786C2A25D7E4009134AA /* LeadingIndex.swift in Sources */,
 				C13DEDD32A11F55F00AA8EAF /* BookMarkListViewController.swift in Sources */,
+				C174B0562AA197810057ED0E /* ResetPasswordService.swift in Sources */,
 				C1D653172A9DDAA00081B7A0 /* UIColor.swift in Sources */,
 				C1A9F3902A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift in Sources */,
+				C174B05A2AA1ADB10057ED0E /* deleteUserService.swift in Sources */,
 				C174B0522AA06D160057ED0E /* PresentStockData.swift in Sources */,
 				C102150C2A1602CC009A1D32 /* ModifyUserInfoViewController.swift in Sources */,
 				C17F3A2F2A9CDC1000656598 /* ModifyUserInfoService.swift in Sources */,
@@ -617,6 +632,7 @@
 				C13DEDDD2A11FC9300AA8EAF /* FindAddressViewController.swift in Sources */,
 				C14E78722A26DD2B009134AA /* HowPredictViewController.swift in Sources */,
 				C1BE314F29FF72F200FF1FE4 /* SceneDelegate.swift in Sources */,
+				C174B0582AA1A9C60057ED0E /* DeleteUserViewController.swift in Sources */,
 				C1D653112A9DBFCA0081B7A0 /* BookmarkService.swift in Sources */,
 				C185E0ED2A876DDF00895C2D /* NetworkResult.swift in Sources */,
 				C12606932A2993ED008B5CDC /* StockDetailCollectionViewController.swift in Sources */,
