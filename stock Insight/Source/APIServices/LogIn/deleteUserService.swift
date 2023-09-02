@@ -18,11 +18,17 @@ struct DeleteUserService{
         ]
         
         let body: Parameters = [
-            "username" : username,
+            "user_id" : username,
             "pw" : Password,
-            "resetQuestion" : quiz,
+            "resetQuestionIndex" : quiz,
             "resetAnswer": answer
         ]
+        
+        print("====deleteUser===")
+        print("user_id = \(username)")
+        print("pw = \(Password)")
+        print("resetQuestionIndex = \(quiz)")
+        print("resetAnswer = \(answer)")
         
         let dataRequest = AF.request(url,
                                      method: .post,
@@ -50,6 +56,15 @@ struct DeleteUserService{
     private func doDeleteUser(status: Int, data: Data) -> NetworkResult<Any>{
         let success = "성공"
         let error = "중복된 이메일"
+        
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            // Print the JSON string to check the format
+            print("JSON String: \(jsonString)")
+        } else {
+            // If converting to a string fails, print the raw data
+            print("Raw Data: \(data)")
+        }
         
         switch status {
         case 200:

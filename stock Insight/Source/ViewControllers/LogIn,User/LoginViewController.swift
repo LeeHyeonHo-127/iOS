@@ -1,6 +1,10 @@
 import UIKit
 import Foundation
 
+class BeginNavigationController: UINavigationController{
+    
+}
+
 //class BeginNavigationController: UINavigationController{}
 
 class LoginViewController: UIViewController {

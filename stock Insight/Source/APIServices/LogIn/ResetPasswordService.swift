@@ -54,6 +54,14 @@ struct ResetPasswordService{
         let success = "성공"
         let error = "중복된 이메일"
         
+        if let jsonString = String(data: data, encoding: .utf8) {
+            // Print the JSON string to check the format
+            print("JSON String: \(jsonString)")
+        } else {
+            // If converting to a string fails, print the raw data
+            print("Raw Data: \(data)")
+        }
+        
         switch status {
         case 200:
             print("======ResetPasswordService Success 200=========")

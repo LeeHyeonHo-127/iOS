@@ -504,7 +504,7 @@
         <!--BeginNavigationController-->
         <scene sceneID="E4V-86-ifW">
             <objects>
-                <navigationController storyboardIdentifier="BeginNavigationController" title="BeginNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jfd-r1-vU5" customClass="BeginNagigationController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BeginNavigationController" title="BeginNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jfd-r1-vU5" customClass="BeginNavigationController" customModule="stock_Insight" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sGh-iy-NFl">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -4,15 +4,22 @@ import Alamofire
 struct LogOutService{
     static let shared = LogOutService()
     
-    func logOut(completion: @escaping (NetworkResult<Any>) -> Void){
+    func logOut(user_id:String, completion: @escaping (NetworkResult<Any>) -> Void){
         let url = APIConstants.logOutURL
         
         let header: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
+        
+        let body: Parameters = [
+            "user_id" : user_id
+        ]
+        
  
         let dataRequest = AF.request(url,
-                                     method: .get,
+                                     method: .post,
+                                     parameters: body,
+                                     encoding: JSONEncoding.default,
                                      headers: header)
         dataRequest.responseData(completionHandler: {response in
             switch response.result{
@@ -34,7 +41,7 @@ struct LogOutService{
         
         switch status {
         case 200:
-            // 로그인 성공
+            // 로그아웃 성공
             return .success(msg1)
         case 404:
             // 존재하지 않는 회원

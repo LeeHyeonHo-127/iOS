@@ -37,6 +37,4 @@ class BeginViewController: UIViewController {
 
 
 
-class BeginNavigationController: UINavigationController{
-    
-}
+

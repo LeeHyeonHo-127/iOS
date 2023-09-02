@@ -20,7 +20,7 @@ class BookMarkListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        getBookmarkStockList()
+//        getBookmarkStockList_dummy()
         
         getBookmarkLisk()
     }
@@ -28,6 +28,7 @@ class BookMarkListViewController: UIViewController {
     //viewWillAppead
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        getBookmarkLisk()
     }
     
 
@@ -62,7 +63,7 @@ class BookMarkListViewController: UIViewController {
 
     
     //즐겨찾기에 넣을 더미 데이터 생성 함수
-    private func getBookmarkStockList(){
+    private func getBookmarkStockList_dummy(){
         let stockName1 = "삼성전자"
         let stockNumber1 = "A005930 코스피"
         let bookmarkStock1 = Bookmark(stockName: stockName1, stockCode: stockNumber1)

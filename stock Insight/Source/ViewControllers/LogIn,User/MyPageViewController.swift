@@ -49,7 +49,7 @@ class MyPageViewController: UIViewController {
     
     //로그아웃 함수
     func logOutWithAPI(){
-        LogOutService.shared.logOut(completion: {networkResult in
+        LogOutService.shared.logOut(user_id: "swethom1", completion: {networkResult in
             switch networkResult{
             case .success(_):
                 
