@@ -1,6 +1,8 @@
 import UIKit
 import Foundation
 
+//class BeginNavigationController: UINavigationController{}
+
 class LoginViewController: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!

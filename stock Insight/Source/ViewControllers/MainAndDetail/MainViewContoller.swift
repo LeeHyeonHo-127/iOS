@@ -319,12 +319,12 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
             self.showAlert(title: "검색할 종목을 입력해주세요")
         }
         else{
-            //self.searchStockWithAPI(stockName: searchName)
+            self.searchStockWithAPI(stockName: searchName)
             print("종목 상세화면으로 이동")
             //종목 상세화면으로 이동
-            guard let viewController = self.storyboard?.instantiateViewController(identifier: "StockDetailViewController") as? StockDetailViewController else {return}
-            viewController.presentStockData_Dummy = self.searchStockData_Dummy
-            self.navigationController?.pushViewController(viewController, animated: true)
+//            guard let viewController = self.storyboard?.instantiateViewController(identifier: "StockDetailViewController") as? StockDetailViewController else {return}
+//            viewController.presentStockData_Dummy = self.searchStockData_Dummy
+//            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

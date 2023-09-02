@@ -45,7 +45,6 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //data
     var presentStockData: Stock?
-    var searchStockData: Stock?
     
     //dummy
     var gradientColor = UIColor.stockInsightBlue
@@ -59,6 +58,7 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingView()
+        self.makeStarButton()
         
         //ChartView 설정
         self.predictLineChartView = configureChartView(isPredict: true, color: UIColor.stockInsightBlue, chartDataType: .presentPrice)
@@ -76,8 +76,6 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //뷰 세팅
     func settingView(){
-        
-        
         guard let currentPrice = self.presentStockData_Dummy?.currentPrice else {return}
         guard let change = self.presentStockData_Dummy?.change else {return}
         let changePrice = 1600
@@ -98,6 +96,25 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
         self.predict10DayButton.layer.cornerRadius = 5
         self.predicePriceView.layer.cornerRadius = 5
         self.indexView.layer.cornerRadius = 5
+    }
+    
+    //즐겨찾기 버튼 추가
+    func makeStarButton(){
+        let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(starButtonTapped))
+        self.navigationItem.rightBarButtonItem = starButton
+    }
+    
+    //즐겨찾기 버튼이 눌렸을 시 동작하는 함수
+    @objc func starButtonTapped() {
+        if self.navigationItem.rightBarButtonItem?.image == UIImage(systemName: "star") {
+            self.addBookmark()
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "star.fill")
+            self.navigationItem.rightBarButtonItem?.tintColor = .systemYellow
+            } else {
+                self.deleteBookmark()
+                self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "star")
+                self.navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+            }
     }
     
     //chartView 생성
@@ -322,13 +339,38 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //MARK: - Data 관련 함수
     
+    //즐겨찾기 추가 함수
+    func addBookmark(){
+        guard let userID = UserManager.shared.getUser()?.user_id else {return}
+        guard let stockName = self.presentStockData?.stockName else {return}
+        guard let stockCode = self.presentStockData?.stockCode else {return}
+        let bookmark = Bookmark(stockName: stockName, stockCode: stockCode)
+        
+        var bookmarkList = UserDefaults.standard.array(forKey: userID)
+        bookmarkList?.append(bookmark)
+        UserDefaults.standard.setValue(bookmarkList, forKey: userID)
+    }
+    
+    //즐겨찾기 삭제 함수
+    func deleteBookmark(){
+        guard let userID = UserManager.shared.getUser()?.user_id else {return}
+        guard let stockName = self.presentStockData?.stockName else {return}
+        guard let stockCode = self.presentStockData?.stockCode else {return}
+        let bookmark = Bookmark(stockName: stockName, stockCode: stockCode)
+        
+        var bookmarkList = UserDefaults.standard.array(forKey: userID)
+        bookmarkList?.removeLast()
+        UserDefaults.standard.setValue(bookmarkList, forKey: userID)
+    }
+    
+    
     //종목 검색 함수
     func searchStockWithAPI(stockName: String){
         SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
                 guard let searchData = data as? Stock else {return}
-                self.searchStockData = searchData
+                self.presentStockData = searchData
                 
                 //종목 상세화면으로 이동 함수
                 

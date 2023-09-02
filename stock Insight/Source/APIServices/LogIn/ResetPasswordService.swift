@@ -5,12 +5,14 @@ struct ResetPasswordService{
     static let shared = ResetPasswordService()
     
     //비밀번호 수정
-    func modifyPassword(username: String,
+    func modifyPassword(user_id: String,
                         newPassword: String,
                         quiz: String,
                         answer: String,
                         completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
+        
+        print("======ResetPasswordService.modifyPassword=========")
         let url = APIConstants.resetPasswordURL
         
         let header: HTTPHeaders = [
@@ -18,7 +20,7 @@ struct ResetPasswordService{
         ]
         
         let body: Parameters = [
-            "username" : username,
+            "user_id" : user_id,
             "newPassword" : newPassword,
             "selectedQuestionIndex" : quiz,
             "answer": answer
@@ -27,11 +29,12 @@ struct ResetPasswordService{
         let dataRequest = AF.request(url,
                                      method: .post,
                                      parameters: body,
-                                     encoding: URLEncoding.default,
+                                     encoding: JSONEncoding.default,
                                      headers: header)
         dataRequest.responseData(completionHandler: {(response) in
             switch response.result{
             case .success:
+                print("======ResetPasswordService Success=========")
                 guard let statusCode = response.response?.statusCode else {
                     return
                 }
@@ -53,6 +56,7 @@ struct ResetPasswordService{
         
         switch status {
         case 200:
+            print("======ResetPasswordService Success 200=========")
             // 비밀번호 수정 완요
             return .success(success)
         case 409:

@@ -8,6 +8,7 @@ struct SearchStockService{
     func searchStock(stockName: String,
                 completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
+        print("======searchStock.searchStock In=========")
         
         let url = APIConstants.searchStockInfo
         
@@ -27,6 +28,7 @@ struct SearchStockService{
         dataRequest.responseData(completionHandler: {(response) in
             switch response.result{
             case .success:
+                print("======searchStock Success=========")
                 guard let statusCode = response.response?.statusCode else {
                     return
                 }
@@ -44,9 +46,25 @@ struct SearchStockService{
     //종목 검색 여부 확인
     private func judgeSearchStock(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
+        print("======judgeSearchStock In=========")
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            // Print the JSON string to check the format
+            print("judgeSearchStock in JSON String: \(jsonString)")
+        } else {
+            // If converting to a string fails, print the raw data
+            print("Raw Data: \(data)")
+        }
+        
+        
+        
+        
+        
+        print("=======decoding 시작===========")
         guard let decodedData = try? decoder.decode(Stock.self, from: data) else {
             return .pathErr
         }
+        print("=======decoding 성공===========")
 
         switch status {
         case 200:

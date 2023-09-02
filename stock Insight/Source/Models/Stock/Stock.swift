@@ -7,9 +7,8 @@ struct Stock: Codable{ //한 종목에 대한 데이터 구조체
     var change: Double
     var changePercentage: Double
     
-    var dayFivePrices: [[Date:Double]]
-    var dayTenPrices: [[Date:Double]]
-    var Prices: [[Date:Double]]
+    var predict5: [Double]
+    var predict10: [Double]
     
     var newsUrl: String //MK
     var magazineUrl: String //한경
@@ -33,16 +32,6 @@ struct Stock_Dummy{ //한 종목에 대한 데이터 구조체
     var economistUrl: String //이코노미스트
 }
 
-data{[
-    "samsung" : stock,
-    "sk하이닉스" : stock
-]}
-
-struct stock{
-    var dayFivePrices: [[Date:Double]]
-    var dayTenPrices: [[Date:Double]]
-    var Prices: [[Date:Double]]
-}
 
 
 

@@ -24,7 +24,7 @@ struct SignUpService{
             "user_id" : email,
             "pw" : password,
             "name" : name,
-            "resetQuestionIndex" : resetQuestionIndex,
+            "resetQuestion" : resetQuestionIndex,
             "resetAnswer" : resetAnswer
         ]
 

@@ -134,6 +134,9 @@ class SignUpViewController: UIViewController {
         
         if password == rePassword{
             self.signUpWithAPI(email: email, password: password, userName: userName, quiz: quiz, answer: answer)
+            print("signUpButtonTapped")
+            print("quiz = \(quiz)")
+            print("answer = \(answer)")
 
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")

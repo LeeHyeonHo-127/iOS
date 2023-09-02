@@ -57,7 +57,7 @@ class MyPageViewController: UIViewController {
                 UserDefaults.standard.removeObject(forKey: "access_token")
 
                 // 로그인 화면으로 이동합니다.
-                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
             case .requestErr(let msg):
                 if let message = msg as? String {

@@ -20,14 +20,14 @@ struct DeleteUserService{
         let body: Parameters = [
             "username" : username,
             "pw" : Password,
-            "resetQuestionIndex" : quiz,
+            "resetQuestion" : quiz,
             "resetAnswer": answer
         ]
         
         let dataRequest = AF.request(url,
                                      method: .post,
                                      parameters: body,
-                                     encoding: URLEncoding.default,
+                                     encoding: JSONEncoding.default,
                                      headers: header)
         dataRequest.responseData(completionHandler: {(response) in
             switch response.result{

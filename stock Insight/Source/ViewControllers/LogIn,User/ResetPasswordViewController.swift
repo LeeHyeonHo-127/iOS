@@ -106,7 +106,7 @@ class ResetPasswordViewController: UIViewController {
         let answer = quizAnswerTextField.text ?? ""
         
         if password == rePassword{
-            self.resetPasswordWithAPI(username: userName, newPassword: password, quiz: quiz, answer: answer)
+            self.resetPasswordWithAPI(user_id: userName, newPassword: password, quiz: quiz, answer: answer)
 //            guard let viewController = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else {return}
 //            self.navigationController?.popViewController(animated: true)
         }else{
@@ -115,8 +115,8 @@ class ResetPasswordViewController: UIViewController {
     }
     
     //MARK: - 비밀번호 수정 함수
-    func resetPasswordWithAPI(username: String, newPassword: String, quiz: String, answer: String){
-        ResetPasswordService.shared.modifyPassword(username: username, newPassword: newPassword, quiz: quiz, answer: answer, completion: { (networkResult) in
+    func resetPasswordWithAPI(user_id: String, newPassword: String, quiz: String, answer: String){
+        ResetPasswordService.shared.modifyPassword(user_id: user_id, newPassword: newPassword, quiz: quiz, answer: answer, completion: { (networkResult) in
             
             switch networkResult{
             case .success(let data):
@@ -127,13 +127,13 @@ class ResetPasswordViewController: UIViewController {
                     print(message)
                 }
             case .pathErr:
-                print("pathErr in postSignUpWithAPI")
+                print("pathErr in resetPasswordWithAPI")
             case .serverErr:
-                print("serverErr in postSignUpWithAPI")
+                print("serverErr in resetPasswordWithAPI")
             case .networkFail:
-                print("networkFail in postSignUpWithAPI")
+                print("networkFail in resetPasswordWithAPI")
             default:
-                print("networkFail in signUpWithAPI")
+                print("networkFail in resetPasswordWithAPI")
             }
             
             

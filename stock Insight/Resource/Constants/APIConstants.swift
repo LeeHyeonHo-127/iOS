@@ -1,7 +1,7 @@
 import Foundation
 
 struct APIConstants{
-    static let baseURL = "https://eb86-39-118-146-59.ngrok-free.app"
+    static let baseURL = "https://3ecc-39-118-146-59.ngrok-free.app"
     
     
 //    static var userId: Int = UserDefaults.standard.integer(forKey: "userId") {

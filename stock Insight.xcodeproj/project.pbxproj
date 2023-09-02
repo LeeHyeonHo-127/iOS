@@ -191,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				C14E78692A20ADB4009134AA /* Stock.swift */,
-				C174B0452AA02AC20057ED0E /* SearchStock.swift */,
 				C174B04F2AA0383B0057ED0E /* Index.swift */,
 				C174B0512AA06D160057ED0E /* PresentStockData.swift */,
 			);
@@ -358,6 +357,7 @@
 		C1AC80AD2A860570005E1AE6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C174B0452AA02AC20057ED0E /* SearchStock.swift */,
 				C1071CD12A1E0B25005E4D8F /* ShowLineChartCell.swift */,
 				C1A9F38F2A2F40DF0094CC95 /* ShowLeadingLineChartCell.swift */,
 				C1A9F39B2A3064E80094CC95 /* ArticleCell.swift */,
