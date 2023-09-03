@@ -100,8 +100,32 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     
     //즐겨찾기 버튼 추가
     func makeStarButton(){
-        let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(starButtonTapped))
-        self.navigationItem.rightBarButtonItem = starButton
+        var isbookmarked = false
+        print("StockDetailViewController _ makeStarButton in")
+        
+        //현재 종목이 즐겨찾기된 종목인지 확인후 즐겨찾기 버튼 설정
+        if let bookmarkList = self.getBookmarkList(){
+            print("StockDetailViewController _ bookmarkList = \(bookmarkList)")
+            bookmarkList.forEach{
+                if($0.stockCode == self.presentStockData_Dummy?.stockCode){
+                    let starButton = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(starButtonTapped))
+                    self.navigationItem.rightBarButtonItem = starButton
+                    self.navigationItem.rightBarButtonItem?.tintColor = .systemYellow
+                    print("StockDetailViewController _ makeStarButton _ 이 종목은 즐겨찾기에 있는 종목 떄문에 별이 색칠!")
+                    isbookmarked = true
+                    return
+                }
+            }
+        }
+        
+        if (isbookmarked == false){
+            print("StockDetailViewController _ makeStarButton | 현재 종목은 즐겨찾기한 종목이 아님")
+            //현재 종목이 즐겨찾기 된 종목이 아니라면
+            let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(starButtonTapped))
+            self.navigationItem.rightBarButtonItem = starButton
+        }
+        
+     
     }
     
     //즐겨찾기 버튼이 눌렸을 시 동작하는 함수
@@ -110,11 +134,12 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
             self.addBookmark()
             self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "star.fill")
             self.navigationItem.rightBarButtonItem?.tintColor = .systemYellow
-            } else {
-                self.deleteBookmark()
-                self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "star")
-                self.navigationItem.rightBarButtonItem?.tintColor = .systemBlue
             }
+        else {
+            self.deleteBookmark()
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "star")
+            self.navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+        }
     }
     
     //chartView 생성
@@ -342,31 +367,79 @@ class StockDetailViewController: UIViewController, ChartViewDelegate {
     //즐겨찾기 추가 함수
     func addBookmark(){
         guard let userID = UserManager.shared.getUser()?.user_id else {return}
-        guard let stockName = self.presentStockData?.stockName else {return}
-        guard let stockCode = self.presentStockData?.stockCode else {return}
+        print("addBookMark _ userID : \(userID)")
+        
+        guard let stockName = self.presentStockData_Dummy?.stockName else {return}
+        guard let stockCode = self.presentStockData_Dummy?.stockCode else {return}
         let bookmark = Bookmark(stockName: stockName, stockCode: stockCode)
         
-        var bookmarkList = UserDefaults.standard.array(forKey: userID)
-        bookmarkList?.append(bookmark)
-        UserDefaults.standard.setValue(bookmarkList, forKey: userID)
+        
+        var bookmarkList = self.getBookmarkList()
+        
+        //bookmarkList가 비었다면
+        if bookmarkList == nil || bookmarkList!.isEmpty{
+            let makeBookmarkList: [Bookmark] = [bookmark]
+            print("addBookmark = 새로만든 makrBookmarkList = \(makeBookmarkList)")
+            if let newBookmarkList = try? JSONEncoder().encode(makeBookmarkList) {
+                UserDefaults.standard.set(newBookmarkList, forKey: userID)
+                print("addBookMark _ newBookMarkList : \(newBookmarkList)")
+            }
+        }
+        //bookmarkList가 비어있지 않다면
+        else{
+            bookmarkList!.append(bookmark)
+            print("addBookMark _ 추가한 bookmarkList : \(bookmarkList)")
+            
+            if let bookmarkListEncoded = try? JSONEncoder().encode(bookmarkList!) {
+                UserDefaults.standard.set(bookmarkListEncoded, forKey: userID)
+                print("addBookMark _ bookmarkListEncoded : \(bookmarkListEncoded)")
+            }
+            UserDefaults.standard.setValue(bookmarkList, forKey: userID)
+        }
     }
     
     //즐겨찾기 삭제 함수
     func deleteBookmark(){
         guard let userID = UserManager.shared.getUser()?.user_id else {return}
-        guard let stockName = self.presentStockData?.stockName else {return}
-        guard let stockCode = self.presentStockData?.stockCode else {return}
+        print("deleteBookmark _ userID : \(userID)")
+        
+        guard let stockName = self.presentStockData_Dummy?.stockName else {return}
+        guard let stockCode = self.presentStockData_Dummy?.stockCode else {return}
         let bookmark = Bookmark(stockName: stockName, stockCode: stockCode)
         
-        var bookmarkList = UserDefaults.standard.array(forKey: userID)
-        bookmarkList?.removeLast()
-        UserDefaults.standard.setValue(bookmarkList, forKey: userID)
+        var bookmarkList = self.getBookmarkList()
+        
+        if bookmarkList != nil{
+            print("deleteBookmark _ 삭제하기 전 bookmarkList = \(bookmarkList)")
+            bookmarkList?.removeAll{$0.stockCode == self.presentStockData_Dummy?.stockCode}
+            print("deleteBookmark _ 삭제한 후 bookmarkList = \(bookmarkList)")
+            
+            if let bookmarkListEncoded = try? JSONEncoder().encode(bookmarkList!) {
+                UserDefaults.standard.set(bookmarkListEncoded, forKey: userID)
+                print("deleteBookmark _ bookmarkListEncoded : \(bookmarkListEncoded)")
+            }
+            return
+        }
+        
+        print("deleteBookmark _ bookmarkList 는 비었습니다.")
     }
     
+    //즐겨찾기 데이터 가져오기
+    func getBookmarkList() -> [Bookmark]?{
+        guard let userID = UserManager.shared.getUser()?.user_id else {return nil}
+        
+        if let bookmarkListEncoded = UserDefaults.standard.data(forKey: userID){
+            let bookmarkListDecoded = try? JSONDecoder().decode([Bookmark].self, from: bookmarkListEncoded)
+            print("StockDetailViewController_ getBookMarkList() -> bookmarkList:\(bookmarkListDecoded)")
+            return bookmarkListDecoded
+        }
+        return nil
+    }
+
     
     //종목 검색 함수
     func searchStockWithAPI(stockName: String){
-        SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
+        GetStockService.shared.getStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
                 guard let searchData = data as? Stock else {return}

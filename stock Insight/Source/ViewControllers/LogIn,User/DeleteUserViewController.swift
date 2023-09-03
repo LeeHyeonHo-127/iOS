@@ -108,7 +108,7 @@ class DeleteUserViewController: UIViewController {
         
         if password == rePassword{
             self.deleteUserWithAPI(username: userName, password: password, quiz: quiz, answer: answer)
-//            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+//            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
 //            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
         }else{
             self.showAlert(title: "비밀번호가 일치하지 않습니다.")
@@ -121,8 +121,8 @@ class DeleteUserViewController: UIViewController {
             
             switch networkResult{
             case .success(_):
-                guard let viewController = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else {return}
-                self.navigationController?.popViewController(animated: true)
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
             case .requestErr(let msg):
                 if let message = msg as? String {
                     print(message)

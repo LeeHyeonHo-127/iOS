@@ -63,6 +63,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     var searchStockData_Dummy: Stock_Dummy?
     var presentStockData_Dummy: Stock_Dummy?
     
+    var test: String = ""
 
 
 
@@ -72,11 +73,44 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         
         //data 가져오기
         //self.getIndexWithAPI() //지수 가져오기
-        //self.getPresentStockWithAPI(stockName: "삼성전자") //현재 보여질 주식에 대한 값 가져오기
+        
+        
+        
+//        self.getPresentStockWithAPI(stockName: "하이브") //현재 보여질 주식에 대한 값 가져오기
+//        let kospiData = self.downloadCSVFile(indexURL: URL(string: "https://cf51-39-118-146-59.ngrok-free.app/download/KOSPI_data.csv")!)
+     
+        //지수 가져오기 테스트
+//        if let csvData = try? Data(contentsOf: URL(string: "https://cf51-39-118-146-59.ngrok-free.app/download/KOSPI_data.csv")!){
+//            guard let csvString = String(data: csvData, encoding: .utf8) else {return}
+//            self.test = csvString
+//            print("kospiData = \(csvData)")
+//        }
+        
+        //주가 과거 데이터 가져오기 연습1
+        
+        GetStockDataService.shared.getStockData(completion: { (networkResult) in
+            switch networkResult{
+            case .success(let data):
+                print(type(of: data))
+                print("주식 과거 데이터: \(data)")
+            default:
+                print("주식 과거 데이터 가져오기 오류")
+            }
+        })
+        
+        //주가 과거 데이터 가져오기 연습2
+//        GetStockDataService.shared.getCloseValue_Test()
+        
+       
         
         //Dummy Data 가져오기
         self.getPresentStock_Dummy()
         self.getIndex_Dummy()
+        
+        //더미 유저 UserManager에 저장
+        self.setUser_dummy()
+        //유저 정보 갖고오기
+//        self.getUser()
         
         
         //뷰 세팅
@@ -422,9 +456,39 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     //MARK: - Data 관련 함수
     
+    
+//    //유저 갖고오기 함수
+//    func getUser() -> User{
+//        let token = UserDefaults.standard.string(forKey: "access_token")
+//        print("access_token = \(token)")
+//
+//        let user_Any = UserDefaults.standard.value(forKey: token!)
+//        guard let user = user_Any as? User else {return User(user_id: "", pw: "", name: "")}
+//        print("user = \(user)")
+//        return(user)
+//    }
+    
+    
+    //토큰 임시 발행 및 유저 저장 함수
+    func setUser_dummy(){
+        //토큰 저장
+        let token = "dummyToken"
+        UserDefaults.standard.removeObject(forKey: "access_token")
+        UserDefaults.standard.set(token, forKey: "access_token")
+
+        //토큰으로 유저 저장
+        let user = User(user_id: "dummy", pw: "1", name: "이현호더미")
+        
+        if let userData = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(userData, forKey: "dummyToken")
+        }
+
+        UserManager.shared.setUser(user)
+    }
+    
     //종목 검색 함수
     func searchStockWithAPI(stockName: String){
-        SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
+        GetStockService.shared.getStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
                 guard let searchData = data as? Stock else {return}
@@ -454,7 +518,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
     //현재 주가에 대한 데이터 갖고오기 함수
     func getPresentStockWithAPI(stockName: String){
-        SearchStockService.shared.searchStock(stockName: stockName, completion: { (networkResult) in
+        GetStockService.shared.getStock(stockName: stockName, completion: { (networkResult) in
             switch networkResult{
             case.success(let data):
                 guard let presentStockData = data as? Stock else {return}
@@ -487,6 +551,7 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
                 let kospiData = self.downloadCSVFile(indexURL: indexURLs.KOSPI)
                 let kosdaqData = self.downloadCSVFile(indexURL: indexURLs.KOSDAQ)
                 let kospi200Data = self.downloadCSVFile(indexURL: indexURLs.KOSPI200)
+                print(kospiData)
                 self.indexDatas = IndexData(KOSPI: kospiData, KOSDAQ: kosdaqData, KOSPI200: kospi200Data)
                 
             case .requestErr(let msg):

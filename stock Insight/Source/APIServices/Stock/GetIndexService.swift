@@ -7,7 +7,7 @@ struct GetIndexService{
     //주요 지수 가져오기
     func getIndex(completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
-        
+        print("=====getIndex In==========")
         let url = APIConstants.getIndexInfo
         
         let header: HTTPHeaders = [
@@ -17,18 +17,28 @@ struct GetIndexService{
         let body: Parameters = [:]
         
         let dataRequest = AF.request(url,
-                                     method: .post,
-                                     parameters: body,
-                                     encoding: URLEncoding.default,
+                                     method: .get,
                                      headers: header)
         
         dataRequest.responseData(completionHandler: {(response) in
             switch response.result{
             case .success:
+                print("======getIndex Success=========")
+                
+                print("Raw Data: \(response)")
+                
+                if let jsonString = String(data: response.data!, encoding: .utf8) {
+                    // Print the JSON string to check the format
+                    print("judgeSearchStock in JSON String: \(jsonString)")
+                } else {
+                    // If converting to a string fails, print the raw data
+                    print("Raw Data: \(response)")
+                }
+
                 guard let statusCode = response.response?.statusCode else {
                     return
                 }
-                guard let data = response.value else {
+                guard let data = response.data else {
                     return
                 }
                 completion(judgeGetIndex(status: statusCode, data: data))
@@ -45,7 +55,15 @@ struct GetIndexService{
         guard let decodedData = try? decoder.decode(IndexURLStrings.self, from: data) else {
             return .pathErr
         }
+        print("======judgeGetIndex In=========")
         
+        if let jsonString = String(data: data, encoding: .utf8) {
+            // Print the JSON string to check the format
+            print("judgeSearchStock in JSON String: \(jsonString)")
+        } else {
+            // If converting to a string fails, print the raw data
+            print("Raw Data: \(data)")
+        }
         
         
         switch status {

@@ -88,11 +88,13 @@ class LoginViewController: UIViewController {
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController else {return}
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
 
-            case .requestErr(let msg):
+            case .requestErr(let msg): //존재하지 않는 회원
                 if let message = msg as? String {
                     print(message)
+                    self.showAlert(title: message)
                 }
             case .pathErr:
+                self.showAlert(title: "디코딩이 실패하였습니다.")
                 print("pathErr in logInWithAPI")
             case .serverErr:
                 print("serverErr in logInWithAPI")
@@ -116,17 +118,6 @@ class LoginViewController: UIViewController {
 
     
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 //토큰 저장 코드 임시

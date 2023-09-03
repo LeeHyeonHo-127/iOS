@@ -1,16 +1,16 @@
 import Foundation
 import Alamofire
 
-struct SearchStockService{
-    static let shared = SearchStockService()
+struct GetStockService{
+    static let shared = GetStockService()
     
     //종목 검색
-    func searchStock(stockName: String,
+    func getStock(stockName: String,
                 completion: @escaping (NetworkResult<Any>) -> (Void) ) {
         
-        print("======searchStock.searchStock In=========")
+        print("======getStock.getStock In=========")
         
-        let url = APIConstants.searchStockInfo
+        let url = APIConstants.getStockInfo
         
         let header: HTTPHeaders = [
             "Content-Type": "application/json"
@@ -23,19 +23,22 @@ struct SearchStockService{
         let dataRequest = AF.request(url,
                                      method: .post,
                                      parameters: body,
-                                     encoding: URLEncoding.default,
+                                     encoding: JSONEncoding.default,
                                      headers: header)
         dataRequest.responseData(completionHandler: {(response) in
             switch response.result{
             case .success:
-                print("======searchStock Success=========")
+                print("======getStock Success=========")
+                
+     
+                
                 guard let statusCode = response.response?.statusCode else {
                     return
                 }
                 guard let data = response.value else {
                     return
                 }
-                completion(judgeSearchStock(status: statusCode, data: data))
+                completion(judgeGetStock(status: statusCode, data: data))
             case .failure(let error):
                 print(error)
                 completion(.networkFail)
@@ -44,9 +47,9 @@ struct SearchStockService{
     }
     
     //종목 검색 여부 확인
-    private func judgeSearchStock(status: Int, data: Data) -> NetworkResult<Any>{
+    private func judgeGetStock(status: Int, data: Data) -> NetworkResult<Any>{
         let decoder = JSONDecoder()
-        print("======judgeSearchStock In=========")
+        print("======judgeGetStock In=========")
         
         if let jsonString = String(data: data, encoding: .utf8) {
             // Print the JSON string to check the format

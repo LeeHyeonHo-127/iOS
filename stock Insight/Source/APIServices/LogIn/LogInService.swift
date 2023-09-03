@@ -39,18 +39,24 @@ struct LogInService{
     func doLogIn(status: Int, data: Data, url: URL) -> NetworkResult<Any>{
         print("======doLogIn In=========")
         
-        let failDecoding = "디코딩 실패"
-        let noID = "아이디가 없어요"
+        let failLogIn = "로그인에 실패하였습니다"
+        let noID = "존재하지 않는 아이디 입니다"
+        let noPW = "비밀번호가 일치하지 않습니다"
+        let successLogIn = "로그인에 성공하였습니다"
         
+        //jsonString 디코딩
         if let jsonString = String(data: data, encoding: .utf8) {
-            // Print the JSON string to check the format
             print("JSON String: \(jsonString)")
+            if jsonString == "<script> alert('존재하지 않는 아이디입니다.'); location.href='/login';</script>"{
+                return .requestErr(noID)
+            }else if jsonString == "<script> alert('비밀번호가 일치하지 않습니다.'); location.href='/login';</script>" {
+                return .requestErr(noPW)
+            }
         } else {
-            // If converting to a string fails, print the raw data
             print("Raw Data: \(data)")
         }
         
-        
+    
         switch status {
         case 200: // 로그인 성공
             //토큰 저장
@@ -67,17 +73,21 @@ struct LogInService{
                 for cookie in cookies {
                     if cookie.name == "access_token" {
                         print("Received access token:", cookie.value)
+                        UserDefaults.standard.removeObject(forKey: cookie.name)
                         UserDefaults.standard.set(cookie.value, forKey: cookie.name)
-                        UserDefaults.standard.set(decodedData.user_id, forKey: cookie.value) //accessToken을 기반으로 유저 저장
+                        
+//                        UserDefaults.standard.removeObject(forKey: decodedData)
+//                        UserDefaults.standard.set(decodedData, forKey: cookie.value) //accessToken을 기반으로 유저 저장
+                        UserManager.shared.setUser(decodedData)
                     }
                     else if cookie.name == "refresh_token"{
                         print("Received refresh token:", cookie.value)
-                        UserDefaults.standard.set(cookie.value, forKey: cookie.name)
+//                        UserDefaults.standard.set(cookie.value, forKey: cookie.name)
                     }
                 }
                 return .success(decodedData)
             }
-            return .success(failDecoding)
+            return .success(successLogIn)
         case 404:
             print("=====Status404 실패=========")
             // 존재하지 않는 회원

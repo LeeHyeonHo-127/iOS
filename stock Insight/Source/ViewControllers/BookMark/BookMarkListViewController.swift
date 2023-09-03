@@ -22,13 +22,13 @@ class BookMarkListViewController: UIViewController {
         configureCollectionView()
 //        getBookmarkStockList_dummy()
         
-        getBookmarkLisk()
+        getBookmarkList()
     }
     
     //viewWillAppead
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-        getBookmarkLisk()
+        getBookmarkList()
     }
     
 
@@ -53,10 +53,16 @@ class BookMarkListViewController: UIViewController {
     //MARK: - 데이터 관련 함수
     
     //즐겨찾기 데이터 가져오기
-    func getBookmarkLisk(){
+    func getBookmarkList(){
         guard let userID = UserManager.shared.getUser()?.user_id else {return}
-        guard let bookmarkList = UserDefaults.standard.array(forKey: userID) as? [Bookmark] else {return}
-        self.bookmarkList = bookmarkList
+        
+        if let bookmarkListEncoded = UserDefaults.standard.data(forKey: userID){
+            let bookmarkListDecoded = try? JSONDecoder().decode([Bookmark].self, from: bookmarkListEncoded)
+            print("BookmarkListViewController getBookMarkList() -> bookmarkList:\(bookmarkListDecoded)")
+            self.bookmarkList = bookmarkListDecoded!
+            self.collectionView.reloadData()
+        }
+        return
     }
     
     
@@ -96,6 +102,8 @@ extension BookMarkListViewController: UICollectionViewDataSource{
     //cell 반환
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarCollectionViewCell", for: indexPath) as? StarCollectionViewCell else {return UICollectionViewCell()}
+        cell.nameLabel.text = self.bookmarkList[indexPath.row].stockName
+        cell.stockCodeLabel.text = self.bookmarkList[indexPath.row].stockCode
         cell.settingCell()
         return cell
     }

@@ -32,9 +32,9 @@ class MyPageViewController: UIViewController {
     
     //로그아웃 버튼
     @IBAction func logOutButtonTapped(_ sender: Any) {
-        self.logOutWithAPI()
-//        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
-//        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
+//        self.logOutWithAPI()
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BeginNavigationController") as? BeginNavigationController else {return}
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(viewController, animated: true)
     }
     
     //회원탈퇴 버튼
@@ -49,7 +49,8 @@ class MyPageViewController: UIViewController {
     
     //로그아웃 함수
     func logOutWithAPI(){
-        LogOutService.shared.logOut(user_id: "swethom1", completion: {networkResult in
+        guard let user_id = UserManager.shared.getUser()?.user_id else {return}
+        LogOutService.shared.logOut(user_id: user_id, completion: {networkResult in
             switch networkResult{
             case .success(_):
                 

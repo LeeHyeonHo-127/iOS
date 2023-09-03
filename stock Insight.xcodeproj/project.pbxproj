@@ -33,7 +33,7 @@
 		C16CACA92A9E46B900FED71D /* VerticalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16CACA82A9E46B900FED71D /* VerticalViewController.swift */; };
 		C174B0432A9F851A0057ED0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0422A9F851A0057ED0E /* User.swift */; };
 		C174B0462AA02AC20057ED0E /* SearchStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0452AA02AC20057ED0E /* SearchStock.swift */; };
-		C174B0492AA02D440057ED0E /* SearchStockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0482AA02D440057ED0E /* SearchStockService.swift */; };
+		C174B0492AA02D440057ED0E /* GetStockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0482AA02D440057ED0E /* GetStockService.swift */; };
 		C174B04C2AA030D40057ED0E /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B04B2AA030D40057ED0E /* StockDetailViewController.swift */; };
 		C174B04E2AA035F80057ED0E /* GetIndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B04D2AA035F80057ED0E /* GetIndexService.swift */; };
 		C174B0502AA0383B0057ED0E /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B04F2AA0383B0057ED0E /* Index.swift */; };
@@ -42,6 +42,7 @@
 		C174B0562AA197810057ED0E /* ResetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0552AA197810057ED0E /* ResetPasswordService.swift */; };
 		C174B0582AA1A9C60057ED0E /* DeleteUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0572AA1A9C60057ED0E /* DeleteUserViewController.swift */; };
 		C174B05A2AA1ADB10057ED0E /* deleteUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B0592AA1ADB10057ED0E /* deleteUserService.swift */; };
+		C174B05C2AA467260057ED0E /* GetStockDatasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C174B05B2AA467260057ED0E /* GetStockDatasService.swift */; };
 		C17F3A2D2A9CD0C400656598 /* LogOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17F3A2C2A9CD0C400656598 /* LogOutService.swift */; };
 		C17F3A2F2A9CDC1000656598 /* ModifyUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */; };
 		C185E0E52A87670000895C2D /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C185E0E42A87670000895C2D /* LogInService.swift */; };
@@ -103,7 +104,7 @@
 		C16CACA82A9E46B900FED71D /* VerticalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalViewController.swift; sourceTree = "<group>"; };
 		C174B0422A9F851A0057ED0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C174B0452AA02AC20057ED0E /* SearchStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStock.swift; sourceTree = "<group>"; };
-		C174B0482AA02D440057ED0E /* SearchStockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockService.swift; sourceTree = "<group>"; };
+		C174B0482AA02D440057ED0E /* GetStockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStockService.swift; sourceTree = "<group>"; };
 		C174B04B2AA030D40057ED0E /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		C174B04D2AA035F80057ED0E /* GetIndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIndexService.swift; sourceTree = "<group>"; };
 		C174B04F2AA0383B0057ED0E /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		C174B0552AA197810057ED0E /* ResetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordService.swift; sourceTree = "<group>"; };
 		C174B0572AA1A9C60057ED0E /* DeleteUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewController.swift; sourceTree = "<group>"; };
 		C174B0592AA1ADB10057ED0E /* deleteUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteUserService.swift; sourceTree = "<group>"; };
+		C174B05B2AA467260057ED0E /* GetStockDatasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStockDatasService.swift; sourceTree = "<group>"; };
 		C17F3A2C2A9CD0C400656598 /* LogOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutService.swift; sourceTree = "<group>"; };
 		C17F3A2E2A9CDC1000656598 /* ModifyUserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyUserInfoService.swift; sourceTree = "<group>"; };
 		C185E0E42A87670000895C2D /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
@@ -200,8 +202,9 @@
 		C174B0472AA02D2F0057ED0E /* Stock */ = {
 			isa = PBXGroup;
 			children = (
-				C174B0482AA02D440057ED0E /* SearchStockService.swift */,
+				C174B0482AA02D440057ED0E /* GetStockService.swift */,
 				C174B04D2AA035F80057ED0E /* GetIndexService.swift */,
+				C174B05B2AA467260057ED0E /* GetStockDatasService.swift */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -589,7 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C174B0492AA02D440057ED0E /* SearchStockService.swift in Sources */,
+				C174B0492AA02D440057ED0E /* GetStockService.swift in Sources */,
 				C1EADDB22A26F7C800F01A0C /* HowPredictCollectionViewCell.swift in Sources */,
 				C13DEDD92A11FC0700AA8EAF /* StockDetailViewController_temp.swift in Sources */,
 				C13DEDD12A11F4B300AA8EAF /* LoginViewController.swift in Sources */,
@@ -602,6 +605,7 @@
 				C12606972A2B4C76008B5CDC /* nodeJsTestView.swift in Sources */,
 				C185E0EA2A8768D300895C2D /* APIConstants.swift in Sources */,
 				C13DEDD72A11FBE300AA8EAF /* MyPageViewController.swift in Sources */,
+				C174B05C2AA467260057ED0E /* GetStockDatasService.swift in Sources */,
 				C1BE314D29FF72F200FF1FE4 /* AppDelegate.swift in Sources */,
 				C174B0502AA0383B0057ED0E /* Index.swift in Sources */,
 				C185E0E72A87680200895C2D /* SignUpService.swift in Sources */,

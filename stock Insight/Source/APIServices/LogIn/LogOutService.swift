@@ -4,7 +4,7 @@ import Alamofire
 struct LogOutService{
     static let shared = LogOutService()
     
-    func logOut(user_id:String, completion: @escaping (NetworkResult<Any>) -> Void){
+    func logOut(user_id: String, completion: @escaping (NetworkResult<Any>) -> Void){
         let url = APIConstants.logOutURL
         
         let header: HTTPHeaders = [
