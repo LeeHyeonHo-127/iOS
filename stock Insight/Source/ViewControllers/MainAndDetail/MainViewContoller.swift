@@ -13,7 +13,7 @@ enum ChartDataType: String{
 }
 
 
-class MainViewContoller: UIViewController, ChartViewDelegate {
+class MainViewContoller: UIViewController {
     
     //label, textField
     @IBOutlet var dateLabel: UILabel!
@@ -22,8 +22,13 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     @IBOutlet var stockCodeLabel: UILabel!
     
     @IBOutlet var presentPriceLabel: UILabel!
+    @IBOutlet var presentPriceLabel2: UILabel!
     @IBOutlet var changePriceLabel: UILabel!
-    @IBOutlet var arrowLabel: UIImageView!
+    @IBOutlet var krwLabel: UILabel!
+    
+    
+    
+    @IBOutlet var changePriceLabel2: UILabel!
     
     @IBOutlet var indexViewTypeLabel: UILabel!
     @IBOutlet var predictViewTypeLabel: UILabel!
@@ -45,6 +50,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     //ChartView
     var predictLineChartView: LineChartView!
     var indexLineChartView: LineChartView!
+//    predictLineChartView.delegate = self
+//    indexLineChartView.delegate = self
+    
     
     //뉴스 뷰
     @IBOutlet var everyDayEconomyView: UIView!
@@ -124,6 +132,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         self.indexLineChartView = configureChartView(isPredict: true, color: UIColor.systemOrange, chartDataType: .KOSPI)
         self.predicePriceView.addSubview(predictLineChartView)
         self.indexView.addSubview(indexLineChartView)
+        self.predictViewLabeSetting(type: .KOSPI)
+        self.predictViewLabeSetting(type: .presentPrice)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,7 +152,6 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         //주식 변동율 = ((현재 가격 – 이전 가격) / 이전 가격) x 100
         
         
-        
         //오늘 날짜 가져오기
         let currentDate = Date()
         let calendar = Calendar.current
@@ -150,8 +160,6 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         self.dateLabel.text = "\(monthComponent)월 \(dayComponent)일"
         
       
-        
-        
         
         //cornerRadius 설정
         self.presentPriceButton.layer.cornerRadius = 5
@@ -169,14 +177,34 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
         //예측 값이 얼마나 올랐는지 계산하는 코드 필요
         guard let currentPrice = self.presentStockData_Dummy?.currentPrice else {return}
         guard let change = self.presentStockData_Dummy?.change else {return}
+        guard let stockName = self.presentStockData_Dummy?.stockName else {return}
         let changePrice = 1600
         
-        //현재 주가 데이터 출력
-        self.stockNameLabel.text = self.presentStockData_Dummy?.stockName
-        self.stockCodeLabel.text = self.presentStockData_Dummy?.stockCode
-        self.presentPriceLabel.text = "\(Int(currentPrice))"
-        self.changePriceLabel.text = "+\(changePrice)(\(change)%)"
-        self.arrowLabel.image = UIImage(systemName: "arrow.up")
+        if(type == .sentimentalPredict){ // 감성 분석일 경우
+            self.presentPriceLabel.text = " "
+            self.krwLabel.text = " "
+            self.changePriceLabel.text = "  [\(stockName)]의 감성분석 결과가 부정적입니다"
+            
+        }else{
+            //현재 주가 데이터 출력
+            self.stockNameLabel.text = self.presentStockData_Dummy?.stockName
+            self.stockCodeLabel.text = self.presentStockData_Dummy?.stockCode
+            self.presentPriceLabel.text = "\(Int(currentPrice))"
+            self.krwLabel.text = "KRW"
+            self.changePriceLabel.text = "+\(changePrice)(\(change)%)"
+            self.changePriceLabel.textColor = .systemRed
+            
+            
+            if let lastEntry = self.indexDatas?.KOSPI.last,
+               let lastValue = lastEntry.values.first {
+                print("Last Value:", lastValue)
+                
+                print(String((Int(lastValue))))
+                self.presentPriceLabel2.text = String((Int(lastValue)))
+            }
+            
+            
+        }
         self.predictViewTypeLabel.text = type.rawValue
     }
     
@@ -288,8 +316,9 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
             lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: []) // x축 레이블 포맷터 설정 (일단 빈 값으로 설정)
             lineChartView.rightAxis.enabled = false // 오른쪽 축 비활성화
             lineChartView.leftAxis.enabled = false
+            
             lineChartView.legend.enabled = false // 범례 비활성화
-            lineChartView.chartDescription.enabled = false // 차트 설명 비활성화
+            lineChartView.chartDescription.enabled = true // 차트 설명 비활성화
             lineChartView.pinchZoomEnabled = true        // 핀치 줌 기능 비활성화
             lineChartView.scaleXEnabled = true           // X축 스케일 기능 비활성화
             lineChartView.scaleYEnabled = true           // Y축 스케일 기능 비활성화
@@ -300,6 +329,11 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
             lineChartView.xAxis.labelCount = 0 // x축 레이블 개수 설정
             lineChartView.xAxis.granularity = 0 // x축 레이블 간격 설정
             lineChartView.xAxis.labelRotationAngle = 0 // x축 레이블 회전 설정
+            lineChartView.xAxis.labelTextColor = .white
+            
+            
+            
+            
             
             if lineChartView.scaleX >= 2.0 && lineChartView.scaleY >= 2.0 {
                 print("==============TRUE=========================")
@@ -724,5 +758,36 @@ class MainViewContoller: UIViewController, ChartViewDelegate {
     
 }
 
+
+extension MainViewContoller: ChartViewDelegate{
+    
+    
+    func chartValueSelected(_ chartView_: ChartViewBase,
+                            entry entry: ChartDataEntry,
+                            highlight highlight: Highlight) {
+        
+        
+        let dataSetIndex = highlight.dataSetIndex
+        print("hilight = \(highlight)")
+        print("y value = \(highlight.y)")
+        print("dataSetIndex = \(dataSetIndex)")
+        let value = chartView_.data?.dataSets[dataSetIndex].entryForIndex(Int(highlight.x))?.y
+        
+//        self.showAlert(title: "\(highlight.y)원 입니다")
+        
+        if(highlight.y > 5000){
+            self.changePriceLabel.text = "\(highlight.y)"
+        }else{
+            self.changePriceLabel2.text = "\(highlight.y)"
+        }
+//        print("Selected Y Value:", value)
+        
+  
+    
+        
+    }
+    
+    
+}
 
 
