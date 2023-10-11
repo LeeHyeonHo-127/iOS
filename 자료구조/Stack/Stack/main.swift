@@ -25,6 +25,8 @@ stack.push(element: 3)
 for _ in 0..<3{
     print(stack.pop())
 }
+
+
 //3
 //2
 //1
