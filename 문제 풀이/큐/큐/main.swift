@@ -17,34 +17,163 @@
  출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
  */
 
+//MARK: 다른 풀이
 import Foundation
 
-var queue: [Int] = []
+// 빠른 입력 FileIO
+final class FileIO {
+    private var buffer:[UInt8]
+    private var index: Int
+    
+    init(fileHandle: FileHandle = FileHandle.standardInput) {
+        buffer = Array(fileHandle.readDataToEndOfFile())+[UInt8(0)] // 인덱스 범위 넘어가는 것 방지
+        index = 0
+    }
+    
+    @inline(__always) private func read() -> UInt8 {
+        defer { index += 1 }
+        
+        return buffer.withUnsafeBufferPointer { $0[index] }
+    }
+    
+    @inline(__always) func readInt() -> Int {
+        var sum = 0
+        var now = read()
+        var isPositive = true
+        
+        while now == 10
+                || now == 32 { now = read() } // 공백과 줄바꿈 무시
+        if now == 45{ isPositive.toggle(); now = read() } // 음수 처리
+        while now >= 48, now <= 57 {
+            sum = sum * 10 + Int(now-48)
+            now = read()
+        }
+        
+        return sum * (isPositive ? 1:-1)
+    }
+    
+    @inline(__always) func readString() -> Int {
+        var str = 0
+        var now = read()
+        
+        while now == 10
+                || now == 32 { now = read() } // 공백과 줄바꿈 무시
+        
+        while now != 10
+                && now != 32 && now != 0 {
+            str += Int(now)
+            now = read()
+        }
+        
+        return str
+    }
+}
 
-for _ in 0..<Int(readLine()!)! {
+struct Queue {
+    private var array: [Int] = []
+    private var index: Int = 0
+    
+    var size: Int {
+        return array.count - index
+    }
+    
+    var front: Int {
+        return self.isEmpty ? -1 : array[index]
+    }
+    
+    var back: Int {
+        return self.isEmpty ? -1 : array.last!
+    }
+    
+    var empty: Int {
+        return self.isEmpty ? 1 : 0
+    }
+    
+    var isEmpty: Bool {
+        return array.count - index <= 0
+    }
+    
+    mutating func push(_ element: Int) {
+        array.append(element)
+    }
+    
+    mutating func pop() -> Int {
+        guard !self.isEmpty else {
+            return -1
+        }
+        let element = array[index]
+        index += 1
+        return element
+    }
+}
+
+let file = FileIO()
+let n = file.readInt()
+var queue: Queue = Queue()
+var answer = ""
+
+for _ in 0..<n {
+    let command = file.readString()
+    switch command {
+    case 448:
+        // push
+        queue.push(file.readInt())
+    case 335:
+        // pop
+        answer += "\(queue.pop())\n"
+    case 443:
+        // size
+        answer += "\(queue.size)\n"
+    case 559:
+        // empty
+        answer += "\(queue.empty)\n"
+    case 553:
+        // front
+        answer += "\(queue.front)\n"
+    case 401:
+        // back
+        answer += "\(queue.back)\n"
+    default:
+        continue
+    }
+}
+print(answer)
+
+
+
+
+
+//MARK: - 내 풀이
+/*
+import Foundation
+
+var queue = Queue()
+var fileIO = FileIO()
+
+for _ in 0..<fileIO.readInt() {
     var input = readLine()!.split(separator: " ").map{String($0)}
     
     switch input[0]{
     case "push" :
-        queue.append(Int(input[1])!)
+        queue.push(element: Int(input[1])!)
         
     case "pop" :
-        var result = queue.isEmpty ? -1 : queue.removeFirst()
-        print(result)
+//        var result = queue.size == 0 ? -1 : queue.pop()
+        print(queue.size == 0 ? -1 : queue.pop())
         
     case "size" :
-        print(queue.count)
+        print(queue.size)
         
     case "empty" :
-        var result = queue.isEmpty ? 1 : 0
+        var result = queue.size == 0 ? 1 : 0
         print(result)
         
     case "front" :
-        var result = queue.isEmpty ? -1 : queue.first!
+        var result = queue.size == 0 ? -1 : queue.front!.value
         print(result)
         
     case "back" :
-        var result = queue.isEmpty ? -1 : queue.last!
+        var result = queue.size == 0 ? -1 : queue.back!.value
         print(result)
         
     default :
@@ -52,4 +181,58 @@ for _ in 0..<Int(readLine()!)! {
     }
     
 }
+
+
+class Queue {
+    var size: Int = 0
+    var front: QueueNode?
+    var back: QueueNode?
+    
+    func push(element: Int){
+        var node = QueueNode(value: element)
+        if size == 0 {
+            front = node
+            back = node
+        }
+        else {
+            front?.next = node
+            back = node
+        }
+        size = size + 1
+    }
+    
+    func pop() -> Int{
+        if (size == 0){
+            return -1
+        }
+        
+        else if (size == 1){
+            var value = front?.value
+            front = nil
+            size = 0
+            return value!
+        }
+        
+        else{
+            var value = front?.value
+            front = front?.next
+            size = size - 1
+            return value!
+        }
+    }
+    
+    
+    
+}
+
+class QueueNode {
+    var next: QueueNode?
+    var value: Int
+    
+    init(value: Int) {
+        self.value = value
+    }
+}
+
+*/
 
