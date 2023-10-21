@@ -23,7 +23,7 @@ N이 주어졌을 때, 제일 마지막에 남게 되는 카드를 구하는 프
 
 //MARK: - 내 풀이
 
-while true{
+
     let n = Int(readLine()!)!
     var queue = Queue()
 
@@ -91,7 +91,7 @@ while true{
             self.next = next
         }
     }
-}
+
 
 
 //MARK: - 다른 풀이
