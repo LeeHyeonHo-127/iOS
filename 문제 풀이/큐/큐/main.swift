@@ -21,79 +21,74 @@ Baekjoon 11866
 
 //MARK: - 내 풀이
 
-while true{
-    let n = Int(readLine()!)!
-    var queue = Queue()
 
-    for i in 1...n {
-        queue.push(value: i)
+var circularQueue = CircularQueue()
+var input = readLine()!.split(separator: " ")
+
+for i in 1...Int(input[0])!{
+    circularQueue.push(value: i)
+}
+
+while circularQueue.size > 0 {
+    var now: QueueNode = circularQueue.front!
+    now = now.next!
+    print(now.next?.value)
+    now.next = now.next?.next!
+    now = now.next!
+    circularQueue.size = circularQueue.size - 1
+    
+}
+
+
+
+
+final class CircularQueue {
+    var front: QueueNode?
+    var back: QueueNode?
+    var size = 0
+    
+    func pop() -> QueueNode? {
+        
+        if size == 0 {
+            return nil
+        }
+        
+        var top = front
+        front = front?.next
+        back?.next = front
+        size = size == 0 ? 0 : size - 1
+        return top
     }
-
-    while queue.size > 0 {
+    
+    func push(value: Int) {
+        var node = QueueNode(value: value)
         
-        if queue.size == 1{
-            print("\(queue.front!.value)")
-            print("---------------------------------------------")
-            break
-        }
-        
-        queue.pop()
-        
-        if queue.size > 1{
-            guard let pop = queue.pop() else {print("size = \(queue.size)") ; break}
-            
-            queue.push(value: pop.value)
-        }
-    }
-
-
-    final class Queue {
-        var front: QueueNode?
-        var back: QueueNode?
-        var size = 0
-        
-        func pop() -> QueueNode? {
-            
-            if size == 0 {
-                return nil
-            }
-            
-            var top = front
-            front = front?.next
-            size = size == 0 ? 0 : size - 1
-            return top
-        }
-        
-        func push(value: Int) {
-            var node = QueueNode(value: value)
-            
-            if size == 0 {
-                front = node
-                back = node
-            }
-            
-            back?.next = node
+        if size == 0 {
+            front = node
             back = node
-            size = size + 1
         }
         
+        node.next = front
+        back?.next = node
+        back = node
+        
+        size = size + 1
     }
+}
 
-
-    final class QueueNode{
+final class QueueNode{
         var value: Int
         var next: QueueNode?
         
         init(value: Int, next: QueueNode? = nil) {
-            self.value = value
-            self.next = next
-        }
+        self.value = value
+        self.next = next
     }
 }
 
 
-//MARK: - 다른 풀이
-/*
+
+//MARK: - 다른 풀이/*
 //큐로 풀지 않고 2의 제곱을 이용해서 품
 
 let N = Int(readLine()!)!
@@ -112,5 +107,5 @@ if remain == 0 {
 }else {
     print(2*remain)
 }
-*/
+
 
