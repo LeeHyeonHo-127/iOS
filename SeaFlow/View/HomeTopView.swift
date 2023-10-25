@@ -64,10 +64,9 @@ class HomeTopView: UIView{
         button.layer.cornerRadius = 4
         button.backgroundColor = UIColor(named: "SeaFlowBlue")
         return button
-        
     }()
     
-    
+  
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,7 +77,8 @@ class HomeTopView: UIView{
         addSubview(dateLabel2)
         addSubview(locationImage)
         addSubview(locationLabel)
-        addSubview(sectionButton)
+        
+        
         setUI()
     }
     
@@ -130,18 +130,15 @@ class HomeTopView: UIView{
         locationImage.snp.makeConstraints{ make in
             make.height.width.equalTo(16)
             
-            make.leading.equalTo(locationLabel.snp.trailing)
+            make.leading.equalTo(locationLabel.snp.trailing).offset(6)
             make.top.equalTo(dateLabel1.snp.bottom).offset(5)
         }
         
-        //sectionButton
-        sectionButton.snp.makeConstraints{ make in
-            make.height.equalTo(25)
-            make.width.equalTo(41)
-            
-            make.trailing.equalToSuperview().offset(-24)
-            make.top.equalTo(dateLabel1.snp.top).offset(5)
-        }
+        
+        
+
+        
+
     }
     
     

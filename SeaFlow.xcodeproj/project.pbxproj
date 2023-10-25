@@ -20,6 +20,7 @@
 		C10E518E2AE9036B001E4EEE /* HomeTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E518D2AE9036B001E4EEE /* HomeTopView.swift */; };
 		C10E51912AE90615001E4EEE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C10E51902AE90615001E4EEE /* SnapKit */; };
 		C10E51932AE90615001E4EEE /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C10E51922AE90615001E4EEE /* SnapKit-Dynamic */; };
+		C10E51952AE942D1001E4EEE /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51942AE942D1001E4EEE /* SplitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C10E51872AE8B920001E4EEE /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C10E518B2AE902F2001E4EEE /* UIPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPreView.swift; sourceTree = "<group>"; };
 		C10E518D2AE9036B001E4EEE /* HomeTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopView.swift; sourceTree = "<group>"; };
+		C10E51942AE942D1001E4EEE /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				C10E51732AE7C76E001E4EEE /* LaunchScreen.storyboard */,
 				C10E518D2AE9036B001E4EEE /* HomeTopView.swift */,
+				C10E51942AE942D1001E4EEE /* SplitView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				C10E518C2AE902F2001E4EEE /* UIPreView.swift in Sources */,
 				C10E518E2AE9036B001E4EEE /* HomeTopView.swift in Sources */,
 				C10E51862AE8B913001E4EEE /* DiaryViewController.swift in Sources */,
+				C10E51952AE942D1001E4EEE /* SplitView.swift in Sources */,
 				C10E51802AE8B6CF001E4EEE /* HomeViewController.swift in Sources */,
 				C10E51822AE8B8B3001E4EEE /* ShowWeatherViewController.swift in Sources */,
 				C10E51842AE8B901001E4EEE /* CommerceViewController.swift in Sources */,
