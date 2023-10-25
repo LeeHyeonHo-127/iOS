@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		C10E51692AE7C76D001E4EEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51682AE7C76D001E4EEE /* AppDelegate.swift */; };
 		C10E516B2AE7C76D001E4EEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E516A2AE7C76D001E4EEE /* SceneDelegate.swift */; };
-		C10E516D2AE7C76D001E4EEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E516C2AE7C76D001E4EEE /* ViewController.swift */; };
-		C10E51702AE7C76D001E4EEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10E516E2AE7C76D001E4EEE /* Main.storyboard */; };
 		C10E51722AE7C76E001E4EEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10E51712AE7C76E001E4EEE /* Assets.xcassets */; };
 		C10E51752AE7C76E001E4EEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10E51732AE7C76E001E4EEE /* LaunchScreen.storyboard */; };
+		C10E51802AE8B6CF001E4EEE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E517F2AE8B6CF001E4EEE /* HomeViewController.swift */; };
+		C10E51822AE8B8B3001E4EEE /* ShowWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51812AE8B8B3001E4EEE /* ShowWeatherViewController.swift */; };
+		C10E51842AE8B901001E4EEE /* CommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51832AE8B901001E4EEE /* CommerceViewController.swift */; };
+		C10E51862AE8B913001E4EEE /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51852AE8B913001E4EEE /* DiaryViewController.swift */; };
+		C10E51882AE8B920001E4EEE /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51872AE8B920001E4EEE /* MyPageViewController.swift */; };
+		C10E518C2AE902F2001E4EEE /* UIPreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E518B2AE902F2001E4EEE /* UIPreView.swift */; };
+		C10E518E2AE9036B001E4EEE /* HomeTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E518D2AE9036B001E4EEE /* HomeTopView.swift */; };
+		C10E51912AE90615001E4EEE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C10E51902AE90615001E4EEE /* SnapKit */; };
+		C10E51932AE90615001E4EEE /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C10E51922AE90615001E4EEE /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C10E51652AE7C76D001E4EEE /* SeaFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10E51682AE7C76D001E4EEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C10E516A2AE7C76D001E4EEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C10E516C2AE7C76D001E4EEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C10E516F2AE7C76D001E4EEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C10E51712AE7C76E001E4EEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C10E51742AE7C76E001E4EEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C10E51762AE7C76E001E4EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C10E517F2AE8B6CF001E4EEE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C10E51812AE8B8B3001E4EEE /* ShowWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWeatherViewController.swift; sourceTree = "<group>"; };
+		C10E51832AE8B901001E4EEE /* CommerceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceViewController.swift; sourceTree = "<group>"; };
+		C10E51852AE8B913001E4EEE /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		C10E51872AE8B920001E4EEE /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		C10E518B2AE902F2001E4EEE /* UIPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPreView.swift; sourceTree = "<group>"; };
+		C10E518D2AE9036B001E4EEE /* HomeTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10E51912AE90615001E4EEE /* SnapKit in Frameworks */,
+				C10E51932AE90615001E4EEE /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +70,44 @@
 		C10E51672AE7C76D001E4EEE /* SeaFlow */ = {
 			isa = PBXGroup;
 			children = (
+				C10E517E2AE7E4A9001E4EEE /* Controller */,
+				C10E517D2AE7E4A3001E4EEE /* View */,
+				C10E517C2AE7E49C001E4EEE /* Model */,
 				C10E51682AE7C76D001E4EEE /* AppDelegate.swift */,
 				C10E516A2AE7C76D001E4EEE /* SceneDelegate.swift */,
-				C10E516C2AE7C76D001E4EEE /* ViewController.swift */,
-				C10E516E2AE7C76D001E4EEE /* Main.storyboard */,
 				C10E51712AE7C76E001E4EEE /* Assets.xcassets */,
-				C10E51732AE7C76E001E4EEE /* LaunchScreen.storyboard */,
 				C10E51762AE7C76E001E4EEE /* Info.plist */,
 			);
 			path = SeaFlow;
+			sourceTree = "<group>";
+		};
+		C10E517C2AE7E49C001E4EEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C10E518B2AE902F2001E4EEE /* UIPreView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C10E517D2AE7E4A3001E4EEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C10E51732AE7C76E001E4EEE /* LaunchScreen.storyboard */,
+				C10E518D2AE9036B001E4EEE /* HomeTopView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C10E517E2AE7E4A9001E4EEE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C10E517F2AE8B6CF001E4EEE /* HomeViewController.swift */,
+				C10E51812AE8B8B3001E4EEE /* ShowWeatherViewController.swift */,
+				C10E51832AE8B901001E4EEE /* CommerceViewController.swift */,
+				C10E51852AE8B913001E4EEE /* DiaryViewController.swift */,
+				C10E51872AE8B920001E4EEE /* MyPageViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +126,10 @@
 			dependencies = (
 			);
 			name = SeaFlow;
+			packageProductDependencies = (
+				C10E51902AE90615001E4EEE /* SnapKit */,
+				C10E51922AE90615001E4EEE /* SnapKit-Dynamic */,
+			);
 			productName = SeaFlow;
 			productReference = C10E51652AE7C76D001E4EEE /* SeaFlow.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +158,9 @@
 				Base,
 			);
 			mainGroup = C10E515C2AE7C76D001E4EEE;
+			packageReferences = (
+				C10E518F2AE90615001E4EEE /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C10E51662AE7C76D001E4EEE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +177,6 @@
 			files = (
 				C10E51752AE7C76E001E4EEE /* LaunchScreen.storyboard in Resources */,
 				C10E51722AE7C76E001E4EEE /* Assets.xcassets in Resources */,
-				C10E51702AE7C76D001E4EEE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +187,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10E516D2AE7C76D001E4EEE /* ViewController.swift in Sources */,
 				C10E51692AE7C76D001E4EEE /* AppDelegate.swift in Sources */,
 				C10E516B2AE7C76D001E4EEE /* SceneDelegate.swift in Sources */,
+				C10E518C2AE902F2001E4EEE /* UIPreView.swift in Sources */,
+				C10E518E2AE9036B001E4EEE /* HomeTopView.swift in Sources */,
+				C10E51862AE8B913001E4EEE /* DiaryViewController.swift in Sources */,
+				C10E51802AE8B6CF001E4EEE /* HomeViewController.swift in Sources */,
+				C10E51822AE8B8B3001E4EEE /* ShowWeatherViewController.swift in Sources */,
+				C10E51842AE8B901001E4EEE /* CommerceViewController.swift in Sources */,
+				C10E51882AE8B920001E4EEE /* MyPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C10E516E2AE7C76D001E4EEE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C10E516F2AE7C76D001E4EEE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C10E51732AE7C76E001E4EEE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,7 +344,6 @@
 				INFOPLIST_FILE = SeaFlow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +371,6 @@
 				INFOPLIST_FILE = SeaFlow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,6 +408,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C10E518F2AE90615001E4EEE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C10E51902AE90615001E4EEE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10E518F2AE90615001E4EEE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C10E51922AE90615001E4EEE /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10E518F2AE90615001E4EEE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C10E515D2AE7C76D001E4EEE /* Project object */;
 }

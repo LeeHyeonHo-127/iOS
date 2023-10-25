@@ -13,10 +13,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.windowScene = windowScene
+        
+        
+        var homeViewController = HomeViewController()
+        var showWeatherViewController = ShowWeatherViewController()
+        var commerceViewController = CommerceViewController()
+        var diaryViewController = DiaryViewController()
+        var myPageViewController = MyPageViewController()
+        
+        var navigationController = UINavigationController(rootViewController: homeViewController)
+        var tabBarController = UITabBarController()
+        
+        tabBarController.setViewControllers([navigationController,showWeatherViewController,commerceViewController,diaryViewController,myPageViewController], animated: false)
+
+        guard let items = tabBarController.tabBar.items else { return }
+        tabBarController.tabBar.tintColor = .blue
+        tabBarController.tabBar.barTintColor = UIColor(named: "SeaFlowBlue")
+        
+        items[0].image = UIImage(named: "home")
+        items[0].title = "홈"
+        items[1].image = UIImage(named: "data")
+        items[1].title = "공공정보"
+        items[2].image = UIImage(named: "shop")
+        items[2].title = "커머스"
+        items[3].image = UIImage(named: "diary")
+        items[3].title = "다이어리"
+        items[4].image = UIImage(named: "profile")
+        items[4].title = "MY"
+        
+        
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
