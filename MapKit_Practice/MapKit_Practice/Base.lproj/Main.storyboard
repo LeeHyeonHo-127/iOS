@@ -86,7 +86,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110.68702290076335" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="-227" y="-3"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f31-gr-OsO">
+            <objects>
+                <viewController id="mgU-4l-hNe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9T5-C9-hc3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUa-RG-WHM">
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Usv-Zs-8A8">
+                                <rect key="frame" x="131" y="69" width="131" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="valueChanged:" destination="mgU-4l-hNe" eventType="valueChanged" id="nKP-6h-VDy"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6w-wc-YHo">
+                                <rect key="frame" x="29" y="69" width="53" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="add"/>
+                                <connections>
+                                    <action selector="addAnnotations:" destination="mgU-4l-hNe" eventType="touchUpInside" id="m6N-86-L6M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-tA-dRr">
+                                <rect key="frame" x="288" y="69" width="85" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="remoive"/>
+                                <connections>
+                                    <action selector="removeAnnotations:" destination="mgU-4l-hNe" eventType="touchUpInside" id="sU6-iI-9TK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="L7I-Ic-oH0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="L6w-wc-YHo" firstAttribute="leading" secondItem="L7I-Ic-oH0" secondAttribute="leading" constant="29" id="BHl-N2-1WQ"/>
+                            <constraint firstItem="L6w-wc-YHo" firstAttribute="top" secondItem="L7I-Ic-oH0" secondAttribute="top" constant="10" id="H9y-ZI-ZCb"/>
+                            <constraint firstAttribute="trailing" secondItem="XN2-tA-dRr" secondAttribute="trailing" constant="20" id="NVi-fR-Xdl"/>
+                            <constraint firstItem="L7I-Ic-oH0" firstAttribute="bottom" secondItem="WUa-RG-WHM" secondAttribute="bottom" id="Wki-M8-jXS"/>
+                            <constraint firstItem="WUa-RG-WHM" firstAttribute="top" secondItem="L7I-Ic-oH0" secondAttribute="top" constant="50" id="dFZ-u7-cUG"/>
+                            <constraint firstItem="XN2-tA-dRr" firstAttribute="top" secondItem="L7I-Ic-oH0" secondAttribute="top" constant="10" id="g3b-6V-qtc"/>
+                            <constraint firstItem="Usv-Zs-8A8" firstAttribute="top" secondItem="L7I-Ic-oH0" secondAttribute="top" constant="10" id="i6b-J6-QKt"/>
+                            <constraint firstItem="WUa-RG-WHM" firstAttribute="leading" secondItem="L7I-Ic-oH0" secondAttribute="leading" id="mcT-ep-5p4"/>
+                            <constraint firstItem="L7I-Ic-oH0" firstAttribute="trailing" secondItem="WUa-RG-WHM" secondAttribute="trailing" id="pil-Ey-JEq"/>
+                            <constraint firstItem="Usv-Zs-8A8" firstAttribute="centerX" secondItem="9T5-C9-hc3" secondAttribute="centerX" id="zWo-DM-zEX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="WUa-RG-WHM" id="qfh-sc-bFD"/>
+                        <outlet property="segmentedControl" destination="Usv-Zs-8A8" id="HLF-OK-XUF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1T-MR-pji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1046" y="-20"/>
         </scene>
     </scenes>
     <resources>
