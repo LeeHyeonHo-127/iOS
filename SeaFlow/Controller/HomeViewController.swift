@@ -8,10 +8,17 @@
 
 import UIKit
 import SnapKit
+import MapKit
 
 class HomeViewController: UIViewController {
     
+    var mkMapView: MKMapView = MKMapView()
+    
     var topView = HomeTopView()
+    var beforeButton = UIButton()
+    
+
+    let gradientColorView = GradientColorView()
     
     
     lazy var sectionButton: UIButton = {
@@ -123,7 +130,11 @@ class HomeViewController: UIViewController {
         view.addSubview(splitView)
         view.addSubview(showSelectButtonView)
         view.addSubview(dateLabel)
+        view.addSubview(mkMapView)
+        view.addSubview(gradientColorView)
+        beforeButton = setTideMapButton
         
+        gradientColorView.translatesAutoresizingMaskIntoConstraints = false
         
         //topView Constraint
         topView.snp.makeConstraints{ make in
@@ -203,7 +214,31 @@ class HomeViewController: UIViewController {
             make.top.equalTo(splitView.snp.bottom).offset(12)
         }
         
+        mkMapView.snp.makeConstraints{ make in
+            make.width.equalTo(UIScreen.main.bounds.width - 30)
+
+            
+            make.centerX.equalToSuperview()
+            make.top.equalTo(dateLabel.snp.bottom).offset(10)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+        }
+        
+        gradientColorView.snp.makeConstraints{ make in
+            make.width.equalTo(8)
+            make.height.equalTo(300)
+            
+            make.leading.equalTo(mkMapView.snp.trailing)
+            make.top.equalTo(mkMapView.snp.top)
+            
+        }
+        
         sectionButton.addTarget(self, action: #selector(testPrint), for: .touchUpInside)
+        
+        setTideMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
+        setWaterTempMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
+        setDepthOfWaterMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
+        setSaltMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
+        setFlowRateMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
     }
     
     
@@ -219,13 +254,41 @@ class HomeViewController: UIViewController {
         
     }
     
-    @objc func waterTempButtonTapped(){
+    @objc func setMapButtonTapped(_ sender: UIButton){
+        var buttonNum = 0
+        
+        beforeButton.setTitleColor(.black, for: .normal)
+        sender.setTitleColor(UIColor(named: "SeaFlowBlue"), for: .normal)
+        beforeButton = sender
+        
+       
+        
+        switch sender {
+        case setTideMapButton :
+            buttonNum = 0
+        case setWaterTempMapButton :
+            buttonNum = 1
+        case setDepthOfWaterMapButton :
+            buttonNum = 2
+        case setSaltMapButton :
+            buttonNum = 3
+        case setFlowRateMapButton :
+            buttonNum = 4
+        default :
+            buttonNum = 1
+        }
+        
+        
+        
+        showSelectButtonView.removeFromSuperview()
+        view.addSubview(showSelectButtonView)
+        
         showSelectButtonView.snp.makeConstraints{ make in
             make.width.equalTo(UIScreen.main.bounds.width / 5)
             make.height.equalTo(1)
             
             make.top.equalTo(splitView.snp.top)
-            make.leading.equalTo(UIScreen.main.bounds.width / 5 * 2)
+            make.leading.equalTo(Int(UIScreen.main.bounds.width) / 5 * buttonNum)
             
         }
     }

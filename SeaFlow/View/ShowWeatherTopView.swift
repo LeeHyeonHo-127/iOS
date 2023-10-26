@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HomeTopView: UIView{
+class ShowWeatherTopView: UIView{
     
     var myView = UIView()
 
@@ -36,17 +36,17 @@ class HomeTopView: UIView{
     
     lazy var dateLabel1: UILabel = {
         let label = UILabel()
-        label.text = "10/10"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.black
+        label.text = "2023년 10월 14일 토요일 | 음력 08.30"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.systemGray
         return label
     }()
     
     lazy var dateLabel2: UILabel = {
         let label = UILabel()
-        label.text = "(10/10)"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.black
+        label.text = "기준 15:00"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.systemGray
         return label
     }()
     
@@ -97,33 +97,6 @@ class HomeTopView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setGradientView(){
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = myView.bounds
-        
-        let colors: [CGColor] = [
-           .init(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1),
-           .init(red: 0.5563425422, green: 0.9793455005, blue: 0, alpha: 1),
-           .init(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
-        ]
-        gradientLayer.colors = colors
-        
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        myView.layer.addSublayer(gradientLayer)
-        
-        addSubview(myView)
-        myView.snp.makeConstraints{ make in
-            make.height.width.equalTo(100)
-            
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            
-        }
-        
-
-
-    }
     
     func setUI(){
         //로고 이미지
@@ -143,17 +116,17 @@ class HomeTopView: UIView{
         
         //날짜 라벨1
         dateLabel1.snp.makeConstraints{ make in
-            make.height.equalTo(16)
+            make.height.equalTo(14)
             
             make.leading.equalTo(logoImageView.snp.leading).offset(5)
-            make.top.equalTo(logoLabel.snp.bottom).offset(25)
+            make.top.equalTo(locationLabel.snp.bottom).offset(16)
         }
         
         //날짜 라벨2
         dateLabel2.snp.makeConstraints{ make in
-            make.height.equalTo(16)
+            make.height.equalTo(14)
             
-            make.leading.equalTo(dateLabel1.snp.trailing).offset(3)
+            make.trailing.equalToSuperview().offset(-24)
             make.top.equalTo(dateLabel1.snp.top)
         }
         
@@ -162,7 +135,7 @@ class HomeTopView: UIView{
             make.height.equalTo(16)
             
             make.leading.equalTo(dateLabel1.snp.leading)
-            make.top.equalTo(dateLabel1.snp.bottom).offset(5)
+            make.top.equalTo(logoLabel.snp.bottom).offset(28)
         }
         
         //locationImage
@@ -170,14 +143,8 @@ class HomeTopView: UIView{
             make.height.width.equalTo(16)
             
             make.leading.equalTo(locationLabel.snp.trailing).offset(6)
-            make.top.equalTo(dateLabel1.snp.bottom).offset(5)
+            make.top.equalTo(locationLabel.snp.top)
         }
-        
-
-        
-        
-
-        
 
     }
     
@@ -189,10 +156,10 @@ class HomeTopView: UIView{
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct ItemTableViewCellPreview: PreviewProvider{
+struct ShowWeatherTopViewPreview: PreviewProvider{
     static var previews: some View {
         UIViewPreview {
-            let view = HomeTopView()
+            let view = ShowWeatherTopView()
             return view
         }.previewLayout(.sizeThatFits)
     }
