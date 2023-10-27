@@ -1,5 +1,5 @@
-
 /*
+ 
  baekjoon 24511
  
  문제
@@ -75,7 +75,7 @@
  */
 
 //MARK: - 내 풀이
-
+/*
 import Foundation
 
 
@@ -86,8 +86,6 @@ var dataArrayQueue: [Int] = []
 let m = Int(readLine()!)!
 var inputArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
 var now: Int = -1
-var numbers: [Int] = []
-var result = ""
 
 for i in 0..<n{
     if metaDataArray[i] == 0{
@@ -97,19 +95,14 @@ for i in 0..<n{
 
 dataArrayQueue = Array(dataArrayQueue.reversed())
 
-
 for i in 0..<inputArray.count{
     dataArrayQueue.append(inputArray[i])
-    numbers.append(dataArrayQueue[i])
+    print(dataArrayQueue[i], terminator: " ")
 }
-
-numbers.forEach{ result += "\(String($0)) " }
-print(result)
-
+*/
 
 
 //MARK: - 다른 풀이
-
 /*
 class QueueStack {
     private var numbers: [Int] = []
