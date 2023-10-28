@@ -28,7 +28,7 @@ import Foundation
 
 
 // MARK: - 내 풀이
-
+/*
 var stack = StackStruct()
 
 var num = Int(readLine()!)!
@@ -107,7 +107,7 @@ struct StackStruct{
         }
     }
 }
-
+*/
 
 // MARK: - 다른 사람 풀이
 

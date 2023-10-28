@@ -24,7 +24,7 @@ import Foundation
 
 
 // MARK: - 내 풀이
-
+/*
 var stack = StackStruct()
 
 for i in 0..<Int(readLine()!)!{
@@ -82,7 +82,7 @@ struct StackStruct{
         }
     }
 }
-
+*/
 
 //MARK: - 다른 풀이
 

@@ -1,5 +1,6 @@
 import Foundation
 
+/*
 enum stackFunc: String{
     case push = "push"
     case pop = "pop"
@@ -81,3 +82,4 @@ struct StackStruct{
 
 
 
+*/

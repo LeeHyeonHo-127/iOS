@@ -96,7 +96,7 @@ struct StackStruct{
 */
 
 //MARK: - 다른 풀이
-
+/*
 
 var buffer: [UInt8] = Array(FileHandle.standardInput.readDataToEndOfFile()), byteIdx = 0; buffer.append(0)
 
@@ -128,5 +128,4 @@ print(answer)
 
 
 
-
-
+*/

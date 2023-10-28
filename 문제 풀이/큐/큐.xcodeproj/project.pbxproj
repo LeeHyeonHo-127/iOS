@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C10E519F2AEA389D001E4EEE /* baekjoon 11866.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E519E2AEA389D001E4EEE /* baekjoon 11866.swift */; };
-		C10E51A12AEA555C001E4EEE /* baekjoon 24511.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51A02AEA555C001E4EEE /* baekjoon 24511.swift */; };
-		C10E51C72AEB5A81001E4EEE /* baekjoon28279.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51C62AEB5A81001E4EEE /* baekjoon28279.swift */; };
 		C18FD52D2ADECBA5007389DF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18FD52C2ADECBA5007389DF /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,9 +23,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C10E519E2AEA389D001E4EEE /* baekjoon 11866.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon 11866.swift"; sourceTree = "<group>"; };
-		C10E51A02AEA555C001E4EEE /* baekjoon 24511.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "baekjoon 24511.swift"; sourceTree = "<group>"; };
-		C10E51C62AEB5A81001E4EEE /* baekjoon28279.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baekjoon28279.swift; sourceTree = "<group>"; };
 		C18FD5292ADECBA5007389DF /* 큐 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "큐"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18FD52C2ADECBA5007389DF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,9 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				C18FD52C2ADECBA5007389DF /* main.swift */,
-				C10E51C62AEB5A81001E4EEE /* baekjoon28279.swift */,
-				C10E519E2AEA389D001E4EEE /* baekjoon 11866.swift */,
-				C10E51A02AEA555C001E4EEE /* baekjoon 24511.swift */,
 			);
 			path = "큐";
 			sourceTree = "<group>";
@@ -129,10 +120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10E519F2AEA389D001E4EEE /* baekjoon 11866.swift in Sources */,
-				C10E51A12AEA555C001E4EEE /* baekjoon 24511.swift in Sources */,
 				C18FD52D2ADECBA5007389DF /* main.swift in Sources */,
-				C10E51C72AEB5A81001E4EEE /* baekjoon28279.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
