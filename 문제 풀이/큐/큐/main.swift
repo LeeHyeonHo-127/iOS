@@ -1,149 +1,347 @@
-
 /*
- baekjoon 24511
- 
+
+Baekjoon 28279
+
  문제
- 한가롭게 방학에 놀고 있던 도현이는 갑자기 재밌는 자료구조를 생각해냈다. 그 자료구조의 이름은 queuestack이다.
+ 정수를 저장하는 덱을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 
- queuestack의 구조는 다음과 같다.
- $1$번,
- $2$번, ... ,
- $N$번의 자료구조(queue 혹은 stack)가 나열되어있으며, 각각의 자료구조에는 한 개의 원소가 들어있다.
+ 명령은 총 여덟 가지이다.
 
- queuestack의 작동은 다음과 같다.
-
-  
- $x_0$을 입력받는다.
-  
- $x_0$을
- $1$번 자료구조에 삽입한 뒤
- $1$번 자료구조에서 원소를 pop한다. 그때 pop된 원소를
- $x_1$이라 한다.
-  
- $x_1$을
- $2$번 자료구조에 삽입한 뒤
- $2$번 자료구조에서 원소를 pop한다. 그때 pop된 원소를
- $x_2$이라 한다.
- ...
-  
- $x_{N-1}$을
- $N$번 자료구조에 삽입한 뒤
- $N$번 자료구조에서 원소를 pop한다. 그때 pop된 원소를
- $x_N$이라 한다.
-  
- $x_N$을 리턴한다.
- 도현이는 길이
- $M$의 수열
- $C$를 가져와서 수열의 원소를 앞에서부터 차례대로 queuestack에 삽입할 것이다. 이전에 삽입한 결과는 남아 있다. (예제
- $1$ 참고)
-
- queuestack에 넣을 원소들이 주어졌을 때, 해당 원소를 넣은 리턴값을 출력하는 프로그램을 작성해보자.
-
+ 1 X: 정수 X를 덱의 앞에 넣는다. (1 ≤ X ≤ 100,000)
+ 2 X: 정수 X를 덱의 뒤에 넣는다. (1 ≤ X ≤ 100,000)
+ 3: 덱에 정수가 있다면 맨 앞의 정수를 빼고 출력한다. 없다면 -1을 대신 출력한다.
+ 4: 덱에 정수가 있다면 맨 뒤의 정수를 빼고 출력한다. 없다면 -1을 대신 출력한다.
+ 5: 덱에 들어있는 정수의 개수를 출력한다.
+ 6: 덱이 비어있으면 1, 아니면 0을 출력한다.
+ 7: 덱에 정수가 있다면 맨 앞의 정수를 출력한다. 없다면 -1을 대신 출력한다.
+ 8: 덱에 정수가 있다면 맨 뒤의 정수를 출력한다. 없다면 -1을 대신 출력한다.
  입력
- 첫째 줄에 queuestack을 구성하는 자료구조의 개수
- $N$이 주어진다. (
- $1 \leq N \leq 100\,000$)
+ 첫째 줄에 명령의 수 N이 주어진다. (1 ≤ N ≤ 1,000,000)
 
- 둘째 줄에 길이
- $N$의 수열
- $A$가 주어진다.
- $i$번 자료구조가 큐라면
- $A_i = 0$, 스택이라면
- $A_i = 1$이다.
+ 둘째 줄부터 N개 줄에 명령이 하나씩 주어진다.
 
- 셋째 줄에 길이
- $N$의 수열
- $B$가 주어진다.
- $B_i$는
- $i$번 자료구조에 들어 있는 원소이다. (
- $1 \leq B_i \leq 1\,000\,000\,000$)
-
- 넷째 줄에 삽입할 수열의 길이
- $M$이 주어진다. (
- $1 \leq M \leq 100\,000$)
-
- 다섯째 줄에 queuestack에 삽입할 원소를 담고 있는 길이
- $M$의 수열
- $C$가 주어진다. (
- $1 \leq C_i \leq 1\,000\,000\,000$)
-
- 입력으로 주어지는 모든 수는 정수이다.
+ 출력을 요구하는 명령은 하나 이상 주어진다.
 
  출력
- 수열
- $C$의 원소를 차례대로 queuestack에 삽입했을 때의 리턴값을 공백으로 구분하여 출력한다.
- */
+ 출력을 요구하는 명령이 주어질 때마다 명령의 결과를 한 줄에 하나씩 출력한다.
+
+*/
 
 //MARK: - 내 풀이
 
+
 import Foundation
 
+private var file = FileIO()
+private var dequeue = Dequeue()
+private var answer = ""
 
-let n = Int(readLine()!)!
-var metaDataArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
-var dataArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
-var dataArrayQueue: [Int] = []
-let m = Int(readLine()!)!
-var inputArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
-var now: Int = -1
-var numbers: [Int] = []
-var result = ""
-
-for i in 0..<n{
-    if metaDataArray[i] == 0{
-        dataArrayQueue.append(dataArray[i])
+for _ in 0..<file.readInt() {
+    
+    switch file.readInt(){
+    case 1 :
+        dequeue.appendLeft(value: file.readInt())
+    case 2:
+        dequeue.appendRight(value: file.readInt())
+    case 3:
+        answer += "\(dequeue.popFront()) "
+    case 4:
+        answer += "\(dequeue.popRear()) "
+    case 5:
+        answer += "\(dequeue.size) "
+    case 6:
+        answer += "\(dequeue.size == 0 ? 1 : 0) "
+    case 7:
+        answer += "\(dequeue.getFrontValue()) "
+    case 8:
+        answer += "\(dequeue.getRearValue()) "
+    default:
+        print("default!")
     }
 }
 
-dataArrayQueue = Array(dataArrayQueue.reversed())
+print(answer)
 
 
-for i in 0..<inputArray.count{
-    dataArrayQueue.append(inputArray[i])
-    numbers.append(dataArrayQueue[i])
-}
-
-numbers.forEach{ result += "\(String($0)) " }
-print(result)
-
-
-
-//MARK: - 다른 풀이
-
-/*
-class QueueStack {
-    private var numbers: [Int] = []
-    private var count = 0
+final class Dequeue {
+    var size = 0
+    var front: DequeueNode?
+    var rear: DequeueNode?
     
-    init(queueStackState: [Substring], initialValues: [Substring]) {
-        for i in stride(from: queueStackState.count-1, through: 0, by: -1) {
-            if queueStackState[i] == "0" {
-                numbers.append(Int(initialValues[i])!)
-            }
+    func appendLeft(value: Int){
+        var node = DequeueNode(value: value)
+        
+        if size == 0{
+            front = node
+            rear = node
+            size += 1
+        }
+        
+        else{
+            node.next = front
+            front?.before = node
+            front = node
+            size += 1
+        }
+    }
+     
+    func appendRight(value: Int){
+        var node = DequeueNode(value: value)
+        
+        if size == 0{
+            front = node
+            rear = node
+            size += 1
+        }
+        
+        else{
+            node.before = rear
+            rear?.next = node
+            rear = node
+            size += 1
         }
     }
     
-    func push(_ num: Int) {
-        numbers.append(num)
-        count += 1
+    func popFront() -> Int {
+        if size == 0 { return -1 }
+        
+        var node = front
+        front = front?.next
+        size -= 1
+        return node!.value
     }
     
-    func getResult() -> [Int] {
-        return Array(numbers.prefix(self.count))
+    func popRear() -> Int {
+        if size == 0 { return -1 }
+        
+        var node = rear
+        rear = rear?.before
+        size -= 1
+        return node!.value
+    }
+    
+    func getFrontValue() -> Int {
+        if size == 0 { return -1 }
+        return(front!.value)
+    }
+    
+    
+    func getRearValue() -> Int {
+        if size == 0 { return -1 }
+        return(rear!.value)
+    }
+    
+}
+
+final class DequeueNode {
+    var before: DequeueNode?
+    var next: DequeueNode?
+    var value: Int
+    
+    init(before: DequeueNode? = nil, next: DequeueNode? = nil, value: Int) {
+        self.before = before
+        self.next = next
+        self.value = value
     }
 }
 
-let N = Int(readLine()!)!
-let queueStackState = readLine()!.split(separator: " ")
-let initialValues = readLine()!.split(separator: " ")
-let queueStack = QueueStack(queueStackState: queueStackState, initialValues: initialValues)
 
-let M = Int(readLine()!)!
-readLine()!.split(separator: " ").compactMap { Int($0)! }.forEach {
-    queueStack.push($0)
+
+
+
+final class FileIO {
+    private var buffer: [UInt8]
+    private var index: Int
+    
+    init(fileHandle: FileHandle = FileHandle.standardInput){
+        buffer = Array(fileHandle.readDataToEndOfFile()) + [UInt8(0)]
+        index = 0
+    }
+    
+    @inline(__always) private func read() -> UInt8{
+        defer { index += 1}
+        
+        return buffer.withUnsafeBufferPointer{ $0[index] }
+    }
+    
+    @inline(__always) func readInt() -> Int{
+        var sum = 0
+        var now = read()
+        var isPositive = true
+        
+        while now == 10 ||
+                now == 32 { now = read() }
+        if now == 45 { isPositive.toggle(); now = read() }
+        while now >= 48, now <= 57 {
+            sum = sum * 10 + Int(now-48)
+            now = read()
+        }
+        
+        return sum * (isPositive ? 1 : -1)
+    }
+    
 }
-var result = ""
-let numbers = queueStack.getResult()
-numbers.forEach { result += "\($0) " }
-print(result)
-*/
+
+
+
+
+//MARK: - 다른사람 풀이
+/*
+ import Foundation
+
+ // 라이노님 빠른 입력 FileIO
+ final class FileIO {
+     private var buffer:[UInt8]
+     private var index: Int
+     
+     init(fileHandle: FileHandle = FileHandle.standardInput) {
+         buffer = Array(fileHandle.readDataToEndOfFile())+[UInt8(0)] // 인덱스 범위 넘어가는 것 방지
+         index = 0
+     }
+     
+     @inline(__always) private func read() -> UInt8 {
+         defer { index += 1 }
+         
+         return buffer.withUnsafeBufferPointer { $0[index] }
+     }
+     
+     @inline(__always) func readInt() -> Int {
+         var sum = 0
+         var now = read()
+         var isPositive = true
+         
+         while now == 10
+                 || now == 32 { now = read() } // 공백과 줄바꿈 무시
+         if now == 45{ isPositive.toggle(); now = read() } // 음수 처리
+         while now >= 48, now <= 57 {
+             sum = sum * 10 + Int(now-48)
+             now = read()
+         }
+         
+         return sum * (isPositive ? 1:-1)
+     }
+     
+     @inline(__always) func readString() -> Int {
+         var str = 0
+         var now = read()
+         
+         while now == 10
+                 || now == 32 { now = read() } // 공백과 줄바꿈 무시
+         
+         while now != 10
+                 && now != 32 && now != 0 {
+             str += Int(now)
+             now = read()
+         }
+         
+         return str
+     }
+ }
+
+ struct Deque<T> {
+     private var leftArray: [T] = []
+     private var rightArray: [T] = []
+     private var leftIndex: Int = 0
+     private var rightIndex: Int = 0
+     
+     var isEmpty: Bool {
+         return leftIndex + rightIndex >= leftArray.count + rightArray.count
+     }
+     
+     var size: Int {
+         return (leftArray.count + rightArray.count) - (leftIndex + rightIndex)
+     }
+     
+     var front: T? {
+         if isEmpty {
+             return nil
+         }
+         
+         if leftIndex >= leftArray.count {
+             return rightArray[rightIndex]
+         }
+         
+         return leftArray.last
+     }
+     
+     var back: T? {
+         if isEmpty {
+             return nil
+         }
+         
+         if rightIndex >= rightArray.count {
+             return leftArray[leftIndex]
+         }
+         
+         return rightArray.last
+     }
+     
+     mutating func pushLeft(_ element: T) {
+         leftArray.append(element)
+     }
+     
+     mutating func popLeft() -> T? {
+         if isEmpty {
+             return nil
+         }
+         
+         if leftIndex >= leftArray.count {
+             let element = rightArray[rightIndex]
+             rightIndex += 1
+             return element
+         }
+         
+         return leftArray.popLast()
+     }
+     
+     mutating func pushRight(_ element: T) {
+         rightArray.append(element)
+     }
+     
+     mutating func popRight() -> T? {
+         if isEmpty {
+             return nil
+         }
+         
+         if rightIndex >= rightArray.count {
+             let element = leftArray[leftIndex]
+             leftIndex += 1
+             return element
+         }
+         
+         return rightArray.popLast()
+     }
+ }
+
+ let file = FileIO()
+ let n = file.readInt()
+ var answer = ""
+ var deque = Deque<Int>()
+
+ for _ in 0..<n {
+     let c = file.readInt()
+     switch c {
+     case 1:
+         let x = file.readInt()
+         deque.pushLeft(x)
+     case 2:
+         let x = file.readInt()
+         deque.pushRight(x)
+     case 3:
+         answer += "\(deque.popLeft() ?? -1)\n"
+     case 4:
+         answer += "\(deque.popRight() ?? -1)\n"
+     case 5:
+         answer += "\(deque.size)\n"
+     case 6:
+         answer += "\(deque.isEmpty ? 1 : 0)\n"
+     case 7:
+         answer += "\(deque.front ?? -1)\n"
+     case 8:
+         answer += "\(deque.back ?? -1)\n"
+     default: fatalError()
+     }
+ }
+
+ print(answer)
+ */

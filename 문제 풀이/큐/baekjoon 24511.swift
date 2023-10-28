@@ -76,14 +76,7 @@
 
 //MARK: - 내 풀이
 /*
-import Foundation
-
-
-let n = Int(readLine()!)!
-var metaDataArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
-var dataArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
-var dataArrayQueue: [Int] = []
-let m = Int(readLine()!)!
+import=dLine()!)!
 var inputArray: [Int] = readLine()!.split(separator: " ").map{Int($0)!}
 var now: Int = -1
 
