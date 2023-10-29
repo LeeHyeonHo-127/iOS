@@ -14,12 +14,6 @@ class ShowWeatherTopView: UIView{
 
     
     
-    lazy var testView: UIView = {
-        let gradientColorView = GradientColorView()
-        gradientColorView.translatesAutoresizingMaskIntoConstraints = false
-        return gradientColorView
-    }()
-    
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
@@ -87,9 +81,6 @@ class ShowWeatherTopView: UIView{
         addSubview(dateLabel2)
         addSubview(locationImage)
         addSubview(locationLabel)
-        addSubview(testView)
-        
-        
         setUI()
     }
     
