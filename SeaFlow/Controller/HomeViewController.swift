@@ -10,14 +10,18 @@ import UIKit
 import SnapKit
 import MapKit
 
+
+
 class HomeViewController: UIViewController {
     var topView = HomeTopView()
-    var mapView = HomeMapView()
+    var mapView = UIView()
+    var tideMapView = TideMapView()
     var beforeButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView = TideMapView()
         applyViewCode()
         beforeButton = topView.setTideMapButton
     }
@@ -49,9 +53,58 @@ extension HomeViewController: ViewCodeProtocol{
     }
     
     func configureView() {
-        topView.delegate = self
+        
         view.backgroundColor = .white
+        topView.setTideMapButton.addTarget(self, action: #selector(tideMapButtonTapped), for: .touchUpInside)
+        topView.setWaterTempMapButton.addTarget(self, action: #selector(tempMapButtonTapped), for: .touchUpInside)
+        topView.setDepthOfWaterMapButton.addTarget(self, action: #selector(setDepthOfWaterMapButtonTapped), for: .touchUpInside)
     }
+    
+    @objc func tideMapButtonTapped(){
+        print("tidemapButtonTapped")
+        mapView.removeFromSuperview()
+        mapView = TideMapView()
+        view.addSubview(mapView)
+        
+        mapView.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            
+            make.top.equalTo(topView.splitView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc func tempMapButtonTapped(){
+        print("tidemapButtonTapped")
+        mapView.removeFromSuperview()
+        mapView = HomeMapView()
+        view.addSubview(mapView)
+        
+        mapView.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            
+            make.top.equalTo(topView.splitView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc func setDepthOfWaterMapButtonTapped(){
+        print("tidemapButtonTapped")
+        mapView.removeFromSuperview()
+        mapView = WaterDepthMapView()
+        view.addSubview(mapView)
+        
+        mapView.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            
+            make.top.equalTo(topView.splitView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
     
     /*
     @objc func setMapButtonTapped(_ sender: UIButton){
@@ -91,6 +144,7 @@ extension HomeViewController: ViewCodeProtocol{
     }*/
 }
 
+/*
 extension HomeViewController: SetMapButtonDelegate {
     func setMapButtontapped(tappedButton: UIButton, beforeButton: UIButton, selectedView: UIView) {
         
@@ -108,7 +162,7 @@ extension HomeViewController: SetMapButtonDelegate {
 
     }
 }
-
+*/
 
 
 #if canImport(SwiftUI) && DEBUG

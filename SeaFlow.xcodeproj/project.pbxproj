@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10C26202AF8827900EA06C5 /* TideMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10C261F2AF8827900EA06C5 /* TideMapView.swift */; };
+		C10C26222AF88FF900EA06C5 /* WaterDepthMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10C26212AF88FF900EA06C5 /* WaterDepthMapView.swift */; };
 		C10E51692AE7C76D001E4EEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E51682AE7C76D001E4EEE /* AppDelegate.swift */; };
 		C10E516B2AE7C76D001E4EEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E516A2AE7C76D001E4EEE /* SceneDelegate.swift */; };
 		C10E51722AE7C76E001E4EEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10E51712AE7C76E001E4EEE /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C10C261F2AF8827900EA06C5 /* TideMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TideMapView.swift; sourceTree = "<group>"; };
+		C10C26212AF88FF900EA06C5 /* WaterDepthMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterDepthMapView.swift; sourceTree = "<group>"; };
 		C10E51652AE7C76D001E4EEE /* SeaFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10E51682AE7C76D001E4EEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C10E516A2AE7C76D001E4EEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				C10E519C2AEA14B5001E4EEE /* WeatherViewTableViewCell.swift */,
 				C10E51C82AEB9429001E4EEE /* ViewCodeProtocol.swift */,
 				C10E51CA2AEBC7CF001E4EEE /* HomeMapView.swift */,
+				C10C261F2AF8827900EA06C5 /* TideMapView.swift */,
+				C10C26212AF88FF900EA06C5 /* WaterDepthMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,7 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C10E51692AE7C76D001E4EEE /* AppDelegate.swift in Sources */,
+				C10C26202AF8827900EA06C5 /* TideMapView.swift in Sources */,
 				C10E516B2AE7C76D001E4EEE /* SceneDelegate.swift in Sources */,
+				C10C26222AF88FF900EA06C5 /* WaterDepthMapView.swift in Sources */,
 				C10E51992AEA0192001E4EEE /* ShowWeatherTopView.swift in Sources */,
 				C10E518C2AE902F2001E4EEE /* UIPreView.swift in Sources */,
 				C10E518E2AE9036B001E4EEE /* HomeTopView.swift in Sources */,

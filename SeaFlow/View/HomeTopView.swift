@@ -118,7 +118,7 @@ extension HomeTopView: ViewCodeProtocol{
         //날짜 라벨2
         dateLabel2.snp.makeConstraints{ make in
             make.height.equalTo(16)
-            make.width.equalTo(50)
+            make.width.equalTo(55)
             
             make.leading.equalTo(dateLabel1.snp.trailing).offset(3)
             make.top.equalTo(dateLabel1.snp.top)
@@ -162,7 +162,7 @@ extension HomeTopView: ViewCodeProtocol{
         setTideMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
             make.width.equalTo(UIScreen.main.bounds.width / 5)
-                               
+            
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             
@@ -173,7 +173,7 @@ extension HomeTopView: ViewCodeProtocol{
         setWaterTempMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
             make.width.equalTo(UIScreen.main.bounds.width / 5)
-
+            
             make.top.equalToSuperview()
             make.leading.equalTo(setTideMapButton.snp.trailing)
         }
@@ -182,7 +182,7 @@ extension HomeTopView: ViewCodeProtocol{
         setDepthOfWaterMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
             make.width.equalTo(UIScreen.main.bounds.width / 5)
-
+            
             make.top.equalToSuperview()
             make.leading.equalTo(setWaterTempMapButton.snp.trailing)
         }
@@ -191,7 +191,7 @@ extension HomeTopView: ViewCodeProtocol{
         setSaltMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
             make.width.equalTo(UIScreen.main.bounds.width / 5)
-
+            
             make.top.equalToSuperview()
             make.leading.equalTo(setDepthOfWaterMapButton.snp.trailing)
         }
@@ -200,7 +200,7 @@ extension HomeTopView: ViewCodeProtocol{
         setFlowRateMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
             make.width.equalTo(UIScreen.main.bounds.width / 5)
-
+            
             make.top.equalToSuperview()
             make.leading.equalTo(setSaltMapButton.snp.trailing)
         }
@@ -208,7 +208,7 @@ extension HomeTopView: ViewCodeProtocol{
         splitView.snp.makeConstraints{ make in
             make.width.equalToSuperview()
             make.height.equalTo(1)
-
+            
             make.top.equalTo(setFlowRateMapButton.snp.bottom)
             make.leading.equalToSuperview()
         }
@@ -224,29 +224,29 @@ extension HomeTopView: ViewCodeProtocol{
     
     func configureView() {
         logoImageView.image = UIImage(named: "logo")
-
+        
         logoLabel.text = "씨플로우"
         logoLabel.font = UIFont.boldSystemFont(ofSize: 24)
         logoLabel.textColor = UIColor(named: "SeaFlowBlue")
-
-
-        dateLabel1.text = "10/10"
+        
+        
+        dateLabel1.text = "11/06"
         dateLabel1.font = UIFont.systemFont(ofSize: 16)
         dateLabel1.textColor = UIColor.black
-
         
-        dateLabel2.text = "(10/10)"
+        
+        dateLabel2.text = "(11/06)"
         dateLabel2.font = UIFont.systemFont(ofSize: 16)
         dateLabel2.textColor = UIColor.black
         
-
+        
         locationLabel.text = "전체"
         locationLabel.font = UIFont.boldSystemFont(ofSize: 16)
         locationLabel.textColor = UIColor.black
-
+        
         locationImage.image = UIImage(named: "location")
-
-
+        
+        
         sectionButton.setTitle("단면", for: .normal)
         sectionButton.setTitleColor(.white, for: .normal)
         sectionButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
@@ -269,7 +269,7 @@ extension HomeTopView: ViewCodeProtocol{
         setWaterTempMapButton.backgroundColor = UIColor.white
         setWaterTempMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
         setWaterTempMapButton.setContentHuggingPriority(.init(rawValue: 751), for: .horizontal)
-
+        
         
         setDepthOfWaterMapButton.setTitle("수심", for: .normal)
         setDepthOfWaterMapButton.setTitleColor(.black, for: .normal)
@@ -278,7 +278,7 @@ extension HomeTopView: ViewCodeProtocol{
         setDepthOfWaterMapButton.backgroundColor = UIColor.white
         setDepthOfWaterMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
         setDepthOfWaterMapButton.setContentHuggingPriority(.init(rawValue: 751), for: .horizontal)
-
+        
         
         setSaltMapButton.setTitle("염분", for: .normal)
         setSaltMapButton.setTitleColor(.black, for: .normal)
@@ -303,11 +303,43 @@ extension HomeTopView: ViewCodeProtocol{
     }
     
     @objc func setMapButtonTapped(_ sender: UIButton){
-//        showSelectedButtonView.removeFromSuperview()
-//        splitView.addSubview(showSelectedButtonView)
+        //        showSelectedButtonView.removeFromSuperview()
+        //        splitView.addSubview(showSelectedButtonView)
         
-        delegate?.setMapButtontapped(tappedButton: sender, beforeButton: beforeButton!, selectedView: showSelectedButtonView)
+        var buttonNum = 0
+        
+        beforeButton?.setTitleColor(.black, for: .normal)
+        sender.setTitleColor(UIColor(named: "SeaFlowBlue"), for: .normal)
         beforeButton = sender
+        
+        
+        switch sender {
+        case setTideMapButton :
+            buttonNum = 0
+        case setWaterTempMapButton :
+            buttonNum = 1
+        case setDepthOfWaterMapButton :
+            buttonNum = 2
+        case setSaltMapButton :
+            buttonNum = 3
+        case setFlowRateMapButton :
+            buttonNum = 4
+        default :
+            buttonNum = 1
+        }
+        
+        
+        showSelectedButtonView.removeFromSuperview()
+        splitView.addSubview(showSelectedButtonView)
+        
+        showSelectedButtonView.snp.makeConstraints{ make in
+            make.width.equalTo(UIScreen.main.bounds.width / 5)
+            make.height.equalTo(1)
+            
+            make.top.equalTo(splitView.snp.top)
+            make.leading.equalTo(Int(UIScreen.main.bounds.width) / 5 * buttonNum)
+            
+        }
     }
 }
 

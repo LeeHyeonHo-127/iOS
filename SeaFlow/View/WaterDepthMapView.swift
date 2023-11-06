@@ -9,42 +9,20 @@ import UIKit
 import SnapKit
 import MapKit
 
-// 노드 모델
-struct Node {
-    let id: Int
-    let latitude: Double
-    let longitude: Double
-    let temperature: Double
-}
 
-class HomeMapView: UIView{
+class WaterDepthMapView: UIView{
     
     var mkMapView: MKMapView = MKMapView()
     
     lazy var dateLabel = UILabel()
     
-    var colors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange]
-    
-//    var colors: [UIColor] = []
-
-
+    var colors: [UIColor] = [UIColor.systemBlue, UIColor.blue, UIColor.systemFill, UIColor.systemMint]
 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         applyViewCode()
         mapSet()
-        
-        for i in 0..<10 {
-            let fraction = CGFloat(i) / 9.0
-            let color = UIColor(
-                red: 0.0 + fraction * (1.0 - 0.0),
-                green: 0.0,
-                blue: 1.0 - fraction * (1.0 - 0.0),
-                alpha: 1.0
-            )
-            colors.append(color)
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -54,8 +32,8 @@ class HomeMapView: UIView{
     func mapSet(){
         mkMapView.delegate = self
         
-        let initialLocation = CLLocationCoordinate2D(latitude: 36.043972913238676, longitude: 129.42482123059358) // 샌프란시스코의 예시 좌표
-        let regionRadius: CLLocationDistance = 10000 // 배율 (미터 단위)
+        let initialLocation = CLLocationCoordinate2D(latitude: 36.043972913238676, longitude: 129.42482123059358)
+        let regionRadius: CLLocationDistance = 6000 // 배율 (미터 단위)
 
         let coordinateRegion = MKCoordinateRegion(
             center: initialLocation,
@@ -91,7 +69,17 @@ class HomeMapView: UIView{
         var startIndex = 0
         
         
-
+        
+//        for i in 0..<10 {
+//            let fraction = CGFloat(i) / 9.0
+//            let color = UIColor(
+//                red: 0.0 + fraction * (1.0 - 0.0),
+//                green: 0.0,
+//                blue: 1.0 - fraction * (1.0 - 0.0),
+//                alpha: 1.0
+//            )
+//            colors.append(color)
+//        }
         
         while startIndex < nodes.count {
             let endIndex = min(startIndex + 5, nodes.count)
@@ -107,7 +95,7 @@ class HomeMapView: UIView{
             mkMapView.addOverlay(polyline)
 
             // 다음 5개 노드로 이동
-            startIndex += 5
+            startIndex += 7
         }
 
     }
@@ -1047,7 +1035,7 @@ class HomeMapView: UIView{
     """
 }
 
-extension HomeMapView: ViewCodeProtocol{
+extension WaterDepthMapView: ViewCodeProtocol{
     func buildViewHierachy() {
         addSubview(mkMapView)
         addSubview(dateLabel)
@@ -1073,10 +1061,9 @@ extension HomeMapView: ViewCodeProtocol{
     }
 }
 
-extension HomeMapView: MKMapViewDelegate{
+extension WaterDepthMapView: MKMapViewDelegate{
     
-
-
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let renderer = MKPolylineRenderer(overlay: overlay)
@@ -1088,14 +1075,3 @@ extension HomeMapView: MKMapViewDelegate{
     }
 }
 
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-struct HomeMapViewCellPreview: PreviewProvider{
-    static var previews: some View {
-        UIViewPreview {
-            let view = HomeMapView()
-            return view
-        }.previewLayout(.sizeThatFits)
-    }
-}
-#endif
