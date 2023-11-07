@@ -21,7 +21,7 @@ class WeatherView: UIView{
     
     lazy var tempLabel: UILabel = {
         let label = UILabel()
-        label.text = "20°C"
+        label.text = "14.6°C"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = .black
         return label
@@ -29,7 +29,7 @@ class WeatherView: UIView{
     
     lazy var highestAndLowestTempLabel: UILabel = {
         let label = UILabel()
-        label.text = "최저 12.0°C / 최고 21.0°C"
+        label.text = "최저 12.0°C / 최고 15.0°C"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.black
         return label
@@ -45,7 +45,7 @@ class WeatherView: UIView{
     
     lazy var windSpeendLabel: UILabel = {
         let label = UILabel()
-        label.text = "풍속 서풍 3.6m/s"
+        label.text = "풍속 북서 15m/s"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.black
         return label

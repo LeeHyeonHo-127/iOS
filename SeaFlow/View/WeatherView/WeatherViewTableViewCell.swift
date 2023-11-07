@@ -11,8 +11,11 @@ import SnapKit
 class WeatherViewTableViewCell: UITableViewCell {
     lazy var containerView = UIView()
     
+    
+    
     lazy var timeLabel: UILabel = {
         var label = UILabel()
+        
         label.text = "0시"
         label.font = UIFont.systemFont(ofSize: 16)
         return label
@@ -20,6 +23,7 @@ class WeatherViewTableViewCell: UITableViewCell {
     
     lazy var tempLabel: UILabel = {
         var label = UILabel()
+        
         label.text = "14°C"
         label.font = UIFont.systemFont(ofSize: 16)
         return label
@@ -27,6 +31,7 @@ class WeatherViewTableViewCell: UITableViewCell {
     
     lazy var waveHeightLabel: UILabel = {
         var label = UILabel()
+        
         label.text = "파고 0m"
         label.font = UIFont.systemFont(ofSize: 12)
         return label
@@ -34,6 +39,7 @@ class WeatherViewTableViewCell: UITableViewCell {
     
     lazy var windLabel: UILabel = {
         var label = UILabel()
+        
         label.text = "풍속 남남동풍 1m/s"
         label.font = UIFont.systemFont(ofSize: 12)
         return label
@@ -41,6 +47,7 @@ class WeatherViewTableViewCell: UITableViewCell {
     
     lazy var waveHeightLabel2: UILabel = {
         var label = UILabel()
+        
         label.text = "파고 0m"
         label.font = UIFont.systemFont(ofSize: 12)
         return label
@@ -48,6 +55,7 @@ class WeatherViewTableViewCell: UITableViewCell {
     
     lazy var windLabel2: UILabel = {
         var label = UILabel()
+        
         label.text = "풍속 남남동풍 1m/s"
         label.font = UIFont.systemFont(ofSize: 12)
         return label
@@ -60,7 +68,7 @@ class WeatherViewTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .systemGray5
+        self.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
         
         contentView.addSubview(containerView)
         containerView.addSubview(timeLabel)
@@ -79,17 +87,17 @@ class WeatherViewTableViewCell: UITableViewCell {
         }
         
         timeLabel.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(24)
         }
         
         tempLabel.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
             make.leading.equalTo(timeLabel.snp.trailing).offset(24)
         }
         
         waveHeightLabel.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(7)
+            make.centerY.equalToSuperview()
             make.leading.equalTo(tempLabel.snp.trailing).offset(24)
         }
         
@@ -100,12 +108,12 @@ class WeatherViewTableViewCell: UITableViewCell {
         
         waveHeightLabel2.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(7)
-            make.leading.equalTo(windLabel.snp.trailing).offset(30)
+            make.trailing.equalToSuperview().offset(-24)
         }
         
         windLabel2.snp.makeConstraints{ make in
             make.top.equalTo(waveHeightLabel.snp.bottom)
-            make.leading.equalTo(windLabel.snp.trailing).offset(30)
+            make.trailing.equalToSuperview().offset(-24)
         }
         
 

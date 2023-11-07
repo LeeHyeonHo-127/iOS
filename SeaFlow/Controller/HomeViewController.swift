@@ -58,6 +58,13 @@ extension HomeViewController: ViewCodeProtocol{
         topView.setTideMapButton.addTarget(self, action: #selector(tideMapButtonTapped), for: .touchUpInside)
         topView.setWaterTempMapButton.addTarget(self, action: #selector(tempMapButtonTapped), for: .touchUpInside)
         topView.setDepthOfWaterMapButton.addTarget(self, action: #selector(setDepthOfWaterMapButtonTapped), for: .touchUpInside)
+        topView.setSaltMapButton.addTarget(self, action: #selector(setSaltMapButtonTapped), for: .touchUpInside)
+        topView.setFlowRateMapButton.addTarget(self, action: #selector(setFlowRateMapButtonTapped), for: .touchUpInside)
+        topView.sectionButton.addTarget(self, action: #selector(sectionButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func sectionButtonTapped(){
+        self.navigationController?.pushViewController(SectionViewController(), animated: true)
     }
     
     @objc func tideMapButtonTapped(){
@@ -94,6 +101,36 @@ extension HomeViewController: ViewCodeProtocol{
         print("tidemapButtonTapped")
         mapView.removeFromSuperview()
         mapView = WaterDepthMapView()
+        view.addSubview(mapView)
+        
+        mapView.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            
+            make.top.equalTo(topView.splitView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc func setSaltMapButtonTapped(){
+        
+        mapView.removeFromSuperview()
+        mapView = SaltMapView()
+        view.addSubview(mapView)
+        
+        mapView.snp.makeConstraints{ make in
+            make.width.equalToSuperview()
+            
+            make.top.equalTo(topView.splitView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc func setFlowRateMapButtonTapped(){
+        print("tidemapButtonTapped")
+        mapView.removeFromSuperview()
+        mapView = SetFlowRateMapView()
         view.addSubview(mapView)
         
         mapView.snp.makeConstraints{ make in

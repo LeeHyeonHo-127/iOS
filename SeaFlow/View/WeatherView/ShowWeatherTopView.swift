@@ -30,7 +30,7 @@ class ShowWeatherTopView: UIView{
     
     lazy var dateLabel1: UILabel = {
         let label = UILabel()
-        label.text = "2023년 10월 14일 토요일 | 음력 08.30"
+        label.text = "2023년 11월 06일 월 | 음력 09.23"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.systemGray
         return label
@@ -38,7 +38,7 @@ class ShowWeatherTopView: UIView{
     
     lazy var dateLabel2: UILabel = {
         let label = UILabel()
-        label.text = "기준 15:00"
+        label.text = "기준 00:00"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.systemGray
         return label
@@ -46,7 +46,7 @@ class ShowWeatherTopView: UIView{
     
     lazy var locationLabel: UILabel = {
         let label = UILabel()
-        label.text = "전체"
+        label.text = "포항"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = UIColor.black
         return label
@@ -95,14 +95,14 @@ class ShowWeatherTopView: UIView{
             make.width.height.equalTo(24)
             
             make.leading.equalToSuperview().offset(24)
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
         }
         //로고 라벨
         logoLabel.snp.makeConstraints{ make in
             make.height.equalTo(24)
             
             make.leading.equalTo(logoImageView.snp.trailing).offset(5)
-            make.top.equalToSuperview()
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
         }
         
         //날짜 라벨1

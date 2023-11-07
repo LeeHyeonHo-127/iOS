@@ -9,53 +9,33 @@ import UIKit
 import SnapKit
 import MapKit
 
-// 노드 모델
-struct Node {
-    let id: Int
-    let latitude: Double
-    let longitude: Double
-    let temperature: Double
-}
-
-class HomeMapView: UIView{
+class SetFlowRateMapView: UIView{
+    
+    var count = 0
     
     var mkMapView: MKMapView = MKMapView()
     
     lazy var dateLabel = UILabel()
     
-    var colors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange]
+    var colors: [UIColor] = [UIColor.flowColor1, UIColor.flowColor2, UIColor.flowColor3]
     
-//    var colors: [UIColor] = []
-
-
-
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         applyViewCode()
         mapSet()
-        
-        for i in 0..<10 {
-            let fraction = CGFloat(i) / 9.0
-            let color = UIColor(
-                red: 0.0 + fraction * (1.0 - 0.0),
-                green: 0.0,
-                blue: 1.0 - fraction * (1.0 - 0.0),
-                alpha: 1.0
-            )
-            colors.append(color)
-        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func mapSet(){
         mkMapView.delegate = self
         
         let initialLocation = CLLocationCoordinate2D(latitude: 36.043972913238676, longitude: 129.42482123059358) // 샌프란시스코의 예시 좌표
-        let regionRadius: CLLocationDistance = 10000 // 배율 (미터 단위)
+        let regionRadius: CLLocationDistance = 7000 // 배율 (미터 단위)
 
         let coordinateRegion = MKCoordinateRegion(
             center: initialLocation,
@@ -90,24 +70,40 @@ class HomeMapView: UIView{
         // 30개씩 묶어서 Polyline 그리기
         var startIndex = 0
         
-        
-
-        
         while startIndex < nodes.count {
-            let endIndex = min(startIndex + 5, nodes.count)
+            let endIndex = min(startIndex + 10, nodes.count)
             let subNodes = Array(nodes[startIndex..<endIndex])
 
-            // 폴리라인을 그릴 좌표 생성
-            let coordinates = subNodes.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+            // 기준 노드를 설정
+            guard let referenceNode = subNodes.first else {
+                startIndex += 10
+                continue
+            }
 
-            // MKPolyline 객체 생성
-            let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+            // 다른 노드와의 거리를 계산하고, 일정 거리 이하인 경우에만 폴리곤을 그림
+            let maxDistance: Double = 4000 // 일정 거리
+            let validNodes = subNodes.filter {
+                calculateDistance(referenceNode, $0) < maxDistance
+            }
 
-            // 맵뷰에 폴리라인 추가
+            // 폴리곤을 그릴 좌표 생성
+            let coordinates = validNodes.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+            
+             // MKPolyline 객체 생성
+             let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+            
+             // 맵뷰에 폴리라인 추가
             mkMapView.addOverlay(polyline)
 
-            // 다음 5개 노드로 이동
-            startIndex += 5
+            // 다음 3개 노드로 이동
+            startIndex += 10
+        }
+        
+        // 두 좌표 사이의 거리 계산 함수
+        func calculateDistance(_ node1: Node, _ node2: Node) -> Double {
+            let location1 = CLLocation(latitude: node1.latitude, longitude: node1.longitude)
+            let location2 = CLLocation(latitude: node2.latitude, longitude: node2.longitude)
+            return location1.distance(from: location2)
         }
 
     }
@@ -1047,7 +1043,7 @@ class HomeMapView: UIView{
     """
 }
 
-extension HomeMapView: ViewCodeProtocol{
+extension SetFlowRateMapView: ViewCodeProtocol{
     func buildViewHierachy() {
         addSubview(mkMapView)
         addSubview(dateLabel)
@@ -1073,29 +1069,33 @@ extension HomeMapView: ViewCodeProtocol{
     }
 }
 
-extension HomeMapView: MKMapViewDelegate{
+extension SetFlowRateMapView: MKMapViewDelegate{
     
-
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let renderer = MKPolylineRenderer(overlay: overlay)
-            renderer.strokeColor = colors.randomElement() ?? .red
-            renderer.lineWidth = 1
-            return renderer
+            if count < 15 {
+                renderer.strokeColor = UIColor.flowColor1
+                renderer.lineWidth = 1
+                count += 1
+                return renderer
+            }
+            else if count < 30{
+                renderer.strokeColor = UIColor.flowColor2
+                renderer.lineWidth = 1
+                count += 1
+                return renderer
+            }
+            else{
+                renderer.strokeColor = colors.randomElement() ?? .red
+                renderer.lineWidth = 1
+                count += 1
+                return renderer
+            }
         }
         return MKOverlayRenderer(overlay: overlay)
     }
 }
 
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-struct HomeMapViewCellPreview: PreviewProvider{
-    static var previews: some View {
-        UIViewPreview {
-            let view = HomeMapView()
-            return view
-        }.previewLayout(.sizeThatFits)
-    }
-}
-#endif
+

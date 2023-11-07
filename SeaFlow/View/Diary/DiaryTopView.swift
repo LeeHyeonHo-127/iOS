@@ -8,11 +8,8 @@
 import UIKit
 import SnapKit
 
-protocol SetMapButtonDelegate: AnyObject {
-    func setMapButtontapped(tappedButton: UIButton, beforeButton: UIButton, selectedView: UIView)
-}
 
-class HomeTopView: UIView{
+class DiaryTopView: UIView{
     lazy var logoView = UIView()
     lazy var dateView = UIView()
     
@@ -33,7 +30,8 @@ class HomeTopView: UIView{
     lazy var splitView = UIView()
     lazy var showSelectedButtonView = UIView()
     
-    weak var delegate: SetMapButtonDelegate?
+    
+    
     var beforeButton: UIButton?
 
     
@@ -48,7 +46,7 @@ class HomeTopView: UIView{
     }
 }
 
-extension HomeTopView: ViewCodeProtocol{
+extension DiaryTopView: ViewCodeProtocol{
     func buildViewHierachy() {
         addSubview(logoView)
         logoView.addSubview(logoImageView)
@@ -97,71 +95,19 @@ extension HomeTopView: ViewCodeProtocol{
             make.top.equalTo(logoImageView.snp.top)
         }
         
-        //날짜 컨테이너 뷰
-        dateView.snp.makeConstraints{ make in
-            make.width.equalToSuperview().offset(-47)
-            make.height.equalTo(40)
-            
-            make.top.equalTo(logoView.snp.bottom).offset(16)
-            make.leading.equalToSuperview().offset(24)
-        }
-        
-        //날짜 라벨1
-        dateLabel1.snp.makeConstraints{ make in
-            make.height.equalTo(16)
-            make.width.equalTo(40)
-            
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-        }
-        
-        //날짜 라벨2
-        dateLabel2.snp.makeConstraints{ make in
-            make.height.equalTo(16)
-            make.width.equalTo(55)
-            
-            make.leading.equalTo(dateLabel1.snp.trailing).offset(3)
-            make.top.equalTo(dateLabel1.snp.top)
-        }
-        
-        //locationLabel
-        locationLabel.snp.makeConstraints{ make in
-            make.height.equalTo(16)
-            make.width.equalTo(28)
-            
-            make.leading.equalTo(dateLabel1.snp.leading)
-            make.top.equalTo(dateLabel1.snp.bottom).offset(8)
-        }
-        
-        //locationImage
-        locationImage.snp.makeConstraints{ make in
-            make.height.width.equalTo(16)
-            
-            make.leading.equalTo(locationLabel.snp.trailing).offset(6)
-            make.bottom.equalTo(locationLabel.snp.bottom)
-        }
-        
-        //단면 버튼
-        sectionButton.snp.makeConstraints{ make in
-            make.height.equalTo(25)
-            make.width.equalTo(41)
-            
-            make.trailing.equalToSuperview()
-            make.centerY.equalToSuperview()
-        }
         
         //버튼뷰
         buttonView.snp.makeConstraints{ make in
             make.width.equalToSuperview()
             make.height.equalTo(40)
             
-            make.top.equalTo(dateView.snp.bottom).offset(16)
+            make.top.equalTo(logoLabel.snp.bottom).offset(20)
         }
         
         //조석 버튼
         setTideMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
+            make.width.equalTo(UIScreen.main.bounds.width / 3)
             
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
@@ -172,7 +118,7 @@ extension HomeTopView: ViewCodeProtocol{
         //수온 버튼
         setWaterTempMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
+            make.width.equalTo(UIScreen.main.bounds.width / 3)
             
             make.top.equalToSuperview()
             make.leading.equalTo(setTideMapButton.snp.trailing)
@@ -181,40 +127,24 @@ extension HomeTopView: ViewCodeProtocol{
         //수심 버튼
         setDepthOfWaterMapButton.snp.makeConstraints{ make in
             make.height.equalTo(40)
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
+            make.width.equalTo(UIScreen.main.bounds.width / 3)
             
             make.top.equalToSuperview()
             make.leading.equalTo(setWaterTempMapButton.snp.trailing)
         }
         
-        //염분 버튼
-        setSaltMapButton.snp.makeConstraints{ make in
-            make.height.equalTo(40)
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
-            
-            make.top.equalToSuperview()
-            make.leading.equalTo(setDepthOfWaterMapButton.snp.trailing)
-        }
-        
-        //유속 버튼
-        setFlowRateMapButton.snp.makeConstraints{ make in
-            make.height.equalTo(40)
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
-            
-            make.top.equalToSuperview()
-            make.leading.equalTo(setSaltMapButton.snp.trailing)
-        }
+       
         
         splitView.snp.makeConstraints{ make in
             make.width.equalToSuperview()
             make.height.equalTo(1)
             
-            make.top.equalTo(setFlowRateMapButton.snp.bottom)
+            make.top.equalTo(setWaterTempMapButton.snp.bottom)
             make.leading.equalToSuperview()
         }
         
         showSelectedButtonView.snp.makeConstraints{ make in
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
+            make.width.equalTo(UIScreen.main.bounds.width / 3)
             make.height.equalTo(1)
             
             make.top.equalToSuperview()
@@ -240,7 +170,7 @@ extension HomeTopView: ViewCodeProtocol{
         dateLabel2.textColor = UIColor.black
         
         
-        locationLabel.text = "전체"
+        locationLabel.text = "포항"
         locationLabel.font = UIFont.boldSystemFont(ofSize: 16)
         locationLabel.textColor = UIColor.black
         
@@ -254,7 +184,7 @@ extension HomeTopView: ViewCodeProtocol{
         sectionButton.layer.cornerRadius = 4
         sectionButton.backgroundColor = UIColor(named: "SeaFlowBlue")
         
-        setTideMapButton.setTitle("조석", for: .normal)
+        setTideMapButton.setTitle("나의 낚시", for: .normal)
         setTideMapButton.setTitleColor(UIColor(named: "SeaFlowBlue"), for: .normal)
         setTideMapButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         setTideMapButton.titleLabel?.textAlignment = .center
@@ -262,7 +192,7 @@ extension HomeTopView: ViewCodeProtocol{
         setTideMapButton.addTarget(self, action: #selector(setMapButtonTapped(_:)), for: .touchUpInside)
         setTideMapButton.setContentHuggingPriority(.init(rawValue: 751), for: .horizontal)
         
-        setWaterTempMapButton.setTitle("수온", for: .normal)
+        setWaterTempMapButton.setTitle("랭킹", for: .normal)
         setWaterTempMapButton.setTitleColor(.black, for: .normal)
         setWaterTempMapButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         setWaterTempMapButton.titleLabel?.textAlignment = .center
@@ -271,7 +201,7 @@ extension HomeTopView: ViewCodeProtocol{
         setWaterTempMapButton.setContentHuggingPriority(.init(rawValue: 751), for: .horizontal)
         
         
-        setDepthOfWaterMapButton.setTitle("수심", for: .normal)
+        setDepthOfWaterMapButton.setTitle("추천 어종", for: .normal)
         setDepthOfWaterMapButton.setTitleColor(.black, for: .normal)
         setDepthOfWaterMapButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         setDepthOfWaterMapButton.titleLabel?.textAlignment = .center
@@ -333,11 +263,11 @@ extension HomeTopView: ViewCodeProtocol{
         splitView.addSubview(showSelectedButtonView)
         
         showSelectedButtonView.snp.makeConstraints{ make in
-            make.width.equalTo(UIScreen.main.bounds.width / 5)
+            make.width.equalTo(UIScreen.main.bounds.width / 3)
             make.height.equalTo(1)
             
             make.top.equalTo(splitView.snp.top)
-            make.leading.equalTo(Int(UIScreen.main.bounds.width) / 5 * buttonNum)
+            make.leading.equalTo(Int(UIScreen.main.bounds.width) / 3 * buttonNum)
             
         }
     }
@@ -345,10 +275,10 @@ extension HomeTopView: ViewCodeProtocol{
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct ItemTableViewCellPreview: PreviewProvider{
+struct DiaryTopViewPreview: PreviewProvider{
     static var previews: some View {
         UIViewPreview {
-            let view = HomeTopView()
+            let view = DiaryTopView()
             return view
         }.previewLayout(.sizeThatFits)
     }
