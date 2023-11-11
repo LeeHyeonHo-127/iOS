@@ -9,9 +9,89 @@
  첫째 줄부터 N-1개의 줄에 각 노드의 부모 노드 번호를 2번 노드부터 순서대로 출력한다.
  */
 
+//MARK: - 내 풀이
+
 import Foundation
 
+private let n = Int(readLine()!)!
+var tree = Tree()
+var tempTree: [Tree] = []
+
+for _ in 0..<n {
+    let input = readLine()!.split(separator: " ").map{ Int($0)! }
+    
+    var parentNode = tree.DFS(value1: input[0], value2: input[1], node: tree.head)
+    
+    switch parentNode{
+    case nil :
+        
+    }
+}
+
+
+
+
+class Tree{
+    var head: TreeNode = TreeNode(childNodes: [], value: 1)
+    
+    func DFS(value1: Int, value2: Int, node: TreeNode) -> TreeNode?{
+        
+        if node.value == value1 || node.value == value2 { return node }
+        
+        for i in 0..<node.childNodes.count{
+            let childNode = node.childNodes[i]
+            return DFS(value1: value1, value2: value2, node: childNode)
+        }
+        
+        return nil
+    }
+    
+    
+    
+    func tempDFS(value1: Int, value2: Int, node: TreeNode, beforeNode: TreeNode) -> TreeNode?{
+        
+        if node.value == value1 || node.value == value2 { return node }
+        
+        for i in 0..<node.childNodes.count{
+            let childNode = node.childNodes[i]
+            if childNode.value == beforeNode.value { break }
+            return DFS(value1: value1, value2: value2, node: childNode)
+        }
+        
+        return nil
+    }
+    
+    func tempToTree(parentNode: TreeNode, childNode: TreeNode){
+        for i in 0..<childNode.childNodes.count{
+            if childNode.childNodes[i].value == parentNode.value{ childNode.childNodes.remove(at: i) }
+            tempToTree(parentNode: childNode, childNode: childNode.childNodes[i])
+        }
+    }
+    
+}
+
+class TreeNode{
+    var parentNode: TreeNode?
+    var childNodes: [TreeNode] = []
+    var value: Int!
+    
+    init(parentNode: TreeNode? = nil, childNodes: [TreeNode], value: Int!) {
+        self.parentNode = parentNode
+        self.childNodes = childNodes
+        self.value = value
+    }
+}
+
+
+
+
+
+
+
+//첫 접근
 /*
+ 
+import Foundation
 
 private var N = Int(readLine()!)!
 private var result = ""
@@ -84,7 +164,8 @@ for i in 2...N {
 print(result)
 */
 
-
+//두 번째 접근
+/*
 
 import Foundation
 
@@ -196,4 +277,4 @@ final class FileIO {
         return sum * (isPositive ? 1 : -1)
     }
 }
-
+*/
