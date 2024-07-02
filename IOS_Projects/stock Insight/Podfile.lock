@@ -1,0 +1,26 @@
+PODS:
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
+  - MarkdownKit (1.7.1)
+  - SwiftAlgorithms (1.0.0)
+
+DEPENDENCIES:
+  - Charts
+  - MarkdownKit
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - MarkdownKit
+    - SwiftAlgorithms
+
+SPEC CHECKSUMS:
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  MarkdownKit: 0b15195c63cf3e39387949c4bdeccde0055e252a
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+
+PODFILE CHECKSUM: e15bf579cbf8d3af34df31f5da4d805eb85bffa0
+
+COCOAPODS: 1.12.1
