@@ -1,0 +1,130 @@
+{
+    "isSuccess": true,
+    "code": 1000,
+    "message": "요청에 성공하였습니다.",
+    "result": {
+        "musicSearchRes": [
+            {
+                "name": "Album Type Shi",
+                "artist": "JD RACKS",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273f4c1af271a5751e9d5fa9c7c",
+                "musicPre": "https://p.scdn.co/mp3-preview/aa9a4b00df05cb0f7d744181c00b356ba553c1ca?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "Nevermind (Remastered)",
+                "artist": "Nirvana",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273e175a19e530c898d167d39bf",
+                "musicPre": null
+            },
+            {
+                "name": "No Flockin'",
+                "artist": "Kodak Black",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b27318f77961dfb9d67895bd9ddb",
+                "musicPre": "https://p.scdn.co/mp3-preview/cce2da7f051dc07a53b988234a0388cd1377fd40?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "Goodbye & Good Riddance",
+                "artist": "Juice WRLD",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273f7db43292a6a99b21b51d5b4",
+                "musicPre": null
+            },
+            {
+                "name": "Graduation",
+                "artist": "Kanye West",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b27326f7f19c7f0381e56156c94a",
+                "musicPre": null
+            },
+            {
+                "name": "FOUR (Deluxe)",
+                "artist": "One Direction",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273d304ba2d71de306812eebaf4",
+                "musicPre": "https://p.scdn.co/mp3-preview/359be833b46b250c696bbb64caa5dc91f2a38c6a?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "Brown Sleep Noise",
+                "artist": "Sleep Miracle",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273e876fddcc7bfc02b9aa5a36c",
+                "musicPre": "https://p.scdn.co/mp3-preview/c58b264cc603b19d6b862f5f1db5007787c0c557?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "The Days / Nights",
+                "artist": "Avicii",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2730ae4f4d42e4a09f3a29f64ad",
+                "musicPre": null
+            },
+            {
+                "name": "Just As I Am",
+                "artist": "Bill Withers",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273e1e350d06ffebd2e19e047ce",
+                "musicPre": "https://p.scdn.co/mp3-preview/4894057a7cdc4be59cd335cfc369ba2d3a3b2ad8?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "NewJeans 'OMG'",
+                "artist": "NewJeans",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273d70036292d54f29e8b68ec01",
+                "musicPre": "https://p.scdn.co/mp3-preview/b9e344aa96afc45a56df77ca63c78786bdaa0047?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "The Colour And The Shape",
+                "artist": "Foo Fighters",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2730389027010b78a5e7dce426b",
+                "musicPre": "https://p.scdn.co/mp3-preview/78fd3872e0fa5940b2a36654f07f11e7119be4e2?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "AMG",
+                "artist": "Natanael Cano",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b273fbf10e7799f39fbcd301e55a",
+                "musicPre": "https://p.scdn.co/mp3-preview/2a54eb02ee2a7e8c47c6107f16272a19a0e6362b?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "GÉNESIS",
+                "artist": "Peso Pluma",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2732fb583ed96f8f35cbf2897ba",
+                "musicPre": "https://p.scdn.co/mp3-preview/ddfc616c4bdbca8cd4b407b60bf6878e15b0d499?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "In A Tidal Wave Of Mystery (Deluxe Edition)",
+                "artist": "Capital Cities",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b27313c6cb6a81c8db4dbc8b9924",
+                "musicPre": null
+            },
+            {
+                "name": "A Fever You Can't Sweat Out",
+                "artist": "Panic! At The Disco",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2730a8881b0d247346c3c447bf3",
+                "musicPre": "https://p.scdn.co/mp3-preview/c547151649f25d0145a74d04c77530ff6111b11c?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "NewJeans 2nd EP 'Get Up'",
+                "artist": "NewJeans",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2730744690248ef3ba7b776ea7b",
+                "musicPre": "https://p.scdn.co/mp3-preview/a37b4269b0dc5e952826d8c43d1b7c072ac39b4c?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            },
+            {
+                "name": "Speak Now (Taylor's Version)",
+                "artist": "Taylor Swift",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481",
+                "musicPre": null
+            },
+            {
+                "name": "Crash My Party",
+                "artist": "Luke Bryan",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b27316fce2616744168b30462991",
+                "musicPre": null
+            },
+            {
+                "name": "Speak Now (Taylor's Version)",
+                "artist": "Taylor Swift",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481",
+                "musicPre": null
+            },
+            {
+                "name": "Peaches & Eggplants (feat. 21 Savage)",
+                "artist": "Young Nudy",
+                "coverImg": "https://i.scdn.co/image/ab67616d0000b2738e91d3e431739b6e7fc3ed71",
+                "musicPre": "https://p.scdn.co/mp3-preview/c8c99ebe8a3e76ec03247eed3e9eea7de6ba8f33?cid=b2d4e63d464c44108d14e3c6c2f5a2c3"
+            }
+        ],
+        "totalPage": 49
+    }
+}
